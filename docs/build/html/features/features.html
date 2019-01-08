@@ -1,0 +1,1356 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Artos (Art of System Testing) &mdash; Artos (Art of System Testing) 01.00.0000 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Artos (Art of System Testing)
+          
+
+          
+            
+            <img src="../_static/ArtosFull_vectorised.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                01.00.0000
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/introduction.html">ARTOS (Art of System Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/project-setup.html">Project Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/helloworld.html">Hello World</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Features</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="runner.html">Runner/Test Executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="framework_configuration.html">Framework Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teststatus.html">Test Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html#off-line-extent-report">Off-line Extent Report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html#real-time-logging">Real Time Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html#stop-on-fail">Stop on Fail</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../annotation/testcase.html">&#64;TestCase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../annotation/testplan.html">&#64;TestPlan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../annotation/expectedException.html">&#64;ExpectedException</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Artos (Art of System Testing)</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li> Artos (Art of System Testing)</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/features/features.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="logo-artos-art-of-system-testing">
+<h1><a class="reference internal" href="../_images/Artos_vectorised.png"><img alt="logo" src="../_images/Artos_vectorised.png" style="width: 20pt; height: 20pt;" /></a> Artos (Art of System Testing)<a class="headerlink" href="#logo-artos-art-of-system-testing" title="Permalink to this headline">¶</a></h1>
+<p>Artos is a test framework designed for functional, system, end to end and/or unit testing. Artos was developed to provide a framework which can work out of the box so user can focus on writing test cases.</p>
+<div class="section" id="artos-repository">
+<h2>Artos repository<a class="headerlink" href="#artos-repository" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Github project link :- <a class="reference external" href="https://github.com/Arpit-Shah/Artos/">Artos_Github</a></li>
+<li>Jar download link :- <a class="reference external" href="https://mvnrepository.com/artifact/com.theartos/artos/">Artos_Maven_Repo</a></li>
+</ul>
+<p>Maven artifact:</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nt">&lt;dependency&gt;</span>
+        <span class="nt">&lt;groupId&gt;</span>com.theartos<span class="nt">&lt;/groupId&gt;</span>
+        <span class="nt">&lt;artifactId&gt;</span>artos<span class="nt">&lt;/artifactId&gt;</span>
+        <span class="nt">&lt;version&gt;</span>x.x.xx<span class="nt">&lt;/version&gt;</span>
+<span class="nt">&lt;/dependency&gt;</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="requirement">
+<h2>Requirement:<a class="headerlink" href="#requirement" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>JDK 8U45 or higher</li>
+</ul>
+</div>
+<div class="section" id="keyword-definitions">
+<h2>Keyword definitions:<a class="headerlink" href="#keyword-definitions" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="18%" />
+<col width="82%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Keyword</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Test Suite</td>
+<td>Collection of test cases that are intended to be used to test a software program</td>
+</tr>
+<tr class="row-odd"><td>Test Script</td>
+<td>Set of instructions that will guide test runner on how to execute test case(s)</td>
+</tr>
+<tr class="row-even"><td>Test Case</td>
+<td>Set of instructions that will be performed on the system under test</td>
+</tr>
+<tr class="row-odd"><td>Test Class</td>
+<td>Java class which acts as a Test Case and adheres to test case specification</td>
+</tr>
+<tr class="row-even"><td>Test Status</td>
+<td>Status of the test case at the line of execution</td>
+</tr>
+<tr class="row-odd"><td>Test Outcome</td>
+<td>Concluded test result from test status updates</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="artos-test-suite">
+<h2>Artos Test Suite:<a class="headerlink" href="#artos-test-suite" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>To construct Artos Test Suite user need minimum of following:</dt>
+<dd><ul class="first last">
+<li>One Runner class.</li>
+<li>One or more test cases.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>The Java class is treated as a <strong>RUNNER</strong> if adheres to following specifications in Artos:</dt>
+<dd><ul class="first last">
+<li>Must be public.</li>
+<li>Created at the root of the package which contains test cases.</li>
+<li>Implements PrePostRunnable interface.</li>
+<li>Contains main() method.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>The Java class is treated as a <strong>TEST CASE</strong> if adheres to following specifications in Artos.</dt>
+<dd><ul class="first last">
+<li>Must be public.</li>
+<li>Implements TestExecutable interface</li>
+<li>&#64;TestCase annotation is applied above the class declaration.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="section" id="test-suite-execution">
+<h3>Test Suite Execution:<a class="headerlink" href="#test-suite-execution" title="Permalink to this headline">¶</a></h3>
+<p>Artos runner is responsible for executing test suites, Artos runner can be launched using one of the following method</p>
+<ul class="simple">
+<li>Execute Runner class via IDE.</li>
+<li>Execute Runner class via command line.</li>
+<li>Execute Runner class via Eclipse Plug in (Under development).</li>
+<li><dl class="first docutils">
+<dt>Artos consists of the following:</dt>
+<dd><ul class="first last">
+<li>Runner/Test Executor</li>
+<li>Log framework</li>
+<li>Configuration</li>
+<li>Test Context</li>
+<li>Utilities</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="artos-features">
+<h2>Artos Features<a class="headerlink" href="#artos-features" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Runner which provides flexibility to execute test cases multiple way.</li>
+<li>Configurable framework.</li>
+<li>Inbuilt logging framework (based on Log4j).</li>
+<li>Inbuilt log appenders and reports. (Text/HTML/Extent/Summary)</li>
+<li>Annotation based test case parsing.</li>
+<li>Real time logs for performance testing.</li>
+<li>Inbuilt socket connectors.</li>
+<li>Test status (with extra : Known to Fail status support).</li>
+<li>Fail stamp in log file.</li>
+<li>Inbuilt email client.</li>
+<li>Listeners for developing plug-ins.</li>
+<li>Auto generation of test scripts.</li>
+<li>Global parameter storage per test suite.</li>
+<li>GUI test selector for easy debugging.</li>
+</ul>
+<div class="section" id="runner-test-executor">
+<h3>Runner/Test Executor<a class="headerlink" href="#runner-test-executor" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>Purpose:</dt>
+<dd><ul class="first last">
+<li>Runner is responsible for sequentializing, executing and tracking test cases from start to end.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Facilities:</dt>
+<dd><ul class="first last">
+<li>Artos provides test runner which can execute multiple test suites in parallel.</li>
+<li><dl class="first docutils">
+<dt>Artos test runner can be launched using:</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>Command line execution by providing xml test script.</dt>
+<dd>OR</dd>
+</dl>
+</li>
+<li>Execution of main() method via IDE.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Artos recognize test cases using <code class="docutils literal notranslate"><span class="pre">&#64;TestCase</span></code> annotations, any class without appropriate annotation(s) will be ignored.</p>
+</div>
+</div>
+<div class="section" id="framework-configuration">
+<h3>Framework Configuration<a class="headerlink" href="#framework-configuration" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>Purpose:</dt>
+<dd><ul class="first last">
+<li>User can customize framework behavior by changing appropriate argument(s) from <code class="docutils literal notranslate"><span class="pre">conf/framework_configuration.xml</span></code> file.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Facilities:</dt>
+<dd><ul class="first last">
+<li>If not present, Artos will generate default configuration file at location <code class="docutils literal notranslate"><span class="pre">conf/framework_configuration.xml</span></code>.</li>
+<li>User can override some of the framework configuration using <code class="docutils literal notranslate"><span class="pre">Runner</span></code> object constructor.</li>
+<li><dl class="first docutils">
+<dt>List of configurable features:</dt>
+<dd><ul class="first last">
+<li>Organisation information (Stamped on top of log file).</li>
+<li><dl class="first docutils">
+<dt>Change logger configuration:</dt>
+<dd><ul class="first last">
+<li>Log level</li>
+<li>Log base directory path.</li>
+<li>Log sub directory path.</li>
+<li>Enable/disable text logs.</li>
+<li>Enable/disable html logs.</li>
+<li>Enable/disable log decoration.</li>
+<li>Enable/disable Extent report generation.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>Configure email client settings.</li>
+<li><dl class="first docutils">
+<dt>Enable/disable:</dt>
+<dd><ul class="first last">
+<li>Enable/disable framework banner.</li>
+<li>Enable/disable organisation information.</li>
+<li>Enable/disable GUI test selector.</li>
+<li>Enable/disable auto generation of Eclipse IDE default template.</li>
+<li>Enable/disable auto generation of the test scripts.</li>
+<li>Enable/disable stop on fail.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="test-status">
+<h3>Test Status<a class="headerlink" href="#test-status" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>Purpose:</dt>
+<dd><ul class="first last">
+<li>Test status allows user to provide useful status updates during test case execution and conclude outcome.</li>
+<li>User can provide short description/reason string during test status update.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Facilities:</dt>
+<dd><ul class="first last">
+<li>User can update test status multiple times within one test case execution.</li>
+<li>Among all updated status, status with worst outcome will be considered as outcome/result of the test case.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="highlight"><pre><span></span>During single test case execution, if a test case status are updated in the following sequence:
+<span class="hll">PASS =&gt; PASS =&gt; FAIL =&gt; PASS
+</span>Then outcome of the test case will be **FAIL** because that is the worst outcome.
+</pre></div>
+</td></tr></table></div>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="15%" />
+<col width="55%" />
+<col width="30%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Status</th>
+<th class="head">Usage</th>
+<th class="head">Order (higher order = worst outcome)</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>PASS</td>
+<td>Test case executed without any errors</td>
+<td>0</td>
+</tr>
+<tr class="row-odd"><td>SKIP</td>
+<td>Test case is skipped</td>
+<td>1</td>
+</tr>
+<tr class="row-even"><td>KTF</td>
+<td>Test case is known to fail</td>
+<td>2</td>
+</tr>
+<tr class="row-odd"><td>FAIL</td>
+<td>Test case failed</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>Usage:</dt>
+<dd><ul class="first last">
+<li>Test status can be updated using following method</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="highlight-java notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="n">TestContext</span><span class="o">().</span><span class="na">setTestStatus</span><span class="o">(</span><span class="n">TestStatus</span><span class="o">.</span><span class="na">FAIL</span><span class="o">,</span> <span class="s">&quot;Did not expect to reach here&quot;</span><span class="o">);</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="logging-framework">
+<h3>Logging Framework<a class="headerlink" href="#logging-framework" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Purpose:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Logs and reports are heart of any test framework.</p>
+</li>
+<li><p class="first">Artos log framework:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Pre-configured and ready to be used.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Capable of producing text and/or html log files.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Generates real-time logs which can be used for performance measurement.</li>
+<li>Generates summary report which can be used as customer facing reports. (Separate to Extent Report)</li>
+<li>Provides features which can be very useful in test development.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Facilities:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Two log layouts are supported:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Text layout (Default enabled).</li>
+<li>HTML layout (Default disabled).</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Two log files are generated per test suite execution:</p>
+<blockquote>
+<div><ul class="simple">
+<li>General log file: All logs (Same as console log).</li>
+<li>Real Time log file: Send/receive message logs from connectable interfaces with timestamp.</li>
+<li>Report is generated per test suite:</li>
+<li>Summary report: Summarised pass/fail summary with test name, execution time and bug reference number.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Log patterns (decoration):</p>
+<blockquote>
+<div><ul class="simple">
+<li>Decoration enabled pattern: <code class="docutils literal notranslate"><span class="pre">&quot;[%-5level][%d{yyyy-MM-dd_HH:mm:ss.SSS}][%t][%F][%M][%c{1}]</span> <span class="pre">-</span> <span class="pre">%msg%n%throwable&quot;</span></code></li>
+<li>Decoration disabled pattern: <code class="docutils literal notranslate"><span class="pre">&quot;%msg%n%throwable&quot;</span></code></li>
+</ul>
+<p>Refer: [Log4j Pattern](<a class="reference external" href="https://logging.apache.org/log4j/2.x/manual/layouts.html">https://logging.apache.org/log4j/2.x/manual/layouts.html</a>).</p>
+</div></blockquote>
+</li>
+<li><p class="first">Log level support:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Following log levels are supported:</p>
+<blockquote>
+<div><div class="line-block">
+<div class="line">Level | Description                                                                                                                                                                               |</div>
+</div>
+<p><a href="#id105"><span class="problematic" id="id106">|-------|</span></a>—————————————————————————————————|</p>
+<p><a href="#id1"><span class="problematic" id="id2">|</span></a>DEBUG      <a href="#id3"><span class="problematic" id="id4">|</span></a>Designates fine-grained informational events that are most useful to debug an application.                     |</p>
+<p><a href="#id5"><span class="problematic" id="id6">|</span></a>ERROR      <a href="#id7"><span class="problematic" id="id8">|</span></a>Designates error events that might still allow the application to continue running.                            |</p>
+<p><a href="#id9"><span class="problematic" id="id10">|</span></a>FATAL      <a href="#id11"><span class="problematic" id="id12">|</span></a>Designates severe error events that will presumably lead the application to abort.                                     |</p>
+<p><a href="#id13"><span class="problematic" id="id14">|</span></a>INFO       <a href="#id15"><span class="problematic" id="id16">|</span></a>Designates informational messages that highlight the progress of the application at coarse level.      |</p>
+<p><a href="#id17"><span class="problematic" id="id18">|</span></a>OFF        <a href="#id19"><span class="problematic" id="id20">|</span></a>The highest possible rank and is intended to turn off logging.                                                                         |</p>
+<p><a href="#id21"><span class="problematic" id="id22">|</span></a>TRACE      <a href="#id23"><span class="problematic" id="id24">|</span></a>Designates finer-grained informational events than the DEBUG.                                                                          |</p>
+<p><a href="#id25"><span class="problematic" id="id26">|</span></a>WARN       <a href="#id27"><span class="problematic" id="id28">|</span></a>Designates potentially harmful situations.                                                                                                                     |</p>
+</div></blockquote>
+</li>
+<li><p class="first">Note: Log level can be configured using <code class="docutils literal notranslate"><span class="pre">conf/framework_configuration.xml</span></code> file.</p>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Log can be enabled/disabled dynamically (Only applicable to general log)</p>
+<blockquote>
+<div><ul class="simple">
+<li>Disable log dynamically: <code class="docutils literal notranslate"><span class="pre">TestContext().getLogger().disableGeneralLog();</span></code></li>
+<li>Enable log dynamically: <code class="docutils literal notranslate"><span class="pre">TestContext().getLogger().enableGeneralLog();</span></code></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Parallel test suite execution will generate separate log files per test suite.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Log files will be labelled using thread number.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Log files are organised under test suite name for ease of use</p>
+<blockquote>
+<div><ul class="simple">
+<li>Log files are created under the following hierarchy. <code class="docutils literal notranslate"><span class="pre">RootDir</span> <span class="pre">=&gt;</span> <span class="pre">SubDir</span> <span class="pre">=&gt;</span> <span class="pre">TestSuiteName</span> <span class="pre">=&gt;</span> <span class="pre">Log</span> <span class="pre">file</span></code>.</li>
+</ul>
+<p>&gt; Example: <code class="docutils literal notranslate"><span class="pre">./reporting/SN-123/com.test.testsuite1/..</span></code></p>
+<ul class="simple">
+<li>Root directory and sub directory location can be configured using <code class="docutils literal notranslate"><span class="pre">conf/framework_configuration.xml</span></code> file.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Log framework abstraction</p>
+<blockquote>
+<div><ul class="simple">
+<li>Log framework is abstracted so that log framework can be changed in future without breaking existing test scripts.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Log file tracking</p>
+<blockquote>
+<div><ul class="simple">
+<li>All log files are tracked during runtime. If user requires to retrieve current log files (inclusive of text/html) they can utilise this functionality.</li>
+<li>This functionality will also be used to find current log files and attach to email client.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>FAIL</strong> stamp injection</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>FAIL</strong> Stamp is injected to log stream straight after test status is updated to FAIL. This allows user to know at which exact line the test case failed during execution.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Log rollover policy</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Current log rollover policy is triggered based on a file size of 20MB.</p>
+</li>
+<li><p class="first">20MB was chosen to meet emailing requirement. Trigger policy can be exposed to user in future.</p>
+</li>
+<li><p class="first">Parameterised logging for efficiency</p>
+<blockquote>
+<div><ul class="simple">
+<li>Parameterised logging is less efficient compare to string concatenation but it is efficient in case of log level is reduced to <strong>INFO</strong> or <strong>ERROR</strong>, because system do not have to spend time concatenating string.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Usage:</p>
+<blockquote>
+<div><blockquote>
+<div><ul>
+<li><p class="first">Enable/disable text/html log files:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Can be configured using <code class="docutils literal notranslate"><span class="pre">conf/framework_configuration.xml</span></code> file.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Change log level and log directory:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Can be configured using <code class="docutils literal notranslate"><span class="pre">conf/framework_configuration.xml</span></code> file.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">logging simple string with level info or debug:</p>
+</li>
+</ul>
+<p>&gt; <code class="docutils literal notranslate"><span class="pre">TestContext().getLogger().info(&quot;This</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">test</span> <span class="pre">String&quot;</span> <span class="pre">+</span> <span class="pre">&quot;This</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">test</span> <span class="pre">String</span> <span class="pre">2&quot;);</span></code></p>
+<p>&gt; <code class="docutils literal notranslate"><span class="pre">TestContext().getLogger().debug(&quot;This</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">test</span> <span class="pre">String&quot;</span> <span class="pre">+</span> <span class="pre">&quot;This</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">test</span> <span class="pre">String</span> <span class="pre">2&quot;);</span></code></p>
+<ul class="simple">
+<li>logging parameterised string with level info or debug:</li>
+</ul>
+<p>&gt; <code class="docutils literal notranslate"><span class="pre">TestContext().getLogger().info(&quot;This</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">test</span> <span class="pre">String</span> <span class="pre">{}</span> <span class="pre">{}&quot;,</span> <span class="pre">&quot;one&quot;,</span> <span class="pre">&quot;two&quot;);</span></code></p>
+<p>&gt; <code class="docutils literal notranslate"><span class="pre">TestContext().getLogger().debug(&quot;This</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">test</span> <span class="pre">String</span> <span class="pre">{}</span> <span class="pre">{}&quot;,</span> <span class="pre">&quot;one&quot;,</span> <span class="pre">&quot;two&quot;);</span></code></p>
+</div></blockquote>
+<ul class="simple">
+<li>Disable logging during execution time:</li>
+</ul>
+<p>&gt; <code class="docutils literal notranslate"><span class="pre">TestContext().getLogger().disableGeneralLog();</span></code></p>
+<ul class="simple">
+<li>Enable logging during execution time:</li>
+</ul>
+<p>&gt; <code class="docutils literal notranslate"><span class="pre">TestContext().getLogger().enableGeneralLog();</span></code></p>
+</div></blockquote>
+</li>
+</ul>
+<p>## Offline Extent Report</p>
+<ul>
+<li><p class="first">Purpose:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Professional looking Extent report which can be distributed among customer or external parties.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Facilities:</p>
+<blockquote>
+<div><ul class="simple">
+<li>If Extent configuration file is not present, then framework will generate default configuration file at location <code class="docutils literal notranslate"><span class="pre">conf/extent_configuration.xml</span></code>.</li>
+<li>Artos has inbuilt support for offline Extent reporting.</li>
+<li>If enabled, Artos will produce Extent report for every test suite execution.</li>
+<li>Extent report includes test name, test writer’s name and test case duration.</li>
+<li>Every test status update and description/reason will be reported via Extent report.</li>
+<li>Final test result with bug reference number will be reported via Extent report.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Usage:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Extent reporting can be enabled/disabled via <code class="docutils literal notranslate"><span class="pre">conf/framework_configuration.xml</span></code> file.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>## Real Time Logging</p>
+<ul>
+<li><p class="first">Purpose:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Performance testing requires real-time logs so time between messages can be measured accurately. Artos has inbuilt interface which can be used to provide real time logging.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Facilities:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Artos has inbult hooks for real time logging. All inbuilt connectors support real-time logging.</li>
+<li>User can write new connectors by implementing <code class="docutils literal notranslate"><span class="pre">Connectable</span></code> interface and use listener <code class="docutils literal notranslate"><span class="pre">RealTimeLogEventListener</span></code> to capture real-time log events.</li>
+<li>Real time logs are printed with time stamp, user is not allowed to disable timestamp.</li>
+<li>If test suites are executed in parallel then separate real time log file will be produced per test suite.</li>
+<li>Real time log file will roll over at 20MB of file size.</li>
+<li>Real time logs cannot be disabled. If <code class="docutils literal notranslate"><span class="pre">RealTimeLogEventListener</span></code> is not provided then log file will remain empty.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Usage:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Collect send receive events in real time with time stamp.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>## Stop on Fail</p>
+<ul>
+<li><p class="first">Purpose:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Depending on the goal, some user may want to continue next test execution after a test case failure, in other case user may choose to stop after very first test case failure. Artos support both behaviours.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Facilities:</p>
+<blockquote>
+<div><ul class="simple">
+<li>By default, Artos is setup to stop on first failure. it can be configured to continue executing rest of the test cases.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Usage:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Stop on Fail feature can be enabled/disabled via <code class="docutils literal notranslate"><span class="pre">conf/framework_configuration.xml</span></code> file.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>## Test Plan Extraction</p>
+<ul>
+<li><p class="first">Purpose:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Artos encourages user to write test plan OR short summary of test case purpose within test class. Test plan within same file encourages user to read test purpose prior to modifying/updating test case. There might be a time when user may want to output all test plan information in a file or on a console. Artos provides a way to extract test plan with few lines of code.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Facilities:</p>
+<blockquote>
+<div><blockquote>
+<div><ul class="simple">
+<li>Test plan can be written above each test class using <code class="docutils literal notranslate"><span class="pre">&#64;TestPlan()</span></code> annotation.</li>
+</ul>
+<div class="line-block">
+<div class="line">Annotation tag        | Tag description                       |</div>
+</div>
+<p><a href="#id107"><span class="problematic" id="id108">|-------------------|</span></a>—————————|</p>
+<p><a href="#id29"><span class="problematic" id="id30">|</span></a>description            <a href="#id31"><span class="problematic" id="id32">|</span></a>test case description      |</p>
+</div></blockquote>
+<p><a href="#id33"><span class="problematic" id="id34">|</span></a>preparedBy         <a href="#id35"><span class="problematic" id="id36">|</span></a>test code writters name    |</p>
+<p><a href="#id37"><span class="problematic" id="id38">|</span></a>preparationDate    <a href="#id39"><span class="problematic" id="id40">|</span></a>test case creation date    |</p>
+<p><a href="#id41"><span class="problematic" id="id42">|</span></a>reviewedBy         <a href="#id43"><span class="problematic" id="id44">|</span></a>test code reviewer name    |</p>
+<p><a href="#id45"><span class="problematic" id="id46">|</span></a>reviewDate         <a href="#id47"><span class="problematic" id="id48">|</span></a>test case review date          |</p>
+<p><a href="#id109"><span class="problematic" id="id110">|bdd                        |test plan in Gherkin format|</span></a></p>
+</div></blockquote>
+</li>
+<li><p class="first">Usage:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Test Plan for entire test suite can be generated using following code:</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<hr class="docutils" />
+<blockquote>
+<div><blockquote>
+<div><p>ScanTestSuite testPlan = new ScanTestSuite(“”);</p>
+<p>List&lt;TestPlanWrapper&gt; testPlanObjectList = testPlan.getTestPlan(context);</p>
+<p>for (TestPlanWrapper testPlanObject : testPlanObjectList) {</p>
+<p>StringBuilder sb = new StringBuilder();</p>
+<p>sb.append(“nTestCaseName : ” + testPlanObject.getTestCaseName());</p>
+<p>sb.append(“nDescription : ” + testPlanObject.getTestDescription());</p>
+<p>sb.append(“nPreparedBy : ” + testPlanObject.getTestPreparedBy());</p>
+<p>sb.append(“nPreparationDate : ” + testPlanObject.getTestPreparationDate());</p>
+<p>sb.append(“nReviewedBy : ” + testPlanObject.getTestReviewedBy());</p>
+<p>sb.append(“nReviewedDate : ” + testPlanObject.getTestReviewedDate());</p>
+<p>sb.append(“nBDD Test Plan : ” + testPlanObject.getTestBDD());</p>
+<p>System.out.println(sb.toString());</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><ul class="simple">
+<li>Test Plan for test cases inside specific package can be generated using following code:</li>
+</ul>
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><blockquote>
+<div><p>// replace com.artos.tests with fully qualified package name within test project</p>
+<p>ScanTestSuite testPlan = new ScanTestSuite(“com.artos.tests”);</p>
+<p>List&lt;TestPlanWrapper&gt; testPlanObjectList = testPlan.getTestPlan(context);</p>
+<p>for (TestPlanWrapper testPlanObject : testPlanObjectList) {</p>
+<p>StringBuilder sb = new StringBuilder();</p>
+<p>sb.append(“nTestCaseName : ” + testPlanObject.getTestCaseName());</p>
+<p>sb.append(“nDescription : ” + testPlanObject.getTestDescription());</p>
+<p>sb.append(“nPreparedBy : ” + testPlanObject.getTestPreparedBy());</p>
+<p>sb.append(“nPreparationDate : ” + testPlanObject.getTestPreparationDate());</p>
+<p>sb.append(“nReviewedBy : ” + testPlanObject.getTestReviewedBy());</p>
+<p>sb.append(“nReviewedDate : ” + testPlanObject.getTestReviewedDate());</p>
+<p>sb.append(“nBDD Test Plan : ” + testPlanObject.getTestBDD());</p>
+<p>System.out.println(sb.toString());</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<hr class="docutils" />
+<p>## Global parameters</p>
+<ul>
+<li><p class="first">Purpose:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Test cases may require sharing object(s). Static objects are not always practical or could be thread unsafe. Sharing objects between test cases or test suites can create complex dependency. Global parameter concept was added to avoid all the above.</li>
+<li>User may want to inject some parameters prior to test suite launch (Example: IP Address, Product Serial Number etc..), which could be unique per test suite. Global parameters can also be used to add parameters in TestContext() by setting them into XML test script.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Facilities:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Parameters can be set into Global Parameters during run time and/or upfront via xml test script.</li>
+<li>Parameters can always be updated during run time.</li>
+<li>Parameters can be retrieved using string name assigned to each parameter.</li>
+<li>Each Test Suite parameter(s) are maintained separately so they do not overwrite each other’s value during execution time.</li>
+<li>Parameterised testing can be supported using Global parameters.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Usage:</p>
+<blockquote>
+<div><blockquote>
+<div><ul class="simple">
+<li>Parameters can set during runtime using:</li>
+</ul>
+<p>&gt; <code class="docutils literal notranslate"><span class="pre">TestContext().setGlobalObject(&quot;PARAMETER_1&quot;,</span> <span class="pre">&quot;TEST123&quot;);</span></code></p>
+</div></blockquote>
+<ul>
+<li><p class="first">Parameters can be retrieved during runtime using:</p>
+<blockquote>
+<div><p>&gt; <code class="docutils literal notranslate"><span class="pre">(String)</span> <span class="pre">TestContext().getGlobalObject(&quot;PARAMETER_1&quot;);</span></code></p>
+</div></blockquote>
+</li>
+<li><p class="first">Parameters can be set via XML test script using following syntax:</p>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>&gt;     &lt;parameters&gt;</p>
+<p>&gt;       &lt;parameter name=”PARAMETER_0”&gt;parameterValue_0&lt;/parameter&gt;</p>
+<p>&gt;       &lt;parameter name=”PARAMETER_1”&gt;parameterValue_1&lt;/parameter&gt;</p>
+<p>&gt;       &lt;parameter name=”PARAMETER_2”&gt;parameterValue_2&lt;/parameter&gt;</p>
+<p>&gt;     &lt;/parameters&gt;</p>
+<p>&gt;   Note: Only String type of parameters can be set using XML test script but <code class="docutils literal notranslate"><span class="pre">setGlobalObject()</span> <span class="pre">&amp;</span> <span class="pre">getGlobalObject()</span></code> can be used to set/retrieve any type of object(s) during run time.</p>
+<p>## GUI Test Selector</p>
+<ul>
+<li><p class="first">Purpose:</p>
+<blockquote>
+<div><ul class="simple">
+<li>GUI test selector is designed to help user during development/debugging of test cases.</li>
+<li>Commenting out test cases or editing test sequence/script multiple time during development/debugging is error prone. GUI test selector is designed to avoids all listed issues.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Facilities:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Following is allowed:</p>
+<blockquote>
+<div><ul class="simple">
+<li>GUI test selector lets user run selective test cases and/or allows user to set test execution loop count.</li>
+<li>GUI test selector also helps third party who may receive test suite in JAR format and may want to run selective test cases.</li>
+<li>If user runs multiple test suites using test script then separate GUI test selector will be created per test suite.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Following is not allowed:</p>
+<blockquote>
+<div><ul class="simple">
+<li>User cannot change test sequence using GUI test selector.</li>
+</ul>
+<p>This is to maintain test dependency. If test cases are independent, then sequence does not matter in any case thus GUI selector has no role to play. If user believes that sequence is wrong then it should be changed in main() method or via test script.</p>
+<ul class="simple">
+<li>User cannot change test group selection using GUI test selector.</li>
+</ul>
+<p>Before test cases are populated into GUI test selector, test cases are filtered for specified group(s). If user believes that group assignment is wrong, then it should be change in test script prior to launching test suite.</p>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Usage:</p>
+<blockquote>
+<div><ul class="simple">
+<li>GUI test selector can be enabled/disabled using <code class="docutils literal notranslate"><span class="pre">conf/framework_configuration.xml</span></code> file.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>&gt; Note: If tests are executed on build server than disable GUI test selector using <code class="docutils literal notranslate"><span class="pre">conf/framework_configuration.xml</span></code> file.</p>
+<p>## Annotations to mark test cases</p>
+<ul class="simple">
+<li>Artos support many annotations to make test system more flexible.</li>
+</ul>
+<div class="line-block">
+<div class="line">Annotation            | Usage                                                                                                                                 <a href="#id49"><span class="problematic" id="id50">|</span></a>Mandatory/Optional     |</div>
+</div>
+<p><a href="#id111"><span class="problematic" id="id112">|-------------------|</span></a>———————————————————————–<a href="#id113"><span class="problematic" id="id114">|-------------------|</span></a></p>
+<p><a href="#id51"><span class="problematic" id="id52">|</span></a>&#64;BeforeTestSuite   <a href="#id53"><span class="problematic" id="id54">|</span></a>Above the method which is executed prior to running a test suite           <a href="#id55"><span class="problematic" id="id56">|</span></a>Optional                       |</p>
+<p><a href="#id57"><span class="problematic" id="id58">|</span></a>&#64;AfterTestSuite        <a href="#id59"><span class="problematic" id="id60">|</span></a>Above the method which is executed post running a test suite                   <a href="#id61"><span class="problematic" id="id62">|</span></a>Optional                       |</p>
+<p><a href="#id63"><span class="problematic" id="id64">|</span></a>&#64;BeforeTest            <a href="#id65"><span class="problematic" id="id66">|</span></a>Above the method which is executed prior to running each test case             <a href="#id67"><span class="problematic" id="id68">|</span></a>Optional                       |</p>
+<p><a href="#id69"><span class="problematic" id="id70">|</span></a>&#64;AfterTest                     <a href="#id71"><span class="problematic" id="id72">|</span></a>Above the method which is executed post running each test case                 <a href="#id73"><span class="problematic" id="id74">|</span></a>Optional                       |</p>
+<p><a href="#id75"><span class="problematic" id="id76">|</span></a>&#64;KnownToFail           <a href="#id77"><span class="problematic" id="id78">|</span></a>Above the test class which is expected to fail due to known issue              <a href="#id79"><span class="problematic" id="id80">|</span></a>Optional                       |</p>
+<p><a href="#id81"><span class="problematic" id="id82">|</span></a>&#64;TestCase                      <a href="#id83"><span class="problematic" id="id84">|</span></a>Above the test class which needs to recognised as a test case                  <a href="#id85"><span class="problematic" id="id86">|</span></a>Mandatory                      |</p>
+<p><a href="#id87"><span class="problematic" id="id88">|</span></a>&#64;TestPlan                      <a href="#id89"><span class="problematic" id="id90">|</span></a>Above the test class. This provides basic info about test case                 <a href="#id91"><span class="problematic" id="id92">|</span></a>Optional                       |</p>
+<p><a href="#id93"><span class="problematic" id="id94">|</span></a>&#64;Group                         <a href="#id95"><span class="problematic" id="id96">|</span></a>Above the test class. Assigns test case to a group or array of group   <a href="#id97"><span class="problematic" id="id98">|</span></a>Optional                       |</p>
+<p><a href="#id99"><span class="problematic" id="id100">|</span></a>&#64;ExpectedException     <a href="#id101"><span class="problematic" id="id102">|</span></a>Above the test class. Assigns expected Exception test may throw                <a href="#id103"><span class="problematic" id="id104">|</span></a>Optional                       |</p>
+<p>### &#64;BeforeTestSuite &#64;AfterTestSuite &#64;BeforeTest &#64;AfterTest</p>
+<ul class="simple">
+<li>Annotation Example:</li>
+</ul>
+<hr class="docutils" />
+<blockquote>
+<div><p>public class Main implements PrePostRunnable {</p>
+<blockquote>
+<div><p>public static ArrayList&lt;TestExecutable&gt; getTestList() throws Exception {</p>
+<blockquote>
+<div>…</div></blockquote>
+<p>}</p>
+<p>public static void main(String[] args) throws Exception {</p>
+<blockquote>
+<div>…</div></blockquote>
+<p>}</p>
+<p>&#64;BeforeTestsuite</p>
+<p>public void beforeTestsuite(TestContext context) throws Exception {</p>
+<blockquote>
+<div>…</div></blockquote>
+<p>}</p>
+<p>&#64;AfterTestsuite</p>
+<p>public void beforeTestsuite(TestContext context) throws Exception {</p>
+<blockquote>
+<div>…</div></blockquote>
+<p>}</p>
+<p>&#64;BeforeTest</p>
+<p>public void beforeTest(TestContext context) throws Exception {</p>
+<blockquote>
+<div>…</div></blockquote>
+<p>}</p>
+<p>&#64;AfterTest</p>
+<p>public void afterTest(TestContext context) throws Exception {</p>
+<blockquote>
+<div>…</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<hr class="docutils" />
+<p>### &#64;TestCase &#64;TestPlan &#64;KnownToFail &#64;Group &#64;ExpectedException</p>
+<ul class="simple">
+<li>Annotation Example:</li>
+</ul>
+<hr class="docutils" />
+<blockquote>
+<div><p>&#64;Group(group = { “CI”, “SEMI_AUTO” })</p>
+<p>&#64;ExpectedException(expectedException = Exception.class, contains = “[^0-9]*[12]”, enforce = true)</p>
+<p>&#64;TestPlan(decription = “Test”, preparedBy = “JohnM”, preparationDate = “”, reviewedBy = “”, reviewDate = “”)</p>
+<p>&#64;TestCase(skip = false, sequence = 1, label = “regression”)</p>
+<p>&#64;KnownToFail(ktf = true, bugref = “JIRA-????”)</p>
+<p>public class Test_Annotation implements TestExecutable {</p>
+<blockquote>
+<div><p>public void execute(TestContext context) throws Exception {</p>
+<blockquote>
+<div><p>// ——————————————————————————————–</p>
+<p>…</p>
+<p>// ——————————————————————————————–</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<hr class="docutils" />
+<ul class="simple">
+<li>Information populated using <code class="docutils literal notranslate"><span class="pre">&#64;TestPlan</span></code> annotation is used in logging.</li>
+<li>Each new test case execution will print test plan in log file and then all the logs will be appended so user can easily identify which logs belongs to which test cases.</li>
+<li>If <code class="docutils literal notranslate"><span class="pre">&#64;TestPlan</span></code> annotation is populated correctly then user can use generate test plan function to output a test plan for entire suite.</li>
+</ul>
+<hr class="docutils" />
+<blockquote>
+<div><p>// for all test cases in project</p>
+<p>ScanTestSuite testPlan = new ScanTestSuite(“”);</p>
+<p>logger.info(testPlan.getTestPlan(context));</p>
+<p>// for test cases within com.test.project package</p>
+<p>ScanTestSuite testPlan = new ScanTestSuite(“com.test.project”);</p>
+<p>logger.info(testPlan.getTestPlan(context));</p>
+</div></blockquote>
+<hr class="docutils" />
+<p>### Known to Fail</p>
+<ul>
+<li><p class="first">Purpose:</p>
+<blockquote>
+<div><blockquote>
+<div><ul>
+<li><p class="first">There may be a test scenario(s) which are known to be the bug but cannot be fixed straight away due to:</p>
+<blockquote>
+<div><p>&gt; * Priority</p>
+<p>&gt; OR</p>
+<p>&gt; * Project timelines</p>
+<p>&gt; OR</p>
+<p>&gt; * Bug may not be worth fixing.</p>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+<p>In such case(s), those test case(s) should be marked as “known to fail” using &#64;KnownToFail annotation and test status should be set to <strong>KTF</strong> upon test case failure. This will ensure that test case(s) does not end up in failed test case(s) list and user does not waste time re-investigating same issue(s).</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Second requirement is that when “known to fail” test case(s) will start passing because:</p>
+<blockquote>
+<div><p>&gt; * Bug is silently fixed</p>
+<p>&gt; OR</p>
+<p>&gt; * Software behaviour has changed</p>
+</div></blockquote>
+</li>
+</ul>
+<p>Then test engineer should be notified by marking test case with <strong>FAIL</strong> status.</p>
+</div></blockquote>
+</div></blockquote>
+</li>
+<li><p class="first">Facilities:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Known to fail test case(s) end result is expected to be either <strong>KTF</strong> or <strong>FAIL</strong>. If test result is different then test case will be considered <strong>FAIL</strong> by the test framework. This will help user identify if bug was silently fixed or software behaviour has changed.</p>
+</li>
+<li><p class="first"><code class="docutils literal notranslate"><span class="pre">&#64;KnownToFail</span></code> annotation can also be used to mark test as “Known to Fail” and/or set bug reference number.</p>
+</li>
+<li><p class="first">If bug reference number is provided, it will be printed in following reports:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Summary report</li>
+<li>Extent report.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Usage:</p>
+<blockquote>
+<div><ul class="simple">
+<li>User can mark test case as “Known to Fail” and/or user can set bug reference using <code class="docutils literal notranslate"><span class="pre">&#64;KnownToFail</span></code> annotation.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>&gt; Example: <code class="docutils literal notranslate"><span class="pre">&#64;KnownToFail(ktf</span> <span class="pre">=</span> <span class="pre">true,</span> <span class="pre">bugref</span> <span class="pre">=</span> <span class="pre">&quot;TICKET-123,</span> <span class="pre">TICKET-456&quot;)</span></code></p>
+<p>### Test Groups</p>
+<ul>
+<li><p class="first">Purpose:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Test case can be grouped using <code class="docutils literal notranslate"><span class="pre">&#64;Group</span></code> annotation. User can execute test case(s) which belong to specific group or groups. This can help segregate test cases based on features, automated/semiautomated/manual etc.. categories.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Facilities:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Artos supports executing test cases based on assigned test group(s).</li>
+<li>All test case(s) by default belong to group called <code class="docutils literal notranslate"><span class="pre">&quot;*&quot;</span></code>.</li>
+<li>Group names are case in-sensitive.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Usage:</p>
+<blockquote>
+<div><ul class="simple">
+<li>User can assign each test cases to desired group(s) by using <code class="docutils literal notranslate"><span class="pre">&#64;group</span></code> annotation.</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;Group(group</span> <span class="pre">=</span> <span class="pre">{</span> <span class="pre">&quot;CI&quot;,</span> <span class="pre">&quot;SEMI_AUTO&quot;</span> <span class="pre">})</span></code>.</p>
+<ul class="simple">
+<li>Group policy can be configured using XML test script.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>&gt;       To run all test cases</p>
+<hr class="docutils" />
+<blockquote>
+<div><blockquote>
+<div><p>&lt;groups&gt;</p>
+<p>&lt;group name=”*”/&gt;</p>
+</div></blockquote>
+<p>&lt;/groups&gt;</p>
+</div></blockquote>
+<hr class="docutils" />
+<p>&gt;       To run test cases, belong to specific group or groups</p>
+<hr class="docutils" />
+<blockquote>
+<div><blockquote>
+<div><p>&lt;groups&gt;</p>
+<p>&lt;group name=”CI”/&gt;</p>
+<p>&lt;group name=”SEMI_AUTO”/&gt;</p>
+</div></blockquote>
+<p>&lt;/groups&gt;</p>
+</div></blockquote>
+<hr class="docutils" />
+<p>### Test Exception</p>
+<ul>
+<li><p class="first">Purpose:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Test case can throw an exception. By specifying expected exception and/or exception message description, user can pass exception verification responsibility to runner.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Facilities:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Artos supports handling test exception on runner level.</li>
+<li>Artos supports matching exception description using regular expression.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Usage:</p>
+<blockquote>
+<div><blockquote>
+<div><ul class="simple">
+<li>User can assign <code class="docutils literal notranslate"><span class="pre">&#64;ExpectedException</span></code> annotation on top of test class as shown below.</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;ExpectedException(expectedException</span> <span class="pre">=</span> <span class="pre">Exception.class)</span></code></p>
+</div></blockquote>
+<p>OR</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">&#64;ExpectedException(expectedException</span> <span class="pre">=</span> <span class="pre">Exception.class,</span> <span class="pre">contains</span> <span class="pre">=</span> <span class="pre">&quot;[^0-9]*[12]?[0-9]{1,2}[^0-9]*&quot;)</span></code></p>
+</div></blockquote>
+<p>OR</p>
+<p><code class="docutils literal notranslate"><span class="pre">&#64;ExpectedException(expectedException</span> <span class="pre">=</span> <span class="pre">Exception.class,</span> <span class="pre">contains</span> <span class="pre">=</span> <span class="pre">&quot;[^0-9]*[12]?[0-9]{1,2}[^0-9]*&quot;,</span> <span class="pre">enforce</span> <span class="pre">=</span> <span class="pre">true)</span></code></p>
+<blockquote>
+<div><ul class="simple">
+<li>If only exception is specified then upon test exception, exception class will be matched.</li>
+<li>If exception and exception message is specified then upon test exception, exception class and exception message will be matched (using regex).</li>
+<li>If <code class="docutils literal notranslate"><span class="pre">enforce</span> <span class="pre">=</span> <span class="pre">true</span></code> then test case must throw expected exception otherwise test case will be marked failed.</li>
+</ul>
+</div></blockquote>
+</div></blockquote>
+</li>
+</ul>
+<p>&gt; Note: If ExpectedException is enforced by <code class="docutils literal notranslate"><span class="pre">enforce</span> <span class="pre">=</span> <span class="pre">true</span></code> AND test case did not throw any exception BUT user sets test status to SKIP or KTF then test case outcome will be the status set by user (SKIP or KTF).</p>
+<p>### Test Sequence and Execution</p>
+<ul>
+<li><p class="first">Each test suite consists of at least two types of classes:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">PrePostRunnable : A class which implements <code class="docutils literal notranslate"><span class="pre">PrePostRunnable</span></code> and has <code class="docutils literal notranslate"><span class="pre">main()</span></code> method.</p>
+<blockquote>
+<div><ul class="simple">
+<li>PrePostRunnable class is responsible for launching test runner which then executes test cases based on provided.</li>
+<li>All test cases at the PrePostRunnable class package level and below will be considered in scope of testing.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">TestExecutable : A class which implements <code class="docutils literal notranslate"><span class="pre">TestExecutable</span></code>.</p>
+<blockquote>
+<div><ul class="simple">
+<li>All test class must have <code class="docutils literal notranslate"><span class="pre">&#64;TestCase</span></code> annotation.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Test sequence can be decided four possible ways</p>
+<blockquote>
+<div><ul>
+<li><p class="first">CASE 1: Test list <code class="docutils literal notranslate"><span class="pre">List&lt;TestExecutable&gt;</span></code> is provided to <code class="docutils literal notranslate"><span class="pre">Runner</span></code> object constructor.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Test case(s) executed as per sequence provided in the <code class="docutils literal notranslate"><span class="pre">List&lt;TestExecutable&gt;</span></code>.</li>
+<li>This method can guarantee the test case order of execution.</li>
+<li>Test case(s) which are not added to <code class="docutils literal notranslate"><span class="pre">List&lt;TestExecutable&gt;</span></code> will be ignored.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">CASE 2: <code class="docutils literal notranslate"><span class="pre">List&lt;TestExecutable&gt;</span></code> is empty AND <code class="docutils literal notranslate"><span class="pre">&#64;TestCase</span></code> annotation ==”sequence”== attribute is filled.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Tests will be executed in sequence provided in ==”sequence”== attribute.</li>
+<li>This method can guarantee the test case order of execution if each test cases are marked with unique sequence number.</li>
+<li>If two or more test cases are marked with same sequence number, then scanning order priority will be considered for those test cases.</li>
+<li>Test case(s) marked with ==skip== = ==true== attribute will be ignored during test execution cycle.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">CASE 3: Test list <code class="docutils literal notranslate"><span class="pre">List&lt;TestExecutable&gt;</span></code> is empty AND all test case(s) sequence number are set to same value <code class="docutils literal notranslate"><span class="pre">&#64;TestCase</span></code> annotation.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Test cases will be executed in the order of scan.</li>
+<li>Scan order cannot be guaranteed.</li>
+<li>This option can be exercised when test execution order is not important and test cases are independent.</li>
+<li>This option can be exercised if test framework is used as unit test framework.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">CASE 4: User provides test script via command line parameters</p>
+<blockquote>
+<div><ul class="simple">
+<li>Test cases will be executed in the order provided via test script.</li>
+<li>If test group is defined, then any test case(s) that do not belong to a specified group(s) will be ignored.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>&gt; WARNING: Test cases are only scanned within the same package (inclusive of child packages). If test case(s) specified in test script do not belong to the package scope, then those test case(s) will be ignored silently.</p>
+<p>Example code for PrePostRunnable class which supports all above methods</p>
+<hr class="docutils" />
+<blockquote>
+<div><p>public class Main implements PrePostRunnable {</p>
+<blockquote>
+<div><blockquote>
+<div><p>public static ArrayList&lt;TestExecutable&gt; getTestList() throws Exception {</p>
+<blockquote>
+<div><p>ArrayList&lt;TestExecutable&gt; tests = new ArrayList&lt;TestExecutable&gt;();</p>
+<p>// ———————————————————————</p>
+<p>// TODO User May Add Test Case Manually as show in sample below</p>
+<p>// tests.add(new Test_123());</p>
+<p>// tests.add(new Test_abc());</p>
+<p>// ———————————————————————</p>
+<p>return tests;</p>
+<p>}</p>
+<p>public static void main(String[] args) throws Exception {</p>
+<blockquote>
+<div><p>Runner runner = new Runner(Main.class);</p>
+<p>runner.run(args, getTestList(), 1);</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+</div></blockquote>
+<hr class="docutils" />
+<p>## Inbuilt Utilities for ease of use</p>
+<p>Artos has many inbuilt public utilities which can make test case writing easy. More Utilities will be added in future releases. Refer to API document for full information.</p>
+<p>Some of the examples are shown below:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">Transform.java</span></code>: Provides data conversion methods which makes day to day transformation of objects easy.</li>
+<li><code class="docutils literal notranslate"><span class="pre">Guard.java</span></code>: Provides method which can guard user (Similar to asserts in JUnit).</li>
+<li><code class="docutils literal notranslate"><span class="pre">TCPClient.java</span></code> and <code class="docutils literal notranslate"><span class="pre">TCPServer.java</span></code>: Provides basic implementation of client/server to send/receive messages.</li>
+<li><code class="docutils literal notranslate"><span class="pre">UDP.java</span></code>: Provides basic implementation of UDP client/server to send/receive messages.</li>
+<li><code class="docutils literal notranslate"><span class="pre">Heartbeat.java</span></code>: Provides basic implementation of one way heartbeat.</li>
+<li><code class="docutils literal notranslate"><span class="pre">PropertiesFileReader.java</span></code>: Provides easy way to read/write properties file in Java.</li>
+<li><code class="docutils literal notranslate"><span class="pre">Tree.java</span></code>: Lets user print file tree (similar to Windows tree command output).</li>
+<li><code class="docutils literal notranslate"><span class="pre">CustomPrompt.java</span></code>: Provides GUI Popup launcher which can be run in blocking or non-blocking mode. User can show countdown timer <em>and/or</em> text <em>and/or</em> PNG file <em>and/or</em> buttons with custom text.</li>
+<li><code class="docutils literal notranslate"><span class="pre">UtilsTar.jar</span></code> and <code class="docutils literal notranslate"><span class="pre">UtilsZip.jar</span></code>: Provides simple implementation of tarring, untarring, undo-tgz, zip and unzip archives.</li>
+<li>etc..</li>
+</ul>
+<p>## Inbuilt Exception Handling</p>
+<ul class="simple">
+<li>Artos handles exception and throwable during test suite execution.</li>
+<li>If “stop on fail” is enabled and test case throws an exception, test case will be marked, test suite execution will stop and all the following test cases will be ignored.</li>
+<li>If “stop on fail” is disabled and test case throws an exception, test case will be marked as failed and next test case execution will be attempted.</li>
+<li>If an exception occurred outside test cases (Example: during before or after methods) then test suite execution will stop.</li>
+</ul>
+<p>## Time Tracking</p>
+<p>Artos tracks time per test case and for the test suite.</p>
+<ul class="simple">
+<li>Individual test case and test suite time duration can be found in summary report file.</li>
+<li>TestSuite time duration is also logged in general log file.</li>
+</ul>
+<p>&gt; Note:</p>
+<p>&gt; * TestCase time duration does not include time taken by BeforeTestCase and AfterTestCase methods.</p>
+<p>&gt; * TestSuite time duration is inclusive of time taken by testcase(s), BeforeTestCase() and AfterTestCase() methods.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Arpit Shah
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'01.00.0000',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

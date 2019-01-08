@@ -1,0 +1,263 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Runner/Test Executor &mdash; Artos (Art of System Testing) 01.00.0000 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Framework Configuration" href="framework_configuration.html" />
+    <link rel="prev" title="Hello World" href="../tutorial/helloworld.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Artos (Art of System Testing)
+          
+
+          
+            
+            <img src="../_static/ArtosFull_vectorised.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                01.00.0000
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/introduction.html">ARTOS (Art of System Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/project-setup.html">Project Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tutorial/helloworld.html">Hello World</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Features</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Runner/Test Executor</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#purpose">Purpose:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#facilities">Facilities:</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="framework_configuration.html">Framework Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="teststatus.html">Test Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html#off-line-extent-report">Off-line Extent Report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html#real-time-logging">Real Time Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html#stop-on-fail">Stop on Fail</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../annotation/testcase.html">&#64;TestCase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../annotation/testplan.html">&#64;TestPlan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../annotation/expectedException.html">&#64;ExpectedException</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Artos (Art of System Testing)</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Runner/Test Executor</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/features/runner.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="runner-test-executor">
+<h1>Runner/Test Executor<a class="headerlink" href="#runner-test-executor" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="purpose">
+<h2>Purpose:<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h2>
+<p>Runner is responsible for sequentializing, executing and tracking test cases from start to end.</p>
+</div>
+<div class="section" id="facilities">
+<h2>Facilities:<a class="headerlink" href="#facilities" title="Permalink to this headline">¶</a></h2>
+<p>Artos provides test runner which can execute multiple test suites in parallel. Artos test runner can be launched using one of the following:</p>
+<ul class="simple">
+<li>Command line by providing xml test script.</li>
+<li>main() method execution via IDE.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Artos recognize test cases using <code class="docutils literal notranslate"><span class="pre">&#64;TestCase</span></code> annotations, any class without appropriate annotation(s) will be ignored.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="framework_configuration.html" class="btn btn-neutral float-right" title="Framework Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../tutorial/helloworld.html" class="btn btn-neutral" title="Hello World" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Arpit Shah
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'01.00.0000',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
