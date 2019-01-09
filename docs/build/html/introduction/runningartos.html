@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Runner/Test Executor &mdash; Artos (Art of System Testing) 01.00.0000 documentation</title>
+  <title>Running Artos &mdash; Artos (Art of System Testing) 01.00.0000 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Framework Configuration" href="framework_configuration.html" />
-    <link rel="prev" title="Running Artos" href="../introduction/runningartos.html" /> 
+    <link rel="next" title="Runner/Test Executor" href="../features/runner.html" />
+    <link rel="prev" title="Hello World" href="helloworld.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -86,25 +86,25 @@
             
             
               <p class="caption"><span class="caption-text">Introduction:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../introduction/introduction.html">ARTOS (Art of System Testing)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../introduction/project-setup.html">Project Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../introduction/helloworld.html">Hello World</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../introduction/runningartos.html">Running Artos</a></li>
-</ul>
-<p class="caption"><span class="caption-text">Features</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Runner/Test Executor</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#purpose">Purpose:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#facilities">Facilities:</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">ARTOS (Art of System Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project-setup.html">Project Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="helloworld.html">Hello World</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Running Artos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#command-line">Command line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#eclipse-ide">Eclipse IDE</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="framework_configuration.html">Framework Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="teststatus.html">Test Status</a></li>
-<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging Framework</a></li>
-<li class="toctree-l1"><a class="reference internal" href="logging.html#off-line-extent-report">Off-line Extent Report</a></li>
-<li class="toctree-l1"><a class="reference internal" href="logging.html#real-time-logging">Real Time Logging</a></li>
-<li class="toctree-l1"><a class="reference internal" href="logging.html#stop-on-fail">Stop on Fail</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Features</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../features/runner.html">Runner/Test Executor</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../features/framework_configuration.html">Framework Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../features/teststatus.html">Test Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../features/logging.html">Logging Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../features/logging.html#off-line-extent-report">Off-line Extent Report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../features/logging.html#real-time-logging">Real Time Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../features/logging.html#stop-on-fail">Stop on Fail</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../annotation/testcase.html">&#64;TestCase</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../annotation/testplan.html">&#64;TestPlan</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../annotation/expectedException.html">&#64;ExpectedException</a></li>
@@ -153,13 +153,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Runner/Test Executor</li>
+      <li>Running Artos</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/features/runner.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/introduction/runningartos.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -172,23 +172,36 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="runner-test-executor">
-<h1>Runner/Test Executor<a class="headerlink" href="#runner-test-executor" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="purpose">
-<h2>Purpose:<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h2>
-<p>Runner is responsible for sequentializing, executing and tracking test cases from start to end.</p>
-</div>
-<div class="section" id="facilities">
-<h2>Facilities:<a class="headerlink" href="#facilities" title="Permalink to this headline">¶</a></h2>
-<p>Artos provides test runner which can execute multiple test suites in parallel. Artos test runner can be launched using one of the following:</p>
+  <div class="section" id="running-artos">
+<h1>Running Artos<a class="headerlink" href="#running-artos" title="Permalink to this headline">¶</a></h1>
+<p>Artos can be run via</p>
 <ul class="simple">
-<li>Command line by providing xml test script.</li>
-<li>main() method execution via IDE.</li>
+<li>Command line</li>
+<li>IDE (Example : Eclipse, IntelliJ etc..)</li>
 </ul>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">Artos recognize test cases using <code class="docutils literal notranslate"><span class="pre">&#64;TestCase</span></code> annotations, any class without appropriate annotation(s) will be ignored.</p>
+<div class="section" id="command-line">
+<h2>Command line<a class="headerlink" href="#command-line" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-Text notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span>// Current example is written with following assumption
+// * Test project only has **artos.jar** as a dependency.
+// * Artos jar is located at **.\lib\artos.jar**.
+// * Test script is located at **.\script\testscript.xml**.
+// * Test runner class name is **TestRunner.java** (Runner = Class which contains main() method).
+<span class="hll">java -cp .\lib\artos-0.0.1.jar TestRunner --testscript=&quot;.\script\testscript.xml&quot;
+</span></pre></div>
+</td></tr></table></div>
 </div>
+<div class="section" id="eclipse-ide">
+<h2>Eclipse IDE<a class="headerlink" href="#eclipse-ide" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Right click on the test runner class.</li>
+<li>Select options Run as =&gt; Java Application .</li>
+</ul>
+<img alt="../_images/RunJavaApplication.png" src="../_images/RunJavaApplication.png" />
 </div>
 </div>
 
@@ -200,10 +213,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="framework_configuration.html" class="btn btn-neutral float-right" title="Framework Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../features/runner.html" class="btn btn-neutral float-right" title="Runner/Test Executor" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../introduction/runningartos.html" class="btn btn-neutral" title="Running Artos" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="helloworld.html" class="btn btn-neutral" title="Hello World" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

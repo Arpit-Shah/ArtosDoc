@@ -20,7 +20,7 @@
 # -- Project information -----------------------------------------------------
 
 project = u'Artos (Art of System Testing)'
-copyright = u'2018, Arpit Shah'
+copyright = u'2018-2020, Arpit Shah & Contributors'
 author = u'Arpit Shah & Contributors'
 
 # The short X.Y version

@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Project Setup" href="../tutorial/project-setup.html" />
+    <link rel="next" title="Project Setup" href="project-setup.html" />
     <link rel="prev" title="ARTOS Tutorial" href="../index.html" /> 
 
   
@@ -89,10 +89,15 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">ARTOS (Art of System Testing)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#framework-glossary">Framework Glossary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-runner">Test Runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-suite">Test Suite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-case">Test Case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-unit">Test Unit</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/project-setup.html">Project Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tutorial/helloworld.html">Hello World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="project-setup.html">Project Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="helloworld.html">Hello World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="runningartos.html">Running Artos</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Features</span></p>
 <ul>
@@ -172,7 +177,8 @@
             
   <div class="section" id="artos-art-of-system-testing">
 <h1>ARTOS (Art of System Testing)<a class="headerlink" href="#artos-art-of-system-testing" title="Permalink to this headline">¶</a></h1>
-<p>ARTOS was developed by bunch of experienced test engineers for test developers/engineers. It was designed and developed with the aim to provide a test framework which is easy to use, reliable and works out of the box. ARTOS is written in Java which makes it suitable for Windows, Linux, MAC or any other platform that runs Java. It can be used for functional, system, end to end or unit testing. Most of the test frameworks only provide test runner/executor and rest is left on engineers to develop, Whereas Artos comes with many inbuilt and well tested utilities saving time for users to focus on what they do best!</p>
+<p>ARTOS was developed by bunch of experienced test engineers for test developers/engineers. It was designed and developed with the aim to provide a test framework which is easy to use, reliable and works out of the box. ARTOS is written in Java which makes it suitable for Windows, Linux, MAC or any other platform that runs Java. It can be used for functional, system, end to end and/or unit testing. Most test frameworks only provide test runner/executor and rest is left on engineers to develop, Whereas Artos comes with many inbuilt and well tested utilities saving time for users to focus on what they do best!</p>
+<p>ARTOS makes use of annotations for most of the features set which will be covered in detail in later sections. ARTOS was designed to be flexible so many framework features can be enabled or disabled using ARTOS’ configuration file <code class="docutils literal notranslate"><span class="pre">framework_configuration.xml</span></code>.</p>
 <div class="section" id="framework-glossary">
 <h2>Framework Glossary<a class="headerlink" href="#framework-glossary" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="colwidths-given docutils">
@@ -186,11 +192,11 @@
 </tr>
 </thead>
 <tbody valign="top">
-<tr class="row-even"><td>Test Suite</td>
-<td>Collection of test cases that are intended to be used to test a software program</td>
+<tr class="row-even"><td>Test Runner</td>
+<td>A class which is the entry point for test application. It is responsible for executing and tracking test cases from start to end.</td>
 </tr>
-<tr class="row-odd"><td>Test Script</td>
-<td>Set of instructions that will guide test runner on how to execute test cases</td>
+<tr class="row-odd"><td>Test Suite</td>
+<td>Collection of test cases that are intended to be used to test a software program</td>
 </tr>
 <tr class="row-even"><td>Test Case</td>
 <td>Set of instructions that will be performed on the system under test</td>
@@ -198,11 +204,95 @@
 <tr class="row-odd"><td>Test Unit</td>
 <td>Smallest executable unit within a test case which can be exercised independently</td>
 </tr>
-<tr class="row-even"><td>Data Provider</td>
-<td>Method which provides 2D array of data object which can be used as test parameters</td>
+<tr class="row-even"><td>Test Script</td>
+<td>Set of instructions that will guide test runner on how to execute test cases</td>
+</tr>
+<tr class="row-odd"><td>Scan Scope</td>
+<td>Section of the project which will be scan during the search of test cases.</td>
 </tr>
 </tbody>
 </table>
+</div>
+<div class="section" id="test-runner">
+<h2>Test Runner<a class="headerlink" href="#test-runner" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li></li>
+<li>Test runner is the class which is the entry point for test application.</li>
+<li>Test runner must be public and contains main() method.</li>
+<li>Test runner main method must invoke Runner class object as shown below.</li>
+</ul>
+<p>Example test runner:</p>
+<div class="highlight-Java notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kd">public</span> <span class="kd">class</span> <span class="nc">ArtosMain</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+                <span class="n">Runner</span> <span class="n">runner</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Runner</span><span class="o">(</span><span class="n">ArtosMain</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+                <span class="n">runner</span><span class="o">.</span><span class="na">run</span><span class="o">(</span><span class="n">args</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+        <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="test-suite">
+<h2>Test Suite<a class="headerlink" href="#test-suite" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Belongs to Java project.</li>
+<li>Test suite is a collection of test cases which belong to one or more packages.</li>
+</ul>
+</div>
+<div class="section" id="test-case">
+<h2>Test Case<a class="headerlink" href="#test-case" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Belongs to test suite.</li>
+<li>Test case must be public and annotated with <code class="docutils literal notranslate"><span class="pre">&#64;TestCase</span></code> annotation.</li>
+<li>Test case must implement <code class="docutils literal notranslate"><span class="pre">TestExecutable</span></code> interface.</li>
+<li>Test case contains one or more test units.</li>
+</ul>
+<p>Example test case:</p>
+<div class="highlight-Java notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nd">@TestCase</span><span class="o">()</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestCase_1</span> <span class="kd">implements</span> <span class="n">TestExecutable</span> <span class="o">{</span>
+        <span class="nd">@Unit</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">unit_test</span><span class="o">(</span><span class="n">TestContext</span> <span class="n">context</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+                <span class="c1">// --------------------------------------------------------------------------------------------</span>
+                <span class="n">context</span><span class="o">.</span><span class="na">getLogger</span><span class="o">().</span><span class="na">debug</span><span class="o">(</span><span class="s">&quot;Hello World&quot;</span><span class="o">);</span>
+                <span class="c1">// --------------------------------------------------------------------------------------------</span>
+        <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="test-unit">
+<h2>Test Unit<a class="headerlink" href="#test-unit" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Belongs to test case.</li>
+<li>Test unit must be annotated with <code class="docutils literal notranslate"><span class="pre">&#64;Unit</span></code> annotation.</li>
+<li>Test unit must follow method signature <code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">void</span> <span class="pre">methodName(TestContext</span> <span class="pre">context)</span> <span class="pre">throws</span> <span class="pre">Exception</span> <span class="pre">{}</span></code>, where methodName could be different per test unit.</li>
+</ul>
+<p>Example test unit:</p>
+<div class="highlight-Java notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="nd">@Unit</span>
+<span class="kd">public</span> <span class="kt">void</span> <span class="nf">unit_test</span><span class="o">(</span><span class="n">TestContext</span> <span class="n">context</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+        <span class="c1">// --------------------------------------------------------------------------------------------</span>
+        <span class="n">context</span><span class="o">.</span><span class="na">getLogger</span><span class="o">().</span><span class="na">debug</span><span class="o">(</span><span class="s">&quot;Hello World&quot;</span><span class="o">);</span>
+        <span class="c1">// --------------------------------------------------------------------------------------------</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table></div>
 </div>
 </div>
 
@@ -214,7 +304,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../tutorial/project-setup.html" class="btn btn-neutral float-right" title="Project Setup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="project-setup.html" class="btn btn-neutral float-right" title="Project Setup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../index.html" class="btn btn-neutral" title="ARTOS Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -226,7 +316,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Arpit Shah
+        &copy; Copyright 2018-2020, Arpit Shah &amp; Contributors
 
     </p>
   </div>

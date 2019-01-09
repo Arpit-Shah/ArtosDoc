@@ -87,12 +87,12 @@
               <p class="caption"><span class="caption-text">Introduction:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction/introduction.html">ARTOS (Art of System Testing)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial/project-setup.html">Project Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial/helloworld.html">Hello World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction/project-setup.html">Project Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction/helloworld.html">Hello World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction/runningartos.html">Running Artos</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Features</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="features/runner.html">Runner/Test Executor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="features/framework_configuration.html">Framework Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="features/teststatus.html">Test Status</a></li>
 <li class="toctree-l1"><a class="reference internal" href="features/logging.html">Logging Framework</a></li>
@@ -173,18 +173,27 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="introduction/introduction.html">ARTOS (Art of System Testing)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="introduction/introduction.html#framework-glossary">Framework Glossary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/introduction.html#test-runner">Test Runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/introduction.html#test-suite">Test Suite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/introduction.html#test-case">Test Case</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/introduction.html#test-unit">Test Unit</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial/project-setup.html">Project Setup</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorial/project-setup.html#system-requirements">System Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial/project-setup.html#add-artos-jar-as-a-dependency">Add Artos Jar as a dependency</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial/project-setup.html#configure-test-templates-only-applicable-to-eclipse-sdk">Configure test templates (Only applicable to Eclipse SDK)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction/project-setup.html">Project Setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction/project-setup.html#system-requirements">System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/project-setup.html#add-artos-jar-as-a-dependency">Add Artos Jar as a dependency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/project-setup.html#configure-test-templates-only-applicable-to-eclipse-sdk">Configure test templates (Only applicable to Eclipse SDK)</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="tutorial/helloworld.html">Hello World</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="tutorial/helloworld.html#add-artos-jar-as-a-dependency">Add Artos Jar as a dependency</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial/helloworld.html#create-a-runner">Create a Runner</a></li>
-<li class="toctree-l2"><a class="reference internal" href="tutorial/helloworld.html#create-a-testcase">Create a TestCase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction/helloworld.html">Hello World</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction/helloworld.html#add-artos-jar-as-a-dependency">Add Artos Jar as a dependency</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/helloworld.html#create-a-runner">Create a Runner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/helloworld.html#create-a-testcase">Create a TestCase</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="introduction/runningartos.html">Running Artos</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction/runningartos.html#command-line">Command line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/runningartos.html#eclipse-ide">Eclipse IDE</a></li>
 </ul>
 </li>
 </ul>
@@ -192,11 +201,6 @@
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Features</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="features/runner.html">Runner/Test Executor</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="features/runner.html#purpose">Purpose:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="features/runner.html#facilities">Facilities:</a></li>
-</ul>
-</li>
 <li class="toctree-l1"><a class="reference internal" href="features/framework_configuration.html">Framework Configuration</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="features/framework_configuration.html#purpose">Purpose:</a></li>
 <li class="toctree-l2"><a class="reference internal" href="features/framework_configuration.html#facilities">Facilities:</a></li>
@@ -254,7 +258,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Arpit Shah
+        &copy; Copyright 2018-2020, Arpit Shah &amp; Contributors
 
     </p>
   </div>

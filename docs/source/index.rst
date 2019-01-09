@@ -8,14 +8,14 @@ ARTOS Tutorial
 	:caption: Introduction:
 
 	introduction/introduction
-	tutorial/project-setup
-	tutorial/helloworld
+	introduction/project-setup
+	introduction/helloworld
+	introduction/runningartos
 
 .. toctree::
 	:maxdepth: 2
 	:caption: Features
 
-	features/runner
 	features/framework_configuration
 	features/teststatus
 	features/logging
