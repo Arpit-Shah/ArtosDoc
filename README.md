@@ -1,4 +1,4 @@
-#Setup Sphinx
+# Setup Sphinx
 
 ## Install Python
 * Install Python 2.7.10 or above (This has pip command provided by default)
