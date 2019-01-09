@@ -11,14 +11,16 @@ Command line
 
 .. code-block:: Text
 	:linenos:
-	:emphasize-lines: 6
+	:emphasize-lines: 8
 
-	// Current example is written with following assumption 
-	// * Test project only has **artos.jar** as a dependency. 
-	// * Artos jar is located at **.\lib\artos.jar**.
-	// * Test script is located at **.\script\testscript.xml**.
-	// * Test runner class name is **TestRunner.java** (Runner = Class which contains main() method).
-	java -cp .\lib\artos-0.0.1.jar TestRunner --testscript=".\script\testscript.xml"
+	// Current example is written with following assumption: 
+	// * Test project only has artos-0.0.1.jar and testproject.jar as a dependency. 
+	// * artos-0.0.1.jar is located at .\lib\artos-0.0.1.jar.
+	// * Test script is located at .\script\testscript.xml.
+	// * Class with main method name is TestRunner.java (Test runner).
+	// * "dev" profile is used from framework_configuration.xml. 
+	
+	java -cp .\lib\artos-0.0.1.jar .\lib\testproject.jar TestRunner --testscript=".\script\testscript.xml" --profile="dev"
 
 .. 
 
