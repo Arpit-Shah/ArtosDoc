@@ -38,7 +38,7 @@ Note : If you are checking out existing project then you are ready to build proj
 
 > Run command `.\make.bat clean`
 
-# start from scratch
+# Start from scratch
 
 ## Configure Sphinx using quickstart wizard ([Sphinx Tutorial](http://www.sphinx-doc.org/en/1.7/tutorial.html))
 
@@ -89,5 +89,7 @@ OR
 > `sphinx-build -b html "C:\User\test" "C:\User\test\_build"`
 
 * If you see HTML output inside build directory then Sphinx setup is working and Sphinx is building correctly.
+* User can change source\conf.py file to configure logo, theme, plugins, copyright etc..
+
 
 
