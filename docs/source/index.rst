@@ -8,9 +8,18 @@ ARTOS Tutorial
 	:caption: Introduction:
 
 	introduction/introduction
-	introduction/project-setup
-	introduction/helloworld
-	introduction/runningartos
+
+.. toctree::
+	:maxdepth: 2
+	:caption: How To:
+
+	howto/project-setup
+	howto/createtestsuite
+	howto/createtestrunner
+	howto/createtestcase
+	howto/createtestunit
+	howto/runningartos
+	howto/helloworld
 
 .. toctree::
 	:maxdepth: 2

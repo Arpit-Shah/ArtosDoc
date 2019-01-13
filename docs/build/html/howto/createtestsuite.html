@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Project Setup &mdash; Artos (Art of System Testing) 01.00.0000 documentation</title>
+  <title>Create a TestSuite &mdash; Artos (Art of System Testing) 01.00.0000 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Hello World" href="helloworld.html" />
-    <link rel="prev" title="ARTOS (Art of System Testing)" href="../introduction/introduction.html" /> 
+    <link rel="next" title="Create a Runner" href="createtestrunner.html" />
+    <link rel="prev" title="Project Setup" href="project-setup.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -86,19 +86,26 @@
             
             
               <p class="caption"><span class="caption-text">Introduction:</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../introduction/introduction.html">ARTOS (Art of System Testing)</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Project Setup</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#system-requirements">System Requirements</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#add-artos-jar-as-a-dependency">Add Artos Jar as a dependency</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#configure-test-templates-only-applicable-to-eclipse-sdk">Configure test templates (Only applicable to Eclipse SDK)</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How To:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="project-setup.html">Project Setup</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Create a TestSuite</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#feature-based-structure">Feature based structure :</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#super-structure">Super structure :</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#feature-tree">Feature tree :</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="createtestrunner.html">Create a Runner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="createtestcase.html">Create a TestCase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="createtestunit.html">Create a TestUnit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="runningartos.html">Running Artos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="helloworld.html">Hello World</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Features</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../features/runner.html">Runner/Test Executor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../features/framework_configuration.html">Framework Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../features/teststatus.html">Test Status</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../features/logging.html">Logging Framework</a></li>
@@ -153,13 +160,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Project Setup</li>
+      <li>Create a TestSuite</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/tutorial/project-setup.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/howto/createtestsuite.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -172,87 +179,49 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="project-setup">
-<h1>Project Setup<a class="headerlink" href="#project-setup" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="system-requirements">
-<h2>System Requirements<a class="headerlink" href="#system-requirements" title="Permalink to this headline">¶</a></h2>
-<ul>
-<li><p class="first">Platform</p>
-<blockquote>
-<div><p>Windows, Linux, MAC or any platform which can run <strong>Java 8</strong> or above.</p>
-</div></blockquote>
-</li>
-<li><p class="first">JDK</p>
-<blockquote>
-<div><p>Artos can be integrated with any Java project compiled with <strong>JDK 8U45</strong> or higher</p>
-</div></blockquote>
-</li>
-</ul>
-</div>
-<div class="section" id="add-artos-jar-as-a-dependency">
-<h2>Add Artos Jar as a dependency<a class="headerlink" href="#add-artos-jar-as-a-dependency" title="Permalink to this headline">¶</a></h2>
-<ul>
-<li><p class="first">Non-Maven Projects</p>
-<blockquote>
-<div><ul class="simple">
-<li>Download latest Artos jar from location - <a class="reference external" href="https://mvnrepository.com/artifact/com.theartos/artos/">Artos_Maven_Repository</a>.</li>
-<li>Add jar to project build path.</li>
-</ul>
-</div></blockquote>
-</li>
-<li><p class="first">Maven Projects</p>
-<blockquote>
-<div><ul class="simple">
-<li>Copy latest jar dependency xml block from location - <a class="reference external" href="https://mvnrepository.com/artifact/com.theartos/artos/">Artos_Maven_Repository</a>.</li>
-<li>Add dependency to project pom.xml file</li>
-</ul>
-<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c">&lt;!-- Example dependency block --&gt;</span>
-<span class="nt">&lt;dependency&gt;</span>
-        <span class="nt">&lt;groupId&gt;</span>com.theartos<span class="nt">&lt;/groupId&gt;</span>
-        <span class="nt">&lt;artifactId&gt;</span>artos<span class="nt">&lt;/artifactId&gt;</span>
-        <span class="nt">&lt;version&gt;</span>x.x.xx<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
-</pre></div>
-</td></tr></table></div>
-</div></blockquote>
-</li>
-</ul>
-</div>
-<div class="section" id="configure-test-templates-only-applicable-to-eclipse-sdk">
-<h2>Configure test templates (Only applicable to Eclipse SDK)<a class="headerlink" href="#configure-test-templates-only-applicable-to-eclipse-sdk" title="Permalink to this headline">¶</a></h2>
-<p>Use of Java template increases consistency and test development speed. Templates can be modified to suite business requirements.</p>
-<p>Import default templates:</p>
-<ul>
-<li><p class="first">Download file <strong>template.xml</strong> from location : <a class="reference external" href="https://github.com/Arpit-Shah/Artos/tree/master/src/com/artos/template/">Artos_Eclipse_Template</a> .</p>
-</li>
-<li><p class="first">In Eclipse SDK browse to Window =&gt; Preferences =&gt; Java =&gt; Editor =&gt; Templates.</p>
-</li>
-<li><p class="first">Click on Import button.</p>
-</li>
-<li><p class="first">Import downloaded template.xml file.</p>
-</li>
-<li><p class="first">Two templates will be added</p>
-<blockquote>
-<div><ul class="simple">
-<li>Artos_main</li>
-<li>Artos_Test</li>
-</ul>
-</div></blockquote>
-</li>
-</ul>
-<p>Use template:</p>
+  <div class="section" id="create-a-testsuite">
+<h1>Create a TestSuite<a class="headerlink" href="#create-a-testsuite" title="Permalink to this headline">¶</a></h1>
+<p>Test suite is a Java package which meets following requirements</p>
 <ul class="simple">
-<li>Create new Java class.</li>
-<li>Select and delete all the content of the class.</li>
-<li>Type <strong>Art</strong> and press <strong>CTRL+SPACE</strong>.</li>
-<li>Template suggestion list will appear so user can select appropriate template.</li>
+<li>Package contains at least one runner.</li>
+<li>Package contains at least one test case.</li>
 </ul>
-<img alt="../_images/TemplateSelection.png" src="../_images/TemplateSelection.png" />
+<p>Steps</p>
+<ul class="simple">
+<li>Users are open to structure test project the way it suite their needs. following examples are merely the suggestions.</li>
+<li>Location of runner class defines how structure will see test cases.</li>
+</ul>
+<div class="section" id="feature-based-structure">
+<h2>Feature based structure :<a class="headerlink" href="#feature-based-structure" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Packages are organized based on features.</li>
+<li>Each package acts as a test suite.</li>
+<li>Each package contains a runner and test cases.</li>
+<li>Test cases could be within same package and/or child packages.</li>
+<li>Test runner will see test classes within same or child packages.</li>
+</ul>
+<img alt="../_images/ProjectStructure_Features.png" src="../_images/ProjectStructure_Features.png" />
+</div>
+<div class="section" id="super-structure">
+<h2>Super structure :<a class="headerlink" href="#super-structure" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Packages are organized based on features or a test group.</li>
+<li>Entire project act as single test suite</li>
+<li>Project contains single runner which is in parent position to all other packages.</li>
+<li>Test runner will see all test classes at once.</li>
+</ul>
+<img alt="../_images/ProjectStructure_Super.png" src="../_images/ProjectStructure_Super.png" />
+</div>
+<div class="section" id="feature-tree">
+<h2>Feature tree :<a class="headerlink" href="#feature-tree" title="Permalink to this headline">¶</a></h2>
+<p>This structure caters for project which may require feature based and/or super structure.</p>
+<ul class="simple">
+<li>Packages are organized based on features or a test group.</li>
+<li>Project can act as a single or multiple test suites.</li>
+<li>Project contains more than one runner but at least one which is in parent position to all other packages.</li>
+<li>Depending on the runner used, project may see limited or all test cases.</li>
+</ul>
+<img alt="../_images/ProjectStructure_FeatureTree.png" src="../_images/ProjectStructure_FeatureTree.png" />
 </div>
 </div>
 
@@ -264,10 +233,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="helloworld.html" class="btn btn-neutral float-right" title="Hello World" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="createtestrunner.html" class="btn btn-neutral float-right" title="Create a Runner" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../introduction/introduction.html" class="btn btn-neutral" title="ARTOS (Art of System Testing)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="project-setup.html" class="btn btn-neutral" title="Project Setup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -276,7 +245,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Arpit Shah
+        &copy; Copyright 2018-2020, Arpit Shah &amp; Contributors
 
     </p>
   </div>

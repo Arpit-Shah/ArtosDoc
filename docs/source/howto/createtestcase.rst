@@ -1,66 +1,15 @@
-.. _Artos_Maven_Repository: https://mvnrepository.com/artifact/com.theartos/artos/
-
-Hello World
-***********
-
-Artos is ready to execute test cases in three simple steps
-
-* Add Artos Jar as a dependency
-* Create a Runner
-* Create a TestCase
-
-Add Artos Jar as a dependency
-#############################
-
-* Non-Maven Projects
-
-	* Download latest Artos jar from location - Artos_Maven_Repository_.
-	* Add jar to project build path.
-
-* Maven Projects
-
-	* Copy latest jar dependency xml block from location - Artos_Maven_Repository_.
-	* Add dependency to project pom.xml file
-
-	.. code-block:: xml
-		:linenos:
-		:emphasize-lines: 0
-		
-		<!-- Example dependency block -->
-		<dependency>
-			<groupId>com.theartos</groupId>
-			<artifactId>artos</artifactId>
-			<version>x.x.xx</version>
-		</dependency>
-
-	..
-
-Create a Runner
-###############
-
-* Create required package structure (In this example : com.tests).
-* Create new Java class inside created package structure (In this example : ArtosMain.java).
-* Copy paste below code in newly created Java file.
-
-.. code-block:: Java
-	:linenos:
-	:emphasize-lines: 0
-	
-	package com.tests;
-
-	import com.artos.framework.infra.Runner;
-
-	public class ArtosMain {
-		public static void main(String[] args) throws Exception {
-			Runner runner = new Runner(ArtosMain.class);
-			runner.run(args, null, 1);
-		}
-	}
-
-..
-
 Create a TestCase
-#################
+******************
+
+Test case is a Java class which meets following requirements
+
+* Class is public.
+* Class is in the scan path of a test runner.
+* Class is annotated with ``@TestCase`` annotation.
+* Class implements ``TestExecutable`` interface.
+* Class contains at least one test unit.
+
+Steps
 
 * Create new Java class inside created package structure (In this example : TestCase_2.java)
 * Copy paste below code in newly created Java file.
@@ -103,6 +52,3 @@ Create a TestCase
 	}
 
 ..
-
-* Invoke main() method by running project as Java application.
-* You have successfully executed your first test case using ARTOS.

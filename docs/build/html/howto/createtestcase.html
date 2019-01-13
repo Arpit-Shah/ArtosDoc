@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Hello World &mdash; Artos (Art of System Testing) 01.00.0000 documentation</title>
+  <title>Create a TestCase &mdash; Artos (Art of System Testing) 01.00.0000 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Runner/Test Executor" href="../features/runner.html" />
-    <link rel="prev" title="Project Setup" href="project-setup.html" /> 
+    <link rel="next" title="Create a TestUnit" href="createtestunit.html" />
+    <link rel="prev" title="Create a Runner" href="createtestrunner.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -86,19 +86,20 @@
             
             
               <p class="caption"><span class="caption-text">Introduction:</span></p>
-<ul class="current">
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../introduction/introduction.html">ARTOS (Art of System Testing)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="project-setup.html">Project Setup</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Hello World</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#add-artos-jar-as-a-dependency">Add Artos Jar as a dependency</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#create-a-runner">Create a Runner</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#create-a-testcase">Create a TestCase</a></li>
 </ul>
-</li>
+<p class="caption"><span class="caption-text">How To:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="project-setup.html">Project Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="createtestrunner.html">Create a Runner</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Create a TestCase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="createtestunit.html">Create a TestUnit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="runningartos.html">Running Artos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="helloworld.html">Hello World</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Features</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../features/runner.html">Runner/Test Executor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../features/framework_configuration.html">Framework Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../features/teststatus.html">Test Status</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../features/logging.html">Logging Framework</a></li>
@@ -153,13 +154,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Hello World</li>
+      <li>Create a TestCase</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/tutorial/helloworld.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/howto/createtestcase.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -172,79 +173,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="hello-world">
-<h1>Hello World<a class="headerlink" href="#hello-world" title="Permalink to this headline">¶</a></h1>
-<p>Artos is ready to execute test cases in three simple steps</p>
+  <div class="section" id="create-a-testcase">
+<h1>Create a TestCase<a class="headerlink" href="#create-a-testcase" title="Permalink to this headline">¶</a></h1>
+<p>Test case is a Java class which meets following requirements</p>
 <ul class="simple">
-<li>Add Artos Jar as a dependency</li>
-<li>Create a Runner</li>
-<li>Create a TestCase</li>
+<li>Class is public.</li>
+<li>Class is in the scan path of a test runner.</li>
+<li>Class is annotated with <code class="docutils literal notranslate"><span class="pre">&#64;TestCase</span></code> annotation.</li>
+<li>Class implements <code class="docutils literal notranslate"><span class="pre">TestExecutable</span></code> interface.</li>
+<li>Class contains at least one test unit.</li>
 </ul>
-<div class="section" id="add-artos-jar-as-a-dependency">
-<h2>Add Artos Jar as a dependency<a class="headerlink" href="#add-artos-jar-as-a-dependency" title="Permalink to this headline">¶</a></h2>
-<ul>
-<li><p class="first">Non-Maven Projects</p>
-<blockquote>
-<div><ul class="simple">
-<li>Download latest Artos jar from location - <a class="reference external" href="https://mvnrepository.com/artifact/com.theartos/artos/">Artos_Maven_Repository</a>.</li>
-<li>Add jar to project build path.</li>
-</ul>
-</div></blockquote>
-</li>
-<li><p class="first">Maven Projects</p>
-<blockquote>
-<div><ul class="simple">
-<li>Copy latest jar dependency xml block from location - <a class="reference external" href="https://mvnrepository.com/artifact/com.theartos/artos/">Artos_Maven_Repository</a>.</li>
-<li>Add dependency to project pom.xml file</li>
-</ul>
-<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="c">&lt;!-- Example dependency block --&gt;</span>
-<span class="nt">&lt;dependency&gt;</span>
-        <span class="nt">&lt;groupId&gt;</span>com.theartos<span class="nt">&lt;/groupId&gt;</span>
-        <span class="nt">&lt;artifactId&gt;</span>artos<span class="nt">&lt;/artifactId&gt;</span>
-        <span class="nt">&lt;version&gt;</span>x.x.xx<span class="nt">&lt;/version&gt;</span>
-<span class="nt">&lt;/dependency&gt;</span>
-</pre></div>
-</td></tr></table></div>
-</div></blockquote>
-</li>
-</ul>
-</div>
-<div class="section" id="create-a-runner">
-<h2>Create a Runner<a class="headerlink" href="#create-a-runner" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Create required package structure (In this example : com.tests).</li>
-<li>Create new Java class inside created package structure (In this example : ArtosMain.java).</li>
-<li>Copy paste below code in newly created Java file.</li>
-</ul>
-<div class="highlight-Java notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">com.tests</span><span class="o">;</span>
-
-<span class="kn">import</span> <span class="nn">com.artos.framework.infra.Runner</span><span class="o">;</span>
-
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ArtosMain</span> <span class="o">{</span>
-        <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
-                <span class="n">Runner</span> <span class="n">runner</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Runner</span><span class="o">(</span><span class="n">ArtosMain</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
-                <span class="n">runner</span><span class="o">.</span><span class="na">run</span><span class="o">(</span><span class="n">args</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
-        <span class="o">}</span>
-<span class="o">}</span>
-</pre></div>
-</td></tr></table></div>
-</div>
-<div class="section" id="create-a-testcase">
-<h2>Create a TestCase<a class="headerlink" href="#create-a-testcase" title="Permalink to this headline">¶</a></h2>
+<p>Steps</p>
 <ul class="simple">
 <li>Create new Java class inside created package structure (In this example : TestCase_2.java)</li>
 <li>Copy paste below code in newly created Java file.</li>
@@ -314,11 +253,6 @@
 <span class="o">}</span>
 </pre></div>
 </td></tr></table></div>
-<ul class="simple">
-<li>Invoke main() method by running project as Java application.</li>
-<li>You have successfully executed your first test case using ARTOS.</li>
-</ul>
-</div>
 </div>
 
 
@@ -329,10 +263,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../features/runner.html" class="btn btn-neutral float-right" title="Runner/Test Executor" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="createtestunit.html" class="btn btn-neutral float-right" title="Create a TestUnit" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="project-setup.html" class="btn btn-neutral" title="Project Setup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="createtestrunner.html" class="btn btn-neutral" title="Create a Runner" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -341,7 +275,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Arpit Shah
+        &copy; Copyright 2018-2020, Arpit Shah &amp; Contributors
 
     </p>
   </div>

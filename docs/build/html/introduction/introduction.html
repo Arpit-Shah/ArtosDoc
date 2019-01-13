@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Project Setup" href="project-setup.html" />
+    <link rel="next" title="Project Setup" href="../howto/project-setup.html" />
     <link rel="prev" title="ARTOS Tutorial" href="../index.html" /> 
 
   
@@ -89,19 +89,23 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">ARTOS (Art of System Testing)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#framework-glossary">Framework Glossary</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#project-hierarchy">Project Hierarchy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#annotations">Annotations</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#test-runner">Test Runner</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#test-suite">Test Suite</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#test-case">Test Case</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#test-unit">Test Unit</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="project-setup.html">Project Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="helloworld.html">Hello World</a></li>
-<li class="toctree-l1"><a class="reference internal" href="runningartos.html">Running Artos</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How To:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../howto/project-setup.html">Project Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/helloworld.html">Hello World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/runningartos.html">Running Artos</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Features</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../features/runner.html">Runner/Test Executor</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../features/framework_configuration.html">Framework Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../features/teststatus.html">Test Status</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../features/logging.html">Logging Framework</a></li>
@@ -178,7 +182,6 @@
   <div class="section" id="artos-art-of-system-testing">
 <h1>ARTOS (Art of System Testing)<a class="headerlink" href="#artos-art-of-system-testing" title="Permalink to this headline">¶</a></h1>
 <p>ARTOS was developed by bunch of experienced test engineers for test developers/engineers. It was designed and developed with the aim to provide a test framework which is easy to use, reliable and works out of the box. ARTOS is written in Java which makes it suitable for Windows, Linux, MAC or any other platform that runs Java. It can be used for functional, system, end to end and/or unit testing. Most test frameworks only provide test runner/executor and rest is left on engineers to develop, Whereas Artos comes with many inbuilt and well tested utilities saving time for users to focus on what they do best!</p>
-<p>ARTOS makes use of annotations for most of the features set which will be covered in detail in later sections. ARTOS was designed to be flexible so many framework features can be enabled or disabled using ARTOS’ configuration file <code class="docutils literal notranslate"><span class="pre">framework_configuration.xml</span></code>.</p>
 <div class="section" id="framework-glossary">
 <h2>Framework Glossary<a class="headerlink" href="#framework-glossary" title="Permalink to this headline">¶</a></h2>
 <table border="1" class="colwidths-given docutils">
@@ -196,27 +199,110 @@
 <td>A class which is the entry point for test application. It is responsible for executing and tracking test cases from start to end.</td>
 </tr>
 <tr class="row-odd"><td>Test Suite</td>
-<td>Collection of test cases that are intended to be used to test a software program</td>
+<td>Collection of test cases that are intended to be used to test a software program. Represented by Java project or package.</td>
 </tr>
 <tr class="row-even"><td>Test Case</td>
-<td>Set of instructions that will be performed on the system under test</td>
+<td>Set of instructions that will be performed on the system under test. Test case is a Java class annotated by &#64;TestCase annotation.</td>
 </tr>
 <tr class="row-odd"><td>Test Unit</td>
-<td>Smallest executable unit within a test case which can be exercised independently</td>
+<td>Smallest executable unit within a test case which can be exercised independently. Test unit is a Java method annotated by &#64;Unit annotation.</td>
 </tr>
 <tr class="row-even"><td>Test Script</td>
-<td>Set of instructions that will guide test runner on how to execute test cases</td>
+<td>Set of instructions that will guide test runner on how to execute test cases. Test script is represented by xml script which contains execution instruction for one or more test suites.</td>
 </tr>
 <tr class="row-odd"><td>Scan Scope</td>
-<td>Section of the project which will be scan during the search of test cases.</td>
+<td>Section of the Java project which will be scanned during the search of test cases.</td>
 </tr>
 </tbody>
 </table>
 </div>
+<div class="section" id="project-hierarchy">
+<h2>Project Hierarchy<a class="headerlink" href="#project-hierarchy" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Test project have one or more test suite(s).</li>
+<li>Each test suite have one or more test case(s).</li>
+<li>Each test case have one or more test unit(s).</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Hierarchy</span>
+<span class="go">        TestSuite =&gt; TestCase =&gt; TestUnit</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="annotations">
+<h2>Annotations<a class="headerlink" href="#annotations" title="Permalink to this headline">¶</a></h2>
+<p>ARTOS makes use of Java annotations for most of the features. Supported annotations list is provided below. Annotations will be covered in detail in later sections.</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="30%" />
+<col width="30%" />
+<col width="40%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Annotation</th>
+<th class="head">Applies To</th>
+<th class="head">Usage</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>&#64;TestCase</td>
+<td>Class</td>
+<td>Annotated class is marked as a test case</td>
+</tr>
+<tr class="row-odd"><td>&#64;TestPlan</td>
+<td>Class</td>
+<td>TestPlan/Information of a test case which will be printed in the log file for user reference.</td>
+</tr>
+<tr class="row-even"><td>&#64;Unit</td>
+<td>Method</td>
+<td>Annotated method is marked as a test unit</td>
+</tr>
+<tr class="row-odd"><td>&#64;BeforeTestSuite</td>
+<td>Method</td>
+<td>Annotated method will be run once prior to any test case execution in given test suite</td>
+</tr>
+<tr class="row-even"><td>&#64;AfterTestSuite</td>
+<td>Method</td>
+<td>Annotated method will be run once post execution of all test cases within given test suite</td>
+</tr>
+<tr class="row-odd"><td>&#64;BeforeTest</td>
+<td>Method</td>
+<td>Annotated method will be run once before each test case</td>
+</tr>
+<tr class="row-even"><td>&#64;AfterTest</td>
+<td>Method</td>
+<td>Annotated method will be run once after each test case</td>
+</tr>
+<tr class="row-odd"><td>&#64;BeforeTestUnit</td>
+<td>Method</td>
+<td>Annotated method will be run once prior each test unit</td>
+</tr>
+<tr class="row-even"><td>&#64;AfterTestUnit</td>
+<td>Method</td>
+<td>Annotated method will be run once after each test unit</td>
+</tr>
+<tr class="row-odd"><td>&#64;DataProvider</td>
+<td>Method</td>
+<td>Annotated method is marked as supplier of data for test case. The annotated method must return Object[][].</td>
+</tr>
+<tr class="row-even"><td>&#64;ExpectedException</td>
+<td>Class &amp; Method</td>
+<td>Annotated class/method outcome is decided based on attributes specified in the annotation.</td>
+</tr>
+<tr class="row-odd"><td>&#64;Group</td>
+<td>Class &amp; Method</td>
+<td>List of groups class/method belongs to.</td>
+</tr>
+<tr class="row-even"><td>&#64;KnownToFail</td>
+<td>Class &amp; Method</td>
+<td>Annotated class/method outcome is decided based on attributes specified in the annotation.</td>
+</tr>
+</tbody>
+</table>
+<p>ARTOS was designed to be flexible so many framework features can be enabled or disabled using ARTOS’ configuration file <code class="docutils literal notranslate"><span class="pre">framework_configuration.xml</span></code>.</p>
+</div>
 <div class="section" id="test-runner">
 <h2>Test Runner<a class="headerlink" href="#test-runner" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li></li>
 <li>Test runner is the class which is the entry point for test application.</li>
 <li>Test runner must be public and contains main() method.</li>
 <li>Test runner main method must invoke Runner class object as shown below.</li>
@@ -304,7 +390,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="project-setup.html" class="btn btn-neutral float-right" title="Project Setup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../howto/project-setup.html" class="btn btn-neutral float-right" title="Project Setup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../index.html" class="btn btn-neutral" title="ARTOS Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
