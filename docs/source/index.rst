@@ -20,6 +20,7 @@ ARTOS Tutorial
 	howto/implement-testunit
 	howto/run-artos
 	howto/helloworld
+	howto/generate-default-configuration
 
 .. toctree::
 	:maxdepth: 2

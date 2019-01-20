@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Run Artos &mdash; Artos (Art of System Testing) 01.00.0000 documentation</title>
+  <title>Generate Default Configurations &mdash; Artos (Art of System Testing) 01.00.0000 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Hello World" href="helloworld.html" />
-    <link rel="prev" title="Implement TestUnit" href="implement-testunit.html" /> 
+    <link rel="next" title="Framework Configuration" href="../features/framework_configuration.html" />
+    <link rel="prev" title="Hello World" href="helloworld.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -98,13 +98,9 @@
 <li class="toctree-l1"><a class="reference internal" href="implement-runner.html">Implement Runner</a></li>
 <li class="toctree-l1"><a class="reference internal" href="implement-testcase.html">Implement TestCase</a></li>
 <li class="toctree-l1"><a class="reference internal" href="implement-testunit.html">Implement TestUnit</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Run Artos</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#command-line">Command line</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#eclipse-ide">Eclipse IDE</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="run-artos.html">Run Artos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="helloworld.html">Hello World</a></li>
-<li class="toctree-l1"><a class="reference internal" href="generate-default-configuration.html">Generate Default Configurations</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Generate Default Configurations</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Features</span></p>
 <ul>
@@ -162,13 +158,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Run Artos</li>
+      <li>Generate Default Configurations</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/howto/run-artos.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/howto/generate-default-configuration.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -181,53 +177,32 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="run-artos">
-<h1>Run Artos<a class="headerlink" href="#run-artos" title="Permalink to this headline">¶</a></h1>
-<p>Artos can be run via</p>
-<ul class="simple">
-<li>Command line</li>
-<li>IDE (Example : Eclipse, IntelliJ etc..)</li>
-</ul>
-<div class="section" id="command-line">
-<h2>Command line<a class="headerlink" href="#command-line" title="Permalink to this headline">¶</a></h2>
-<ul>
-<li><p class="first">Artos can be executed via command line by specifying minimum of</p>
-<blockquote>
-<div><ul class="simple">
-<li>All library in the class path (Specify all dependencies)</li>
-<li>Test runner class for given test suite (Starting point of test application)</li>
-<li>Test script for given test suite (Contain all instructions to execute test suite correctly)</li>
-<li>Profile name (helps in selection of correct framework configuration)</li>
-</ul>
-</div></blockquote>
-</li>
-</ul>
-<div class="highlight-Text notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6
-7
-8</pre></div></td><td class="code"><div class="highlight"><pre><span></span>// Current example is written with following assumption:
-// * Test project only has artos-0.0.1.jar and testproject.jar as a dependency.
-// * artos-0.0.1.jar is located at .\lib\artos-0.0.1.jar.
-// * Test script is located at .\script\testscript.xml.
-// * Class with main method name is TestRunner.java (Test runner).
-// * &quot;dev&quot; profile is used from framework_configuration.xml.
-
-<span class="hll">java -cp .\lib\artos-0.0.1.jar .\lib\testproject.jar TestRunner --testscript=&quot;.\script\testscript.xml&quot; --profile=&quot;dev&quot;
-</span></pre></div>
-</td></tr></table></div>
-</div>
-<div class="section" id="eclipse-ide">
-<h2>Eclipse IDE<a class="headerlink" href="#eclipse-ide" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Right click on the test runner class.</li>
-<li>Select options Run as =&gt; Java Application .</li>
-</ul>
-<img alt="../_images/RunJavaApplication.png" src="../_images/RunJavaApplication.png" />
-</div>
+  <div class="section" id="generate-default-configurations">
+<h1>Generate Default Configurations<a class="headerlink" href="#generate-default-configurations" title="Permalink to this headline">¶</a></h1>
+<p>The ARTOS’ first launch generates required configurations and directories in <code class="docutils literal notranslate"><span class="pre">conf</span></code> directory under project root. If configuration file is already present then it will not be overwritten but all missing files are re-created with default values.</p>
+<img alt="../_images/Default_Configuration.png" src="../_images/Default_Configuration.png" />
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="30%" />
+<col width="70%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Configuration Name</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>conf/extent_configuration.xml</td>
+<td>configuration for extend reports</td>
+</tr>
+<tr class="row-odd"><td>conf/framework_configuration.xml</td>
+<td>configuration for ARTOS framework</td>
+</tr>
+<tr class="row-even"><td>conf/framework_configuration.xsd</td>
+<td>XML schema definition for framework_configuration.xml</td>
+</tr>
+</tbody>
+</table>
 </div>
 
 
@@ -238,10 +213,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="helloworld.html" class="btn btn-neutral float-right" title="Hello World" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../features/framework_configuration.html" class="btn btn-neutral float-right" title="Framework Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="implement-testunit.html" class="btn btn-neutral" title="Implement TestUnit" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="helloworld.html" class="btn btn-neutral" title="Hello World" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
