@@ -1,0 +1,488 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Implement TestCase &mdash; Artos (Art of System Testing) 01.00.0000 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Implement TestUnit" href="implement-testunit.html" />
+    <link rel="prev" title="Implement Runner" href="implement-runner.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Artos (Art of System Testing)
+          
+
+          
+            
+            <img src="../_static/ArtosFull_vectorised.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                01.00.0000
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/introduction.html">ARTOS (Art of System Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/system-requirement.html">System Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/pre-requisite.html">Project Pre-Requisite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/testsuite.html">Test Suite &amp; Scan Scope</a></li>
+</ul>
+<p class="caption"><span class="caption-text">How To:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="implement-project-structure.html">Implement Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implement-runner.html">Implement Runner</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Implement TestCase</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#recommended-test-case-structures">Recommended test case structures :</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#functional-testing">Functional testing :</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#unit-testing">Unit testing :</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="implement-testunit.html">Implement TestUnit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run-artos.html">Run Artos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="helloworld.html">Hello World</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Features</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../features/framework_configuration.html">Framework Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../features/teststatus.html">Test Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../features/logging.html">Logging Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../features/logging.html#off-line-extent-report">Off-line Extent Report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../features/logging.html#real-time-logging">Real Time Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../features/logging.html#stop-on-fail">Stop on Fail</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../annotation/testcase.html">&#64;TestCase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../annotation/testplan.html">&#64;TestPlan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../annotation/expectedException.html">&#64;ExpectedException</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Artos (Art of System Testing)</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Implement TestCase</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/howto/implement-testcase.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="implement-testcase">
+<h1>Implement TestCase<a class="headerlink" href="#implement-testcase" title="Permalink to this headline">¶</a></h1>
+<p>Test case is the Java class which meets the following requirements:</p>
+<ul class="simple">
+<li>Class is public.</li>
+<li>Class is in the scan path of a test runner.</li>
+<li>Class is annotated with <code class="docutils literal notranslate"><span class="pre">&#64;TestCase</span></code> annotation.</li>
+<li>Class implements <code class="docutils literal notranslate"><span class="pre">TestExecutable</span></code> interface.</li>
+<li>Class contains at least one test unit.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is recommended to add a test plan for each test cases using <code class="docutils literal notranslate"><span class="pre">&#64;TestPlan</span></code> annotation.</p>
+</div>
+<p>Steps</p>
+<ul class="simple">
+<li>Create a new Java class inside the created package structure (In this example : TestCase_1.java)</li>
+<li>Copy and paste below code in newly created Java file.</li>
+</ul>
+<div class="highlight-Java notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">com.tests</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.artos.annotation.TestCase</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.artos.annotation.TestPlan</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.artos.annotation.Unit</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.artos.framework.infra.TestContext</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.artos.interfaces.TestExecutable</span><span class="o">;</span>
+
+<span class="nd">@TestPlan</span><span class="o">(</span><span class="n">preparedBy</span> <span class="o">=</span> <span class="s">&quot;ArpitS&quot;</span><span class="o">,</span> <span class="n">preparationDate</span> <span class="o">=</span> <span class="s">&quot;1/1/2018&quot;</span><span class="o">,</span> <span class="n">bdd</span> <span class="o">=</span> <span class="s">&quot;given project has no errors then hello world will be printed&quot;</span><span class="o">)</span>
+<span class="nd">@TestCase</span><span class="o">(</span><span class="n">skip</span> <span class="o">=</span> <span class="kc">false</span><span class="o">,</span> <span class="n">sequence</span> <span class="o">=</span> <span class="mi">0</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestCase_1</span> <span class="kd">implements</span> <span class="n">TestExecutable</span> <span class="o">{</span>
+
+        <span class="nd">@Unit</span><span class="o">(</span><span class="n">skip</span> <span class="o">=</span> <span class="kc">false</span><span class="o">,</span> <span class="n">sequence</span> <span class="o">=</span> <span class="mi">1</span><span class="o">)</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">unit_test1</span><span class="o">(</span><span class="n">TestContext</span> <span class="n">context</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+                <span class="c1">// --------------------------------------------------------------------------------------------</span>
+                <span class="c1">// Print on console</span>
+                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Hello World 1&quot;</span><span class="o">);</span>
+                <span class="c1">// Print inside a log file</span>
+                <span class="n">context</span><span class="o">.</span><span class="na">getLogger</span><span class="o">().</span><span class="na">debug</span><span class="o">(</span><span class="s">&quot;Hello World 1&quot;</span><span class="o">);</span>
+                <span class="c1">// --------------------------------------------------------------------------------------------</span>
+        <span class="o">}</span>
+
+        <span class="nd">@Unit</span><span class="o">(</span><span class="n">skip</span> <span class="o">=</span> <span class="kc">false</span><span class="o">,</span> <span class="n">sequence</span> <span class="o">=</span> <span class="mi">2</span><span class="o">)</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">unit_test2</span><span class="o">(</span><span class="n">TestContext</span> <span class="n">context</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+                <span class="c1">// --------------------------------------------------------------------------------------------</span>
+                <span class="c1">// Print on console</span>
+                <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Hello World 2&quot;</span><span class="o">);</span>
+                <span class="c1">// Print inside a log file</span>
+                <span class="n">context</span><span class="o">.</span><span class="na">getLogger</span><span class="o">().</span><span class="na">debug</span><span class="o">(</span><span class="s">&quot;Hello World 2&quot;</span><span class="o">);</span>
+                <span class="c1">// --------------------------------------------------------------------------------------------</span>
+        <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table></div>
+<div class="section" id="recommended-test-case-structures">
+<h2>Recommended test case structures :<a class="headerlink" href="#recommended-test-case-structures" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="functional-testing">
+<h3>Functional testing :<a class="headerlink" href="#functional-testing" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Use a separate test case for each test aim.</li>
+<li>Each test case contains only one test unit.</li>
+<li>All decision based annotations (Example : &#64;Group, &#64;KnownToFail, &#64;ExpectedException) are to be applied to test class.</li>
+</ul>
+<div class="highlight-Java notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">com.tests</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.artos.annotation.TestCase</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.artos.annotation.TestPlan</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.artos.annotation.ExpectedException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.artos.annotation.KnownToFail</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.artos.annotation.Group</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.artos.annotation.Unit</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.artos.framework.infra.TestContext</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.artos.interfaces.TestExecutable</span><span class="o">;</span>
+
+<span class="nd">@Group</span><span class="o">(</span><span class="n">group</span> <span class="o">=</span> <span class="o">{</span> <span class="s">&quot;AUTOMATED&quot;</span> <span class="o">})</span>
+<span class="nd">@KnownToFail</span><span class="o">(</span><span class="n">ktf</span> <span class="o">=</span> <span class="kc">false</span><span class="o">,</span> <span class="n">bugref</span> <span class="o">=</span> <span class="s">&quot;JIRA-1234&quot;</span><span class="o">)</span>
+<span class="nd">@ExpectedException</span><span class="o">(</span><span class="n">expectedExceptions</span> <span class="o">=</span> <span class="o">{</span> <span class="n">NullPointerException</span><span class="o">.</span><span class="na">class</span> <span class="o">})</span>
+<span class="nd">@TestPlan</span><span class="o">(</span><span class="n">preparedBy</span> <span class="o">=</span> <span class="s">&quot;ArpitS&quot;</span><span class="o">,</span> <span class="n">preparationDate</span> <span class="o">=</span> <span class="s">&quot;1/1/2018&quot;</span><span class="o">,</span> <span class="n">bdd</span> <span class="o">=</span> <span class="s">&quot;GIVEN..AND..THEN...DO Something&quot;</span><span class="o">)</span>
+<span class="nd">@TestCase</span><span class="o">(</span><span class="n">skip</span> <span class="o">=</span> <span class="kc">false</span><span class="o">,</span> <span class="n">sequence</span> <span class="o">=</span> <span class="mi">0</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestCase_2</span> <span class="kd">implements</span> <span class="n">TestExecutable</span> <span class="o">{</span>
+
+        <span class="nd">@Unit</span><span class="o">()</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">unit_test1</span><span class="o">(</span><span class="n">TestContext</span> <span class="n">context</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+                <span class="c1">// --------------------------------------------------------------------------------------------</span>
+                <span class="c1">// Print inside a log file</span>
+                <span class="n">context</span><span class="o">.</span><span class="na">getLogger</span><span class="o">().</span><span class="na">debug</span><span class="o">(</span><span class="s">&quot;Functional test&quot;</span><span class="o">);</span>
+                <span class="c1">// --------------------------------------------------------------------------------------------</span>
+        <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+<div class="section" id="unit-testing">
+<h3>Unit testing :<a class="headerlink" href="#unit-testing" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Group similar aim units into one test case.</li>
+<li>Test case contains one or more test units.</li>
+<li>All decision based annotations (Example : &#64;Group, &#64;KnownToFail, &#64;ExpectedException) are to be applied to relevant test unit.</li>
+</ul>
+<div class="highlight-Java notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">com.tests</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.artos.annotation.TestCase</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.artos.annotation.TestPlan</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.artos.annotation.ExpectedException</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.artos.annotation.KnownToFail</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.artos.annotation.Group</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.artos.annotation.Unit</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.artos.framework.infra.TestContext</span><span class="o">;</span>
+<span class="kn">import</span> <span class="nn">com.artos.interfaces.TestExecutable</span><span class="o">;</span>
+
+<span class="nd">@TestPlan</span><span class="o">(</span><span class="n">preparedBy</span> <span class="o">=</span> <span class="s">&quot;ArpitS&quot;</span><span class="o">,</span> <span class="n">preparationDate</span> <span class="o">=</span> <span class="s">&quot;1/1/2018&quot;</span><span class="o">,</span> <span class="n">bdd</span> <span class="o">=</span> <span class="s">&quot;&quot;</span><span class="o">)</span>
+<span class="nd">@TestCase</span><span class="o">(</span><span class="n">skip</span> <span class="o">=</span> <span class="kc">false</span><span class="o">,</span> <span class="n">sequence</span> <span class="o">=</span> <span class="mi">0</span><span class="o">)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestCase_2</span> <span class="kd">implements</span> <span class="n">TestExecutable</span> <span class="o">{</span>
+
+        <span class="nd">@Group</span><span class="o">(</span><span class="n">group</span> <span class="o">=</span> <span class="o">{</span> <span class="s">&quot;AUTOMATED&quot;</span> <span class="o">})</span>
+        <span class="nd">@KnownToFail</span><span class="o">(</span><span class="n">ktf</span> <span class="o">=</span> <span class="kc">false</span><span class="o">,</span> <span class="n">bugref</span> <span class="o">=</span> <span class="s">&quot;JIRA-1234&quot;</span><span class="o">)</span>
+        <span class="nd">@ExpectedException</span><span class="o">(</span><span class="n">expectedExceptions</span> <span class="o">=</span> <span class="o">{</span> <span class="n">NullPointerException</span><span class="o">.</span><span class="na">class</span> <span class="o">})</span>
+        <span class="nd">@Unit</span><span class="o">(</span><span class="n">skip</span> <span class="o">=</span> <span class="kc">false</span><span class="o">,</span> <span class="n">sequence</span> <span class="o">=</span> <span class="mi">1</span><span class="o">)</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">unit_test1</span><span class="o">(</span><span class="n">TestContext</span> <span class="n">context</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+                <span class="c1">// --------------------------------------------------------------------------------------------</span>
+                <span class="c1">// Print inside a log file</span>
+                <span class="n">context</span><span class="o">.</span><span class="na">getLogger</span><span class="o">().</span><span class="na">debug</span><span class="o">(</span><span class="s">&quot;Unit test 1&quot;</span><span class="o">);</span>
+                <span class="c1">// --------------------------------------------------------------------------------------------</span>
+        <span class="o">}</span>
+
+        <span class="nd">@Group</span><span class="o">(</span><span class="n">group</span> <span class="o">=</span> <span class="o">{</span> <span class="s">&quot;SEMI_AUTOMATED&quot;</span> <span class="o">})</span>
+        <span class="nd">@KnownToFail</span><span class="o">(</span><span class="n">ktf</span> <span class="o">=</span> <span class="kc">false</span><span class="o">,</span> <span class="n">bugref</span> <span class="o">=</span> <span class="s">&quot;JIRA-1234&quot;</span><span class="o">)</span>
+        <span class="nd">@ExpectedException</span><span class="o">(</span><span class="n">expectedExceptions</span> <span class="o">=</span> <span class="o">{</span> <span class="n">NullPointerException</span><span class="o">.</span><span class="na">class</span> <span class="o">})</span>
+        <span class="nd">@Unit</span><span class="o">(</span><span class="n">skip</span> <span class="o">=</span> <span class="kc">false</span><span class="o">,</span> <span class="n">sequence</span> <span class="o">=</span> <span class="mi">2</span><span class="o">)</span>
+        <span class="kd">public</span> <span class="kt">void</span> <span class="nf">unit_test2</span><span class="o">(</span><span class="n">TestContext</span> <span class="n">context</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+                <span class="c1">// --------------------------------------------------------------------------------------------</span>
+                <span class="c1">// Print inside a log file</span>
+                <span class="n">context</span><span class="o">.</span><span class="na">getLogger</span><span class="o">().</span><span class="na">debug</span><span class="o">(</span><span class="s">&quot;Unit test 2&quot;</span><span class="o">);</span>
+                <span class="c1">// --------------------------------------------------------------------------------------------</span>
+        <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="implement-testunit.html" class="btn btn-neutral float-right" title="Implement TestUnit" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="implement-runner.html" class="btn btn-neutral" title="Implement Runner" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018-2020, Arpit Shah &amp; Contributors
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'01.00.0000',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Create a TestCase &mdash; Artos (Art of System Testing) 01.00.0000 documentation</title>
+  <title>Implement TestUnit &mdash; Artos (Art of System Testing) 01.00.0000 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Create a TestUnit" href="createtestunit.html" />
-    <link rel="prev" title="Create a Runner" href="createtestrunner.html" /> 
+    <link rel="next" title="Run Artos" href="run-artos.html" />
+    <link rel="prev" title="Implement TestCase" href="implement-testcase.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -88,14 +88,17 @@
               <p class="caption"><span class="caption-text">Introduction:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../introduction/introduction.html">ARTOS (Art of System Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/system-requirement.html">System Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/pre-requisite.html">Project Pre-Requisite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/testsuite.html">Test Suite &amp; Scan Scope</a></li>
 </ul>
 <p class="caption"><span class="caption-text">How To:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="project-setup.html">Project Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="createtestrunner.html">Create a Runner</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Create a TestCase</a></li>
-<li class="toctree-l1"><a class="reference internal" href="createtestunit.html">Create a TestUnit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="runningartos.html">Running Artos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implement-project-structure.html">Implement Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implement-runner.html">Implement Runner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implement-testcase.html">Implement TestCase</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Implement TestUnit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run-artos.html">Run Artos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="helloworld.html">Hello World</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Features</span></p>
@@ -154,13 +157,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Create a TestCase</li>
+      <li>Implement TestUnit</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/howto/createtestcase.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/howto/implement-testunit.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -173,19 +176,27 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="create-a-testcase">
-<h1>Create a TestCase<a class="headerlink" href="#create-a-testcase" title="Permalink to this headline">¶</a></h1>
-<p>Test case is a Java class which meets following requirements</p>
+  <div class="section" id="implement-testunit">
+<h1>Implement TestUnit<a class="headerlink" href="#implement-testunit" title="Permalink to this headline">¶</a></h1>
+<p>The test unit is a Java method which meets the following requirements:</p>
 <ul class="simple">
-<li>Class is public.</li>
-<li>Class is in the scan path of a test runner.</li>
-<li>Class is annotated with <code class="docutils literal notranslate"><span class="pre">&#64;TestCase</span></code> annotation.</li>
-<li>Class implements <code class="docutils literal notranslate"><span class="pre">TestExecutable</span></code> interface.</li>
-<li>Class contains at least one test unit.</li>
+<li>Method is public.</li>
+<li>Method belongs to a class annotated as test case.</li>
+<li>Method is annotated with <code class="docutils literal notranslate"><span class="pre">&#64;Unit</span></code> annotation.</li>
+<li>Method signature is <code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">void</span> <span class="pre">methodName(TestContext</span> <span class="pre">context)</span></code>.</li>
+<li>Method is independent from other test units.</li>
 </ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<ul class="last simple">
+<li>Test unit must be independent of each other. All test units are executed using new class instance so variables/objects can not be shared between two test units.</li>
+<li>Use <strong>context.setGlobalObject(key, obj);</strong> to store objects through out test suite.</li>
+<li>Test case may contain methods which are not marked as test unit.</li>
+</ul>
+</div>
 <p>Steps</p>
 <ul class="simple">
-<li>Create new Java class inside created package structure (In this example : TestCase_2.java)</li>
+<li>Create new Java class inside created package structure (In this example : TestCase_1.java)</li>
 <li>Copy paste below code in newly created Java file.</li>
 </ul>
 <div class="highlight-Java notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
@@ -219,7 +230,12 @@
 29
 30
 31
-32</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">com.tests</span><span class="o">;</span>
+32
+33
+34
+35
+36
+37</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">com.tests</span><span class="o">;</span>
 
 <span class="kn">import</span> <span class="nn">com.artos.annotation.TestCase</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">com.artos.annotation.TestPlan</span><span class="o">;</span>
@@ -229,7 +245,7 @@
 
 <span class="nd">@TestPlan</span><span class="o">(</span><span class="n">preparedBy</span> <span class="o">=</span> <span class="s">&quot;ArpitS&quot;</span><span class="o">,</span> <span class="n">preparationDate</span> <span class="o">=</span> <span class="s">&quot;1/1/2018&quot;</span><span class="o">,</span> <span class="n">bdd</span> <span class="o">=</span> <span class="s">&quot;given project has no errors then hello world will be printed&quot;</span><span class="o">)</span>
 <span class="nd">@TestCase</span><span class="o">(</span><span class="n">skip</span> <span class="o">=</span> <span class="kc">false</span><span class="o">,</span> <span class="n">sequence</span> <span class="o">=</span> <span class="mi">0</span><span class="o">)</span>
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestCase_2</span> <span class="kd">implements</span> <span class="n">TestExecutable</span> <span class="o">{</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestCase_1</span> <span class="kd">implements</span> <span class="n">TestExecutable</span> <span class="o">{</span>
 
         <span class="nd">@Unit</span><span class="o">(</span><span class="n">skip</span> <span class="o">=</span> <span class="kc">false</span><span class="o">,</span> <span class="n">sequence</span> <span class="o">=</span> <span class="mi">1</span><span class="o">)</span>
         <span class="kd">public</span> <span class="kt">void</span> <span class="nf">unit_test1</span><span class="o">(</span><span class="n">TestContext</span> <span class="n">context</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
@@ -247,8 +263,13 @@
                 <span class="c1">// Print on console</span>
                 <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Hello World 2&quot;</span><span class="o">);</span>
                 <span class="c1">// Print inside a log file</span>
-                <span class="n">context</span><span class="o">.</span><span class="na">getLogger</span><span class="o">().</span><span class="na">debug</span><span class="o">(</span><span class="s">&quot;Hello World 2&quot;</span><span class="o">);</span>
+                <span class="n">context</span><span class="o">.</span><span class="na">getLogger</span><span class="o">().</span><span class="na">debug</span><span class="o">(</span><span class="n">doSomething</span><span class="o">());</span>
                 <span class="c1">// --------------------------------------------------------------------------------------------</span>
+        <span class="o">}</span>
+
+        <span class="c1">// This method is not a test unit</span>
+        <span class="kd">public</span> <span class="n">String</span> <span class="nf">doSomething</span><span class="o">()</span> <span class="o">{</span>
+                <span class="k">return</span> <span class="s">&quot;Hello World 2&quot;</span><span class="o">;</span>
         <span class="o">}</span>
 <span class="o">}</span>
 </pre></div>
@@ -263,10 +284,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="createtestunit.html" class="btn btn-neutral float-right" title="Create a TestUnit" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="run-artos.html" class="btn btn-neutral float-right" title="Run Artos" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="createtestrunner.html" class="btn btn-neutral" title="Create a Runner" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="implement-testcase.html" class="btn btn-neutral" title="Implement TestCase" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

@@ -1,5 +1,3 @@
-.. _Artos: https://mvnrepository.com/artifact/com.theartos/artos/
-
 ARTOS Tutorial
 **************
 
@@ -8,17 +6,19 @@ ARTOS Tutorial
 	:caption: Introduction:
 
 	introduction/introduction
+	introduction/system-requirement
+	introduction/pre-requisite
+	introduction/testsuite
 
 .. toctree::
 	:maxdepth: 2
 	:caption: How To:
 
-	howto/project-setup
-	howto/createtestsuite
-	howto/createtestrunner
-	howto/createtestcase
-	howto/createtestunit
-	howto/runningartos
+	howto/implement-project-structure
+	howto/implement-runner
+	howto/implement-testcase
+	howto/implement-testunit
+	howto/run-artos
 	howto/helloworld
 
 .. toctree::

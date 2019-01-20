@@ -62,7 +62,7 @@ Create a Runner
 Create a TestCase
 #################
 
-* Create new Java class inside created package structure (In this example : TestCase_2.java)
+* Create new Java class inside created package structure (In this example : TestCase_1.java)
 * Copy paste below code in newly created Java file.
 
 .. code-block:: Java
@@ -79,7 +79,7 @@ Create a TestCase
 
 	@TestPlan(preparedBy = "ArpitS", preparationDate = "1/1/2018", bdd = "given project has no errors then hello world will be printed")
 	@TestCase(skip = false, sequence = 0)
-	public class TestCase_2 implements TestExecutable {
+	public class TestCase_1 implements TestExecutable {
 
 		@Unit(skip = false, sequence = 1)
 		public void unit_test1(TestContext context) throws Exception {

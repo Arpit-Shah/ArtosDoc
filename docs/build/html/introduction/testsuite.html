@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Running Artos &mdash; Artos (Art of System Testing) 01.00.0000 documentation</title>
+  <title>Test Suite &amp; Scan Scope &mdash; Artos (Art of System Testing) 01.00.0000 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Framework Configuration" href="../features/framework_configuration.html" />
-    <link rel="prev" title="Hello World" href="helloworld.html" /> 
+    <link rel="next" title="Implement Project" href="../howto/implement-project-structure.html" />
+    <link rel="prev" title="Project Pre-Requisite" href="pre-requisite.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -86,18 +86,24 @@
             
             
               <p class="caption"><span class="caption-text">Introduction:</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="../introduction/introduction.html">ARTOS (Art of System Testing)</a></li>
-</ul>
-<p class="caption"><span class="caption-text">How To:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="project-setup.html">Project Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="helloworld.html">Hello World</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Running Artos</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#command-line">Command line</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#eclipse-ide">Eclipse IDE</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">ARTOS (Art of System Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="system-requirement.html">System Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pre-requisite.html">Project Pre-Requisite</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Test Suite &amp; Scan Scope</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#test-suite">Test Suite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#scan-scope">Scan Scope</a></li>
 </ul>
 </li>
+</ul>
+<p class="caption"><span class="caption-text">How To:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../howto/implement-project-structure.html">Implement Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/implement-runner.html">Implement Runner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/implement-testcase.html">Implement TestCase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/implement-testunit.html">Implement TestUnit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/run-artos.html">Run Artos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/helloworld.html">Hello World</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Features</span></p>
 <ul>
@@ -155,13 +161,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Running Artos</li>
+      <li>Test Suite &amp; Scan Scope</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/howto/runningartos.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/introduction/testsuite.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -174,36 +180,43 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="running-artos">
-<h1>Running Artos<a class="headerlink" href="#running-artos" title="Permalink to this headline">¶</a></h1>
-<p>Artos can be run via</p>
+  <div class="section" id="test-suite-scan-scope">
+<h1>Test Suite &amp; Scan Scope<a class="headerlink" href="#test-suite-scan-scope" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="test-suite">
+<h2>Test Suite<a class="headerlink" href="#test-suite" title="Permalink to this headline">¶</a></h2>
+<p>ARTOS project is the Java project that is made up of one or more test suites. A test suite consists of two components:</p>
 <ul class="simple">
-<li>Command line</li>
-<li>IDE (Example : Eclipse, IntelliJ etc..)</li>
+<li>A runner</li>
+<li>Test cases</li>
 </ul>
-<div class="section" id="command-line">
-<h2>Command line<a class="headerlink" href="#command-line" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-Text notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2
-3
-4
-5
-6</pre></div></td><td class="code"><div class="highlight"><pre><span></span>// Current example is written with following assumption
-// * Test project only has **artos.jar** as a dependency.
-// * Artos jar is located at **.\lib\artos.jar**.
-// * Test script is located at **.\script\testscript.xml**.
-// * Test runner class name is **TestRunner.java** (Runner = Class which contains main() method).
-<span class="hll">java -cp .\lib\artos-0.0.1.jar TestRunner --testscript=&quot;.\script\testscript.xml&quot;
-</span></pre></div>
-</td></tr></table></div>
 </div>
-<div class="section" id="eclipse-ide">
-<h2>Eclipse IDE<a class="headerlink" href="#eclipse-ide" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Right click on the test runner class.</li>
-<li>Select options Run as =&gt; Java Application .</li>
+<div class="section" id="scan-scope">
+<h2>Scan Scope<a class="headerlink" href="#scan-scope" title="Permalink to this headline">¶</a></h2>
+<p>A section of the Java project that will be scanned during the search of test cases is called a scan scope.</p>
+<ul>
+<li><p class="first">The runner is the entry point to a test suite and scans for test cases within:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Package containing the runner class <strong>AND</strong></li>
+<li>Child packages of the package containing the runner class.</li>
 </ul>
-<img alt="../_images/RunJavaApplication.png" src="../_images/RunJavaApplication.png" />
+</div></blockquote>
+</li>
+</ul>
+<img alt="../_images/ProjectStructure_ScanScope.png" src="../_images/ProjectStructure_ScanScope.png" />
+<ul>
+<li><p class="first">A Test suite can only execute test cases that are within the runner’s scan scope.</p>
+</li>
+<li><p class="first">Test suites can share one or more test cases. Example as shown below:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Test Suite1 shares test cases with Suite2 and Suite3.</li>
+<li>Test Suite2 and Suite3 do not share any test cases with each other.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<img alt="../_images/ProjectStructure_ScanScope.png" src="../_images/ProjectStructure_ScanScope.png" />
 </div>
 </div>
 
@@ -215,10 +228,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../features/framework_configuration.html" class="btn btn-neutral float-right" title="Framework Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../howto/implement-project-structure.html" class="btn btn-neutral float-right" title="Implement Project" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="helloworld.html" class="btn btn-neutral" title="Hello World" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="pre-requisite.html" class="btn btn-neutral" title="Project Pre-Requisite" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

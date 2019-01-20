@@ -1,7 +1,7 @@
-Create a TestUnit
-*****************
+Implement TestUnit
+******************
 
-Test unit is a Java method which meets following requirements
+The test unit is a Java method which meets the following requirements:
 
 * Method is public.
 * Method belongs to a class annotated as test case.
@@ -11,13 +11,13 @@ Test unit is a Java method which meets following requirements
 
 .. note::
 	* Test unit must be independent of each other. All test units are executed using new class instance so variables/objects can not be shared between two test units.
-	* Use **context.setGlobalObject(key, obj);** to store objects which required to available through out test suite.
+	* Use **context.setGlobalObject(key, obj);** to store objects through out test suite.
 	* Test case may contain methods which are not marked as test unit.
 ..
 
 Steps
 
-* Create new Java class inside created package structure (In this example : TestCase_2.java)
+* Create new Java class inside created package structure (In this example : TestCase_1.java)
 * Copy paste below code in newly created Java file.
 
 .. code-block:: Java
@@ -34,7 +34,7 @@ Steps
 
 	@TestPlan(preparedBy = "ArpitS", preparationDate = "1/1/2018", bdd = "given project has no errors then hello world will be printed")
 	@TestCase(skip = false, sequence = 0)
-	public class TestCase_2 implements TestExecutable {
+	public class TestCase_1 implements TestExecutable {
 
 		@Unit(skip = false, sequence = 1)
 		public void unit_test1(TestContext context) throws Exception {

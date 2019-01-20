@@ -1,19 +1,8 @@
 .. _Artos_Maven_Repository: https://mvnrepository.com/artifact/com.theartos/artos/
 .. _Artos_Eclipse_Template: https://github.com/Arpit-Shah/Artos/tree/master/src/com/artos/template/
 
-Project Setup
-*************
-
-System Requirements
-###################
-
-* Platform
-
-	Windows, Linux, MAC or any platform which can run **Java 8** or above.
-
-* JDK
-
-	Artos can be integrated with any Java project compiled with **JDK 8U45** or higher
+Project Pre-Requisite
+*********************
 
 Add Artos Jar as a dependency
 #############################
@@ -41,10 +30,21 @@ Add Artos Jar as a dependency
 
 	.. 
 
-Configure test templates (Only applicable to Eclipse SDK)
-#########################################################
+Eclipse SDK
+###########
 
-Use of Java template increases consistency and test development speed. Templates can be modified to suite business requirements.
+Install ANSI plug-in for Linux OS
+=================================
+
+* Go to Eclipse SDK => Help => Eclipse Marketplace.
+* Find "ANSI escape in console" plug-in.
+* Install plug-in.
+* Restart Eclipse SDK.
+
+Configure test templates
+========================
+
+The use of a Java template increases consistency and test development speed. Templates can be modified to suite business requirements.
 
 Import default templates:
 

@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Create a TestSuite &mdash; Artos (Art of System Testing) 01.00.0000 documentation</title>
+  <title>Implement Runner &mdash; Artos (Art of System Testing) 01.00.0000 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Create a Runner" href="createtestrunner.html" />
-    <link rel="prev" title="Project Setup" href="project-setup.html" /> 
+    <link rel="next" title="Implement TestCase" href="implement-testcase.html" />
+    <link rel="prev" title="Implement Project" href="implement-project-structure.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -88,20 +88,17 @@
               <p class="caption"><span class="caption-text">Introduction:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../introduction/introduction.html">ARTOS (Art of System Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/system-requirement.html">System Requirements</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/pre-requisite.html">Project Pre-Requisite</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/testsuite.html">Test Suite &amp; Scan Scope</a></li>
 </ul>
 <p class="caption"><span class="caption-text">How To:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="project-setup.html">Project Setup</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Create a TestSuite</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#feature-based-structure">Feature based structure :</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#super-structure">Super structure :</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#feature-tree">Feature tree :</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="createtestrunner.html">Create a Runner</a></li>
-<li class="toctree-l1"><a class="reference internal" href="createtestcase.html">Create a TestCase</a></li>
-<li class="toctree-l1"><a class="reference internal" href="createtestunit.html">Create a TestUnit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="runningartos.html">Running Artos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implement-project-structure.html">Implement Project</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Implement Runner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implement-testcase.html">Implement TestCase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implement-testunit.html">Implement TestUnit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run-artos.html">Run Artos</a></li>
 <li class="toctree-l1"><a class="reference internal" href="helloworld.html">Hello World</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Features</span></p>
@@ -160,13 +157,13 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Create a TestSuite</li>
+      <li>Implement Runner</li>
     
     
       <li class="wy-breadcrumbs-aside">
         
             
-            <a href="../_sources/howto/createtestsuite.rst.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/howto/implement-runner.rst.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -179,50 +176,39 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="create-a-testsuite">
-<h1>Create a TestSuite<a class="headerlink" href="#create-a-testsuite" title="Permalink to this headline">¶</a></h1>
-<p>Test suite is a Java package which meets following requirements</p>
+  <div class="section" id="implement-runner">
+<h1>Implement Runner<a class="headerlink" href="#implement-runner" title="Permalink to this headline">¶</a></h1>
+<p>A runner is the entry point to a test application. A project can have one or more test runners. Test cases inside runner’s scan scope can be included in the test suite. A runner is a Java class which meets the following requirements:</p>
 <ul class="simple">
-<li>Package contains at least one runner.</li>
-<li>Package contains at least one test case.</li>
+<li>Class contains <code class="docutils literal notranslate"><span class="pre">main</span></code> method.</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">main</span></code> method invokes <code class="docutils literal notranslate"><span class="pre">run</span></code> method from the ARTOS’ <code class="docutils literal notranslate"><span class="pre">Runner()</span></code> class object.</li>
 </ul>
 <p>Steps</p>
 <ul class="simple">
-<li>Users are open to structure test project the way it suite their needs. following examples are merely the suggestions.</li>
-<li>Location of runner class defines how structure will see test cases.</li>
+<li>Create a Java class under required package structure (In this example : com.tests.ArtosMain.java).</li>
+<li>Implement <code class="docutils literal notranslate"><span class="pre">main</span></code> method and Runner code as shown in the example below.</li>
 </ul>
-<div class="section" id="feature-based-structure">
-<h2>Feature based structure :<a class="headerlink" href="#feature-based-structure" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Packages are organized based on features.</li>
-<li>Each package acts as a test suite.</li>
-<li>Each package contains a runner and test cases.</li>
-<li>Test cases could be within same package and/or child packages.</li>
-<li>Test runner will see test classes within same or child packages.</li>
-</ul>
-<img alt="../_images/ProjectStructure_Features.png" src="../_images/ProjectStructure_Features.png" />
-</div>
-<div class="section" id="super-structure">
-<h2>Super structure :<a class="headerlink" href="#super-structure" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>Packages are organized based on features or a test group.</li>
-<li>Entire project act as single test suite</li>
-<li>Project contains single runner which is in parent position to all other packages.</li>
-<li>Test runner will see all test classes at once.</li>
-</ul>
-<img alt="../_images/ProjectStructure_Super.png" src="../_images/ProjectStructure_Super.png" />
-</div>
-<div class="section" id="feature-tree">
-<h2>Feature tree :<a class="headerlink" href="#feature-tree" title="Permalink to this headline">¶</a></h2>
-<p>This structure caters for project which may require feature based and/or super structure.</p>
-<ul class="simple">
-<li>Packages are organized based on features or a test group.</li>
-<li>Project can act as a single or multiple test suites.</li>
-<li>Project contains more than one runner but at least one which is in parent position to all other packages.</li>
-<li>Depending on the runner used, project may see limited or all test cases.</li>
-</ul>
-<img alt="../_images/ProjectStructure_FeatureTree.png" src="../_images/ProjectStructure_FeatureTree.png" />
-</div>
+<div class="highlight-Java notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="kn">package</span> <span class="nn">com.tests</span><span class="o">;</span>
+
+<span class="kn">import</span> <span class="nn">com.artos.framework.infra.Runner</span><span class="o">;</span>
+
+<span class="kd">public</span> <span class="kd">class</span> <span class="nc">ArtosMain</span> <span class="o">{</span>
+        <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
+                <span class="n">Runner</span> <span class="n">runner</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Runner</span><span class="o">(</span><span class="n">ArtosMain</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+                <span class="n">runner</span><span class="o">.</span><span class="na">run</span><span class="o">(</span><span class="n">args</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+        <span class="o">}</span>
+<span class="o">}</span>
+</pre></div>
+</td></tr></table></div>
 </div>
 
 
@@ -233,10 +219,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="createtestrunner.html" class="btn btn-neutral float-right" title="Create a Runner" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="implement-testcase.html" class="btn btn-neutral float-right" title="Implement TestCase" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="project-setup.html" class="btn btn-neutral" title="Project Setup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="implement-project-structure.html" class="btn btn-neutral" title="Implement Project" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

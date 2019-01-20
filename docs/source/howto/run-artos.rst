@@ -1,5 +1,5 @@
-Running Artos
-*************
+Run Artos
+*********
 
 Artos can be run via
 
@@ -8,6 +8,13 @@ Artos can be run via
 
 Command line
 ############
+
+* Artos can be executed via command line by specifying minimum of
+
+	* All library in the class path (Specify all dependencies)
+	* Test runner class for given test suite (Starting point of test application)
+	* Test script for given test suite (Contain all instructions to execute test suite correctly)
+	* Profile name (helps in selection of correct framework configuration)
 
 .. code-block:: Text
 	:linenos:
