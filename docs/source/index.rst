@@ -24,7 +24,7 @@ ARTOS Tutorial
 
 .. toctree::
 	:maxdepth: 2
-	:caption: Features
+	:caption: Information:
 
 	features/framework_configuration
 	features/teststatus

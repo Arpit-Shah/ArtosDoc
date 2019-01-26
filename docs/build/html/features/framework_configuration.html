@@ -102,14 +102,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../howto/helloworld.html">Hello World</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howto/generate-default-configuration.html">Generate Default Configurations</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Features</span></p>
+<p class="caption"><span class="caption-text">Information:</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Framework Configuration</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#purpose">Purpose:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#facilities">Facilities:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#sample-framework-configuration-xml">Sample framework_configuration.xml:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#profile-selection">Profile Selection:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#sample-framework-configuration-xml-with-two-profiles">Sample framework_configuration.xml with two profiles:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#organization-info">&lt;organization_info&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logger">&lt;logger&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#smtp-settings">&lt;smtp_settings&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#features">&lt;features&gt;</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#profile-based-configuration">Profile based configuration:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="teststatus.html">Test Status</a></li>
@@ -186,51 +187,9 @@
             
   <div class="section" id="framework-configuration">
 <h1>Framework Configuration<a class="headerlink" href="#framework-configuration" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="purpose">
-<h2>Purpose:<a class="headerlink" href="#purpose" title="Permalink to this headline">¶</a></h2>
-<p>User can customize framework behavior by changing appropriate argument(s) from <code class="docutils literal notranslate"><span class="pre">conf/framework_configuration.xml</span></code> file.</p>
-</div>
-<div class="section" id="facilities">
-<h2>Facilities:<a class="headerlink" href="#facilities" title="Permalink to this headline">¶</a></h2>
-<p>If not present, Artos will generate default configuration file at location <code class="docutils literal notranslate"><span class="pre">conf/framework_configuration.xml</span></code>. User can override some of the framework configuration using <code class="docutils literal notranslate"><span class="pre">Runner</span></code> object constructor. List of configurable features:</p>
-<ul>
-<li><p class="first">Organization information (Stamped on top of log file).</p>
-</li>
-<li><p class="first">Change logger configuration:</p>
-<blockquote>
-<div><ul class="simple">
-<li>Log level</li>
-<li>Log base directory path.</li>
-<li>Log sub directory path.</li>
-<li>Enable/disable log decoration.</li>
-<li>Enable/disable text logs.</li>
-<li>Enable/disable HTML logs.</li>
-<li>Enable/disable Extent report generation.</li>
-</ul>
-</div></blockquote>
-</li>
-<li><p class="first">Configure email client settings.</p>
-</li>
-<li><p class="first">Enable/disable:</p>
-<blockquote>
-<div><ul class="simple">
-<li>Enable/disable GUI test selector.</li>
-<li>Enable/disable GUI test selector sequence number.</li>
-<li>Enable/disable framework banner.</li>
-<li>Enable/disable organization information.</li>
-<li>Enable/disable E-Mail client.</li>
-<li>Enable/disable Artos debug log.</li>
-<li>Enable/disable auto generation of Eclipse IDE default template.</li>
-<li>Enable/disable auto generation of the test scripts.</li>
-<li>Enable/disable stop on fail.</li>
-</ul>
-</div></blockquote>
-</li>
-</ul>
-</div>
-<div class="section" id="sample-framework-configuration-xml">
-<h2>Sample framework_configuration.xml:<a class="headerlink" href="#sample-framework-configuration-xml" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-XML notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+<p>The <code class="docutils literal notranslate"><span class="pre">framework_configuration.xml</span></code> file is used to configure ARTOS framework. This file should be located inside <code class="docutils literal notranslate"><span class="pre">conf</span></code> directory at the project root. ARTOS framework will create default file in the same directory if file is not present.</p>
+<p>Default settings:</p>
+<div class="highlight-xml notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
  4
@@ -272,11 +231,10 @@
 40
 41
 42
-43
-44</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;</span>
+43</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot; standalone=&quot;no&quot;?&gt;</span>
 <span class="nt">&lt;configuration</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="na">xsi:noNamespaceSchemaLocation=</span><span class="s">&quot;framework_configuration.xsd&quot;</span><span class="nt">&gt;</span>
   <span class="nt">&lt;organization_info</span> <span class="na">profile=</span><span class="s">&quot;dev&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;Name&quot;</span><span class="nt">&gt;</span>Organisation PTY LTD<span class="nt">&lt;/property&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;Name&quot;</span><span class="nt">&gt;</span><span class="ni">&amp;lt;</span>Organisation<span class="ni">&amp;gt;</span> PTY LTD<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;Address&quot;</span><span class="nt">&gt;</span>XX, Test Street, Test address<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;Country&quot;</span><span class="nt">&gt;</span>NewZealand<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;Contact_Number&quot;</span><span class="nt">&gt;</span>+64 1234567<span class="nt">&lt;/property&gt;</span>
@@ -287,7 +245,6 @@
     <span class="c">&lt;!--LogLevel Options : info:debug:trace:fatal:warn:all--&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;logLevel&quot;</span><span class="nt">&gt;</span>debug<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;logRootDir&quot;</span><span class="nt">&gt;</span>.\reporting\<span class="nt">&lt;/property&gt;</span>
-    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;logSubDir&quot;</span><span class="nt">&gt;</span>SN-123<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;enableLogDecoration&quot;</span><span class="nt">&gt;</span>false<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;enableTextLog&quot;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;enableHTMLLog&quot;</span><span class="nt">&gt;</span>false<span class="nt">&lt;/property&gt;</span>
@@ -307,7 +264,7 @@
   <span class="nt">&lt;/smtp_settings&gt;</span>
   <span class="nt">&lt;features</span> <span class="na">profile=</span><span class="s">&quot;dev&quot;</span><span class="nt">&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;enableGUITestSelector&quot;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/property&gt;</span>
-    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;enableGUITestSelectorSeqNumber&quot;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/property&gt;</span>
+    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;enableGUITestSelectorSeqNumber&quot;</span><span class="nt">&gt;</span>false<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;enableBanner&quot;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;enableOrganisationInfo&quot;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;enableEmailClient&quot;</span><span class="nt">&gt;</span>false<span class="nt">&lt;/property&gt;</span>
@@ -319,19 +276,311 @@
 <span class="nt">&lt;/configuration&gt;</span>
 </pre></div>
 </td></tr></table></div>
-<p>Artos support multiple configurations. If user required different configuration for development and production/build environment then user can store both configuration in same configuration file with unique profile names.</p>
+<hr class="docutils" />
+<div class="section" id="organization-info">
+<h2>&lt;organization_info&gt;<a class="headerlink" href="#organization-info" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">&lt;organization_info&gt;</span></code> tag provides a way to specify organization information which will be printed at the start of each log files and on a console. This does not apply to rolled over log files. Printing of organization information can be enabled or disabled by setting property <code class="docutils literal notranslate"><span class="pre">&lt;property</span> <span class="pre">name=&quot;enableOrganisationInfo&quot;&gt;true&lt;/property&gt;</span></code> under the <code class="docutils literal notranslate"><span class="pre">&lt;feature&gt;</span></code> tag.</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="30%" />
+<col width="20%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Property Name</th>
+<th class="head">Content</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Name</td>
+<td>String</td>
+<td>Organization name</td>
+</tr>
+<tr class="row-odd"><td>Address</td>
+<td>String</td>
+<td>Organization address</td>
+</tr>
+<tr class="row-even"><td>Country</td>
+<td>String</td>
+<td>Country name</td>
+</tr>
+<tr class="row-odd"><td>Contact_Number</td>
+<td>String</td>
+<td>Organization contact number</td>
+</tr>
+<tr class="row-even"><td>Email</td>
+<td>String</td>
+<td>Organization email address</td>
+</tr>
+<tr class="row-odd"><td>Website</td>
+<td>String</td>
+<td>Organization Website</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="section" id="profile-selection">
-<h2>Profile Selection:<a class="headerlink" href="#profile-selection" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="logger">
+<h2>&lt;logger&gt;<a class="headerlink" href="#logger" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">&lt;logger&gt;</span></code> tag provides a way to configure the log framework and the Extent reporting behavior.</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="30%" />
+<col width="30%" />
+<col width="40%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Property Name</th>
+<th class="head">Content</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>logLevel <a class="footnote-reference" href="#id7" id="id1">[1]</a></td>
+<td>String</td>
+<td>Set log level</td>
+</tr>
+<tr class="row-odd"><td>logRootDir <a class="footnote-reference" href="#id8" id="id2">[2]</a></td>
+<td>String</td>
+<td>Set log root directory relative to project</td>
+</tr>
+<tr class="row-even"><td>enableLogDecoration <a class="footnote-reference" href="#id9" id="id3">[3]</a></td>
+<td>Boolean</td>
+<td>Enable or disable log decoration</td>
+</tr>
+<tr class="row-odd"><td>enableTextLog <a class="footnote-reference" href="#id10" id="id4">[4]</a></td>
+<td>Boolean</td>
+<td>Enable or disable text log and report</td>
+</tr>
+<tr class="row-even"><td>enableHTMLLog <a class="footnote-reference" href="#id10" id="id5">[4]</a></td>
+<td>Boolean</td>
+<td>Enable or disable HTML log and report</td>
+</tr>
+<tr class="row-odd"><td>enableExtentReport <a class="footnote-reference" href="#id10" id="id6">[4]</a></td>
+<td>Boolean</td>
+<td>Enable or disable the Extent report</td>
+</tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id7" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td><p class="first">One of the following log level can be selected:</p>
+<ul class="last simple">
+<li>info</li>
+<li>debug</li>
+<li>trace</li>
+<li>fatal</li>
+<li>warn</li>
+<li>all</li>
+</ul>
+</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id8" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><p class="first">Log file path construction: “logRootDir + test suite packageName + log filename”.</p>
+<div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Example</span> <span class="p">:</span> <span class="o">/</span><span class="n">reporting</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="n">artos</span><span class="o">.</span><span class="n">featuretest</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="n">artos</span><span class="o">.</span><span class="n">tests_0_1546845327744</span><span class="o">-</span><span class="nb">all</span><span class="o">.</span><span class="n">log</span>
+</pre></div>
+</div>
+</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id9" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id3">[3]</a></td><td><p class="first">Enabling log decoration will add following information in front of each log line.</p>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span>* [%-5level] = Log level upto 5 char max
+* [%d{yyyy-MM-dd_HH:mm:ss.SSS}] = Date and time
+* [%t] = Thread number
+* [%F] = File where logs are coming from
+* [%M] = Method which generated log
+* [%c{-1}] = ClassName which issued logCommand
+</pre></div>
+</div>
+</td></tr>
+</tbody>
+</table>
+<table class="docutils footnote" frame="void" id="id10" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label">[4]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id5">2</a>, <a class="fn-backref" href="#id6">3</a>)</em> <p>When enabled log file and reports are generated with following specification.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">File</span> <span class="n">naming</span> <span class="n">convention</span><span class="p">:</span>
+<span class="go">Runner package name + Thread number + Thread name (Optional) + Time stamp + Type</span>
+</pre></div>
+</div>
+<div class="highlight-XML notranslate"><div class="highlight"><pre><span></span>// Text log file example
+* com.artos.feature1_0_1546845327744-all.log
+* com.artos.feature1_0_1546845327744-realtime.log
+* com.artos.feature1_0_1546845327744-summary.log
+
+// HTML log file example
+* com.artos.feature1_0_1546845327744-all.html
+* com.artos.feature1_0_1546845327744-realtime.html
+* com.artos.feature1_0_1546845327744-summary.html
+
+// Extent report file example
+* com.artos.feature1_0_1546847059200-all-extent.html
+</pre></div>
+</div>
+</td></tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="smtp-settings">
+<h2>&lt;smtp_settings&gt;<a class="headerlink" href="#smtp-settings" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">&lt;smtp_settings&gt;</span></code> tag provides a way to configure SMTP settings for the email.</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="30%" />
+<col width="30%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Property Name</th>
+<th class="head">Content</th>
+<th class="head">Description</th>
+<th class="head">Example</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ServerAddress</td>
+<td>String</td>
+<td>SMTP server address</td>
+<td><code class="docutils literal notranslate"><span class="pre">smtp.gmail.com</span></code></td>
+</tr>
+<tr class="row-odd"><td>SSLPort</td>
+<td>Integer</td>
+<td>SSL Port number</td>
+<td><code class="docutils literal notranslate"><span class="pre">587</span></code></td>
+</tr>
+<tr class="row-even"><td>SMTPAuth</td>
+<td>Boolean</td>
+<td>Enable SMTP Authentication</td>
+<td><code class="docutils literal notranslate"><span class="pre">true</span></code></td>
+</tr>
+<tr class="row-odd"><td>SendersName</td>
+<td>String</td>
+<td>Email sender’s name</td>
+<td><code class="docutils literal notranslate"><span class="pre">John</span> <span class="pre">Murray</span></code></td>
+</tr>
+<tr class="row-even"><td>SendersEmail</td>
+<td>String</td>
+<td>Sender’s email address</td>
+<td><code class="docutils literal notranslate"><span class="pre">test&#64;gmail.com</span></code></td>
+</tr>
+<tr class="row-odd"><td>emailAuthSettingsFilePath</td>
+<td>String</td>
+<td>Email credential file path</td>
+<td><code class="docutils literal notranslate"><span class="pre">.\conf\user_auth_settings.xml</span></code></td>
+</tr>
+<tr class="row-even"><td>ReceiversEmail</td>
+<td>String</td>
+<td>Receiver’s email address</td>
+<td><code class="docutils literal notranslate"><span class="pre">test&#64;gmail.com</span></code></td>
+</tr>
+<tr class="row-odd"><td>ReceiversName</td>
+<td>String</td>
+<td>Receiver’s Name</td>
+<td><code class="docutils literal notranslate"><span class="pre">Mac</span> <span class="pre">Murray</span></code></td>
+</tr>
+<tr class="row-even"><td>EmailSubject</td>
+<td>String</td>
+<td>Email subject line</td>
+<td><code class="docutils literal notranslate"><span class="pre">Test</span> <span class="pre">results</span></code></td>
+</tr>
+<tr class="row-odd"><td>EmailMessage</td>
+<td>String</td>
+<td>Email body</td>
+<td><code class="docutils literal notranslate"><span class="pre">This</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">test</span> <span class="pre">Email</span> <span class="pre">from</span> <span class="pre">Artos</span></code></td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="features">
+<h2>&lt;features&gt;<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">&lt;features&gt;</span></code> tag provides a way to enable/disable the ARTOS feature.</p>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="20%" />
+<col width="20%" />
+<col width="60%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Property Name</th>
+<th class="head">Content</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>enableGUITestSelector</td>
+<td>Boolean</td>
+<td>Enable GUI test selector</td>
+</tr>
+<tr class="row-odd"><td>enableGUITestSelectorSeqNumber</td>
+<td>Boolean</td>
+<td>Enable test seq on GUI test selector</td>
+</tr>
+<tr class="row-even"><td>enableBanner</td>
+<td>Boolean</td>
+<td>Enable ARTOS banner</td>
+</tr>
+<tr class="row-odd"><td>enableOrganisationInfo</td>
+<td>Boolean</td>
+<td>Enable organization information printing</td>
+</tr>
+<tr class="row-even"><td>enableEmailClient</td>
+<td>Boolean</td>
+<td>Enable email client</td>
+</tr>
+<tr class="row-odd"><td>enableArtosDebug</td>
+<td>Boolean</td>
+<td>Enable ARTOS debug log</td>
+</tr>
+<tr class="row-even"><td>generateEclipseTemplate</td>
+<td>Boolean</td>
+<td>Enable generation of Eclipse template</td>
+</tr>
+<tr class="row-odd"><td>generateTestScript</td>
+<td>Boolean</td>
+<td>Enable test script generation</td>
+</tr>
+<tr class="row-even"><td>stopOnFail</td>
+<td>Boolean</td>
+<td>Enable test execution stop on fail</td>
+</tr>
+</tbody>
+</table>
+</div>
+<hr class="docutils" />
+<div class="section" id="profile-based-configuration">
+<h2>Profile based configuration:<a class="headerlink" href="#profile-based-configuration" title="Permalink to this headline">¶</a></h2>
+<p>ARTOS supports multiple configuration based on profile names.</p>
+<p>Purpose :</p>
+<p>If user requires different configurations between:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Development and production environments OR</li>
+<li>Linux and Windows environments OR</li>
+<li>Local machine and build server environments</li>
+</ul>
+</div></blockquote>
+<p>Then user can create multiple configurations within same file with unique profiles names. During test application launch user can pass profile name either via command line or via <code class="docutils literal notranslate"><span class="pre">Runner</span></code> class object.</p>
 <ul class="simple">
 <li>User can specify profile name via command line using parameter <code class="docutils literal notranslate"><span class="pre">--profile=&quot;prod&quot;</span></code>.</li>
-<li>If profile name is not specified then <strong>first configuration from the top</strong> of the framework_configuration.xml file will be used.</li>
+<li>Profile name is case in-sensitive.</li>
 <li>If configurations are missing from the file then default value will be used.</li>
+<li>If profile name is not specified then first configuration from the top of the <code class="docutils literal notranslate"><span class="pre">framework_configuration.xml</span></code> file will be used.</li>
+<li>If any configuration line is missing from targeted profile block then previous profile block configuration line will be used. If configuration line is missing from all profile blocks then default values will be used.</li>
 </ul>
-<p><strong>Example:</strong> If user requires GUITestSelector enabled for development environment but disabled for production environment then both profiles can be stored as shown below.</p>
 </div>
-<div class="section" id="sample-framework-configuration-xml-with-two-profiles">
-<h2>Sample framework_configuration.xml with two profiles:<a class="headerlink" href="#sample-framework-configuration-xml-with-two-profiles" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<p>Given example contains two profiles, “dev” and “prod” respectively. “dev” profile has GUI test selector enabled where as “prod” profile has GUI test selector disabled.</p>
 <div class="highlight-XML notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -425,16 +674,16 @@
 <span class="nt">&lt;configuration</span> <span class="na">xmlns:xsi=</span><span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span> <span class="na">xsi:noNamespaceSchemaLocation=</span><span class="s">&quot;framework_configuration.xsd&quot;</span><span class="nt">&gt;</span>
 
   <span class="c">&lt;!-- Development configuration --&gt;</span>
-  <span class="nt">&lt;organization_info</span> <span class="na">profile=</span><span class="s">&quot;dev&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;Name&quot;</span><span class="nt">&gt;</span>Organisation PTY LTD<span class="nt">&lt;/property&gt;</span>
+<span class="hll">  <span class="nt">&lt;organization_info</span> <span class="na">profile=</span><span class="s">&quot;dev&quot;</span><span class="nt">&gt;</span>
+</span>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;Name&quot;</span><span class="nt">&gt;</span>Organisation PTY LTD<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;Address&quot;</span><span class="nt">&gt;</span>XX, Test Street, Test address<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;Country&quot;</span><span class="nt">&gt;</span>NewZealand<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;Contact_Number&quot;</span><span class="nt">&gt;</span>+64 1234567<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;Email&quot;</span><span class="nt">&gt;</span>artos.framework@gmail.com<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;Website&quot;</span><span class="nt">&gt;</span>www.theartos.com<span class="nt">&lt;/property&gt;</span>
   <span class="nt">&lt;/organization_info&gt;</span>
-  <span class="nt">&lt;logger</span> <span class="na">profile=</span><span class="s">&quot;dev&quot;</span><span class="nt">&gt;</span>
-    <span class="c">&lt;!--LogLevel Options : info:debug:trace:fatal:warn:all--&gt;</span>
+<span class="hll">  <span class="nt">&lt;logger</span> <span class="na">profile=</span><span class="s">&quot;dev&quot;</span><span class="nt">&gt;</span>
+</span>    <span class="c">&lt;!--LogLevel Options : info:debug:trace:fatal:warn:all--&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;logLevel&quot;</span><span class="nt">&gt;</span>debug<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;logRootDir&quot;</span><span class="nt">&gt;</span>.\reporting\<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;logSubDir&quot;</span><span class="nt">&gt;</span>SN-123<span class="nt">&lt;/property&gt;</span>
@@ -443,8 +692,8 @@
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;enableHTMLLog&quot;</span><span class="nt">&gt;</span>false<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;enableExtentReport&quot;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/property&gt;</span>
   <span class="nt">&lt;/logger&gt;</span>
-  <span class="nt">&lt;smtp_settings</span> <span class="na">profile=</span><span class="s">&quot;dev&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;ServerAddress&quot;</span><span class="nt">&gt;</span>smtp.gmail.com<span class="nt">&lt;/property&gt;</span>
+<span class="hll">  <span class="nt">&lt;smtp_settings</span> <span class="na">profile=</span><span class="s">&quot;dev&quot;</span><span class="nt">&gt;</span>
+</span>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;ServerAddress&quot;</span><span class="nt">&gt;</span>smtp.gmail.com<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;SSLPort&quot;</span><span class="nt">&gt;</span>587<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;SMTPAuth&quot;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;SendersName&quot;</span><span class="nt">&gt;</span>John Murray<span class="nt">&lt;/property&gt;</span>
@@ -455,8 +704,8 @@
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;EmailSubject&quot;</span><span class="nt">&gt;</span>Artos Email Client<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;EmailMessage&quot;</span><span class="nt">&gt;</span>This is a test Email from Artos<span class="nt">&lt;/property&gt;</span>
   <span class="nt">&lt;/smtp_settings&gt;</span>
-  <span class="nt">&lt;features</span> <span class="na">profile=</span><span class="s">&quot;dev&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;enableGUITestSelector&quot;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/property&gt;</span>
+<span class="hll">  <span class="nt">&lt;features</span> <span class="na">profile=</span><span class="s">&quot;dev&quot;</span><span class="nt">&gt;</span>
+</span>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;enableGUITestSelector&quot;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;enableGUITestSelectorSeqNumber&quot;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;enableBanner&quot;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;enableOrganisationInfo&quot;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/property&gt;</span>
@@ -468,16 +717,16 @@
   <span class="nt">&lt;/features&gt;</span>
 
   <span class="c">&lt;!-- Production configuration --&gt;</span>
-  <span class="nt">&lt;organization_info</span> <span class="na">profile=</span><span class="s">&quot;prod&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;Name&quot;</span><span class="nt">&gt;</span>Organisation PTY LTD<span class="nt">&lt;/property&gt;</span>
+<span class="hll">  <span class="nt">&lt;organization_info</span> <span class="na">profile=</span><span class="s">&quot;prod&quot;</span><span class="nt">&gt;</span>
+</span>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;Name&quot;</span><span class="nt">&gt;</span>Organisation PTY LTD<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;Address&quot;</span><span class="nt">&gt;</span>XX, Test Street, Test address<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;Country&quot;</span><span class="nt">&gt;</span>NewZealand<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;Contact_Number&quot;</span><span class="nt">&gt;</span>+64 1234567<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;Email&quot;</span><span class="nt">&gt;</span>artos.framework@gmail.com<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;Website&quot;</span><span class="nt">&gt;</span>www.theartos.com<span class="nt">&lt;/property&gt;</span>
   <span class="nt">&lt;/organization_info&gt;</span>
-  <span class="nt">&lt;logger</span> <span class="na">profile=</span><span class="s">&quot;prod&quot;</span><span class="nt">&gt;</span>
-    <span class="c">&lt;!--LogLevel Options : info:debug:trace:fatal:warn:all--&gt;</span>
+<span class="hll">  <span class="nt">&lt;logger</span> <span class="na">profile=</span><span class="s">&quot;prod&quot;</span><span class="nt">&gt;</span>
+</span>    <span class="c">&lt;!--LogLevel Options : info:debug:trace:fatal:warn:all--&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;logLevel&quot;</span><span class="nt">&gt;</span>debug<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;logRootDir&quot;</span><span class="nt">&gt;</span>.\reporting\<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;logSubDir&quot;</span><span class="nt">&gt;</span>SN-123<span class="nt">&lt;/property&gt;</span>
@@ -486,8 +735,8 @@
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;enableHTMLLog&quot;</span><span class="nt">&gt;</span>false<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;enableExtentReport&quot;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/property&gt;</span>
   <span class="nt">&lt;/logger&gt;</span>
-  <span class="nt">&lt;smtp_settings</span> <span class="na">profile=</span><span class="s">&quot;prod&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;ServerAddress&quot;</span><span class="nt">&gt;</span>smtp.gmail.com<span class="nt">&lt;/property&gt;</span>
+<span class="hll">  <span class="nt">&lt;smtp_settings</span> <span class="na">profile=</span><span class="s">&quot;prod&quot;</span><span class="nt">&gt;</span>
+</span>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;ServerAddress&quot;</span><span class="nt">&gt;</span>smtp.gmail.com<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;SSLPort&quot;</span><span class="nt">&gt;</span>587<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;SMTPAuth&quot;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;SendersName&quot;</span><span class="nt">&gt;</span>John Murray<span class="nt">&lt;/property&gt;</span>
@@ -498,8 +747,8 @@
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;EmailSubject&quot;</span><span class="nt">&gt;</span>Artos Email Client<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;EmailMessage&quot;</span><span class="nt">&gt;</span>This is a test Email from Artos<span class="nt">&lt;/property&gt;</span>
   <span class="nt">&lt;/smtp_settings&gt;</span>
-  <span class="nt">&lt;features</span> <span class="na">profile=</span><span class="s">&quot;prod&quot;</span><span class="nt">&gt;</span>
-    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;enableGUITestSelector&quot;</span><span class="nt">&gt;</span>false<span class="nt">&lt;/property&gt;</span>
+<span class="hll">  <span class="nt">&lt;features</span> <span class="na">profile=</span><span class="s">&quot;prod&quot;</span><span class="nt">&gt;</span>
+</span>    <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;enableGUITestSelector&quot;</span><span class="nt">&gt;</span>false<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;enableGUITestSelectorSeqNumber&quot;</span><span class="nt">&gt;</span>false<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;enableBanner&quot;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/property&gt;</span>
     <span class="nt">&lt;property</span> <span class="na">name=</span><span class="s">&quot;enableOrganisationInfo&quot;</span><span class="nt">&gt;</span>true<span class="nt">&lt;/property&gt;</span>

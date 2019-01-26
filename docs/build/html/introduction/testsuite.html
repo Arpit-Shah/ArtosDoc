@@ -92,7 +92,7 @@
 <li class="toctree-l1"><a class="reference internal" href="pre-requisite.html">Project Pre-Requisite</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Test Suite &amp; Scan Scope</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#test-suite">Test Suite</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#scan-scope">Scan Scope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#test-runner">Test Runner</a></li>
 </ul>
 </li>
 </ul>
@@ -106,7 +106,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../howto/helloworld.html">Hello World</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howto/generate-default-configuration.html">Generate Default Configurations</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Features</span></p>
+<p class="caption"><span class="caption-text">Information:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../features/framework_configuration.html">Framework Configuration</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../features/teststatus.html">Test Status</a></li>
@@ -185,39 +185,43 @@
 <h1>Test Suite &amp; Scan Scope<a class="headerlink" href="#test-suite-scan-scope" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="test-suite">
 <h2>Test Suite<a class="headerlink" href="#test-suite" title="Permalink to this headline">¶</a></h2>
-<p>ARTOS project is the Java project that is made up of one or more test suites. A test suite consists of two components:</p>
+<p>ARTOS project is a Java project that is made up of one or more test suites. A test suite consists of two components:</p>
 <ul class="simple">
-<li>A runner</li>
+<li>A Runner</li>
 <li>Test cases</li>
 </ul>
+<p>A test suite can only execute test cases that are within its Runner’s scan scope <a class="footnote-reference" href="#id3" id="id1">[1]</a>. Test suites can share one or more test cases.</p>
 </div>
-<div class="section" id="scan-scope">
-<h2>Scan Scope<a class="headerlink" href="#scan-scope" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="test-runner">
+<h2>Test Runner<a class="headerlink" href="#test-runner" title="Permalink to this headline">¶</a></h2>
+<p>The runner is the entry point to a test suite.</p>
+<ul class="simple">
+<li>Master Runner - A Runner inside root location of the project <a class="footnote-reference" href="#id4" id="id2">[2]</a> is called <strong>Master Runner</strong> which has visibility of all test cases within a project.</li>
+<li>Feature Runner - A Runner created inside individual packages is called <strong>Feature Runner</strong>. Feature Runners have visibility of all test cases within same package or its sub-packages.</li>
+</ul>
+<table class="docutils footnote" frame="void" id="id3" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Scan Scope</td></tr>
+</tbody>
+</table>
 <p>A section of the Java project that will be scanned during the search of test cases is called a scan scope.</p>
-<ul>
-<li><p class="first">The runner is the entry point to a test suite and scans for test cases within:</p>
-<blockquote>
-<div><ul class="simple">
-<li>Package containing the runner class <strong>AND</strong></li>
-<li>Child packages of the package containing the runner class.</li>
+<ul class="simple">
+<li>Master Runner - Entire project test cases are within a scan scope</li>
+<li>Feature Runner - Test cases within same package or its sub-packages are within a scan scope</li>
 </ul>
-</div></blockquote>
-</li>
+<img alt="../_images/MasterRunner_ScanScope.png" src="../_images/MasterRunner_ScanScope.png" />
+<table class="docutils footnote" frame="void" id="id4" rules="none">
+<colgroup><col class="label" /><col /></colgroup>
+<tbody valign="top">
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>Project Root location</td></tr>
+</tbody>
+</table>
+<ul class="simple">
+<li>Non-Maven project root location =&gt; <code class="docutils literal notranslate"><span class="pre">src</span></code>.</li>
+<li>Maven project root location =&gt; <code class="docutils literal notranslate"><span class="pre">src/main/java</span></code>.</li>
+<li>In Eclipse IDE root location is also known as “default package”.</li>
 </ul>
-<img alt="../_images/ProjectStructure_ScanScope.png" src="../_images/ProjectStructure_ScanScope.png" />
-<ul>
-<li><p class="first">A Test suite can only execute test cases that are within the runner’s scan scope.</p>
-</li>
-<li><p class="first">Test suites can share one or more test cases. Example as shown below:</p>
-<blockquote>
-<div><ul class="simple">
-<li>Test Suite1 shares test cases with Suite2 and Suite3.</li>
-<li>Test Suite2 and Suite3 do not share any test cases with each other.</li>
-</ul>
-</div></blockquote>
-</li>
-</ul>
-<img alt="../_images/ProjectStructure_ScanScope.png" src="../_images/ProjectStructure_ScanScope.png" />
 </div>
 </div>
 

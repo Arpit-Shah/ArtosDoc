@@ -4,7 +4,7 @@ Implement Project
 Recommended Project Structures
 ##############################
 
-Feature Based Structure
+Feature Structure
 =======================
 
 * Packages are organized based on features.
@@ -22,8 +22,8 @@ Super Structure
 
 .. image:: ProjectStructure_Super.png
 
-Tree Structure
-==============
+Tree Structure (Feature Tree)
+=============================
 
 This structure is a mixture of the above structures.
 

@@ -41,7 +41,7 @@ ARTOS makes use of Java annotations for most of its features. A list of supporte
 	@BeforeTestUnit, Method, Annotated method is invoked before each test units of a test suite if **implemented inside a test runner** of a test suite. Annotated method is invoked before each test units within a particular test case if **implemented inside same test case**
 	@AfterTestUnit, Method, Annotated method is invoked after each test units of a test suite if **implemented inside a test runner** of a test suite. Annotated method is invoked after each test units of a particular test case if **implemented inside same test case**
 	@DataProvider, Method, Annotated method(s) are marked as a supplier of data for the test case(s).
-	@ExpectedException, Class & Method, An annotation used to specify list of exceptions and/or exception message. Attribute values are used to derive test outcome
+	@ExpectedException, Method, An annotation used to specify list of exceptions and/or exception message. Attribute values are used to derive test outcome
 	@Group, Class & Method, An annotation used to specify list of group test case or test unit belongs to. 
 	@KnownToFail, Class & Method, An annotation used to mark a test case or a test unit as known to fail. If marked test unit or a test case did not fail with outcome KTF then it will be marked as failure
 
