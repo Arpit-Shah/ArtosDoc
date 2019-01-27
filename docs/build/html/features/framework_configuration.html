@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Test Status" href="teststatus.html" />
+    <link rel="next" title="Logging Framework" href="logging.html" />
     <link rel="prev" title="Generate Default Configurations" href="../howto/generate-default-configuration.html" /> 
 
   
@@ -90,7 +90,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../introduction/introduction.html">ARTOS (Art of System Testing)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction/system-requirement.html">System Requirements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction/pre-requisite.html">Project Pre-Requisite</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../introduction/testsuite.html">Test Suite &amp; Scan Scope</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/testsuite.html">Test Suite &amp; Test Runner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/teststatus.html">Test Status</a></li>
 </ul>
 <p class="caption"><span class="caption-text">How To:</span></p>
 <ul>
@@ -113,7 +114,6 @@
 <li class="toctree-l2"><a class="reference internal" href="#example">Example</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="teststatus.html">Test Status</a></li>
 <li class="toctree-l1"><a class="reference internal" href="logging.html">Logging Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="logging.html#off-line-extent-report">Off-line Extent Report</a></li>
 <li class="toctree-l1"><a class="reference internal" href="logging.html#real-time-logging">Real Time Logging</a></li>
@@ -380,7 +380,7 @@
 <table class="docutils footnote" frame="void" id="id8" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><p class="first">Log file path construction: “logRootDir + test suite packageName + log filename”.</p>
+<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td><p class="first">Log file path construction: “logRootDir + test suite packageName + log file”.</p>
 <div class="last highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">Example</span> <span class="p">:</span> <span class="o">/</span><span class="n">reporting</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="n">artos</span><span class="o">.</span><span class="n">featuretest</span><span class="o">/</span><span class="n">com</span><span class="o">.</span><span class="n">artos</span><span class="o">.</span><span class="n">tests_0_1546845327744</span><span class="o">-</span><span class="nb">all</span><span class="o">.</span><span class="n">log</span>
 </pre></div>
 </div>
@@ -405,23 +405,23 @@
 <table class="docutils footnote" frame="void" id="id10" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label">[4]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id5">2</a>, <a class="fn-backref" href="#id6">3</a>)</em> <p>When enabled log file and reports are generated with following specification.</p>
+<tr><td class="label">[4]</td><td><em>(<a class="fn-backref" href="#id4">1</a>, <a class="fn-backref" href="#id5">2</a>, <a class="fn-backref" href="#id6">3</a>)</em> <p>When enabled: Log files and reports are generated with following specification.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">File</span> <span class="n">naming</span> <span class="n">convention</span><span class="p">:</span>
-<span class="go">Runner package name + Thread number + Thread name (Optional) + Time stamp + Type</span>
+<span class="go">Runner package name + Thread number + TestSuite name (Optional) + Time stamp + Type</span>
 </pre></div>
 </div>
 <div class="highlight-XML notranslate"><div class="highlight"><pre><span></span>// Text log file example
-* com.artos.feature1_0_1546845327744-all.log
-* com.artos.feature1_0_1546845327744-realtime.log
-* com.artos.feature1_0_1546845327744-summary.log
+* com.artos.feature1_0_xyz_1546845327744-all.log
+* com.artos.feature1_0_xyz_1546845327744-realtime.log
+* com.artos.feature1_0_xyz_1546845327744-summary.log
 
 // HTML log file example
-* com.artos.feature1_0_1546845327744-all.html
-* com.artos.feature1_0_1546845327744-realtime.html
-* com.artos.feature1_0_1546845327744-summary.html
+* com.artos.feature1_0_xyz_1546845327744-all.html
+* com.artos.feature1_0_xyz_1546845327744-realtime.html
+* com.artos.feature1_0_xyz_1546845327744-summary.html
 
 // Extent report file example
-* com.artos.feature1_0_1546847059200-all-extent.html
+* com.artos.feature1_0_xyz_1546847059200-all-extent.html
 </pre></div>
 </div>
 </td></tr>
@@ -560,7 +560,6 @@
 <div class="section" id="profile-based-configuration">
 <h2>Profile based configuration:<a class="headerlink" href="#profile-based-configuration" title="Permalink to this headline">¶</a></h2>
 <p>ARTOS supports multiple configuration based on profile names.</p>
-<p>Purpose :</p>
 <p>If user requires different configurations between:</p>
 <blockquote>
 <div><ul class="simple">
@@ -573,9 +572,9 @@
 <ul class="simple">
 <li>User can specify profile name via command line using parameter <code class="docutils literal notranslate"><span class="pre">--profile=&quot;prod&quot;</span></code>.</li>
 <li>Profile name is case in-sensitive.</li>
-<li>If configurations are missing from the file then default value will be used.</li>
-<li>If profile name is not specified then first configuration from the top of the <code class="docutils literal notranslate"><span class="pre">framework_configuration.xml</span></code> file will be used.</li>
-<li>If any configuration line is missing from targeted profile block then previous profile block configuration line will be used. If configuration line is missing from all profile blocks then default values will be used.</li>
+<li>If configurations blocks are missing from the file then default value will be used.</li>
+<li>If profile name is not specified then first configuration block from the top of the <code class="docutils literal notranslate"><span class="pre">framework_configuration.xml</span></code> file will be used.</li>
+<li>If any configuration line is missing from configuration block then previous configuration block line will be used. If configuration line is missing from all blocks then default values will be used.</li>
 </ul>
 </div>
 <div class="section" id="example">
@@ -773,7 +772,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="teststatus.html" class="btn btn-neutral float-right" title="Test Status" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="logging.html" class="btn btn-neutral float-right" title="Logging Framework" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../howto/generate-default-configuration.html" class="btn btn-neutral" title="Generate Default Configurations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

@@ -104,7 +104,7 @@ The ``<logger>`` tag provides a way to configure the log framework and the Exten
 
 ..
 
-.. [2] Log file path construction: "logRootDir + test suite packageName + log filename".
+.. [2] Log file path construction: "logRootDir + test suite packageName + log file".
 
 	>>> Example : /reporting/com.artos.featuretest/com.artos.tests_0_1546845327744-all.log
 
@@ -126,26 +126,26 @@ The ``<logger>`` tag provides a way to configure the log framework and the Exten
 
 ..
 
-.. [4] When enabled log file and reports are generated with following specification.
+.. [4] When enabled: Log files and reports are generated with following specification.
 
 	>>> File naming convention:
-	Runner package name + Thread number + Thread name (Optional) + Time stamp + Type
+	Runner package name + Thread number + TestSuite name (Optional) + Time stamp + Type
 
 	.. code-block:: XML
 		:emphasize-lines: 0
 
 		// Text log file example
-		* com.artos.feature1_0_1546845327744-all.log
-		* com.artos.feature1_0_1546845327744-realtime.log
-		* com.artos.feature1_0_1546845327744-summary.log
+		* com.artos.feature1_0_xyz_1546845327744-all.log
+		* com.artos.feature1_0_xyz_1546845327744-realtime.log
+		* com.artos.feature1_0_xyz_1546845327744-summary.log
 
 		// HTML log file example
-		* com.artos.feature1_0_1546845327744-all.html
-		* com.artos.feature1_0_1546845327744-realtime.html
-		* com.artos.feature1_0_1546845327744-summary.html
+		* com.artos.feature1_0_xyz_1546845327744-all.html
+		* com.artos.feature1_0_xyz_1546845327744-realtime.html
+		* com.artos.feature1_0_xyz_1546845327744-summary.html
 
 		// Extent report file example
-		* com.artos.feature1_0_1546847059200-all-extent.html
+		* com.artos.feature1_0_xyz_1546847059200-all-extent.html
 
 	..
 ..
@@ -205,8 +205,6 @@ Profile based configuration:
 
 ARTOS supports multiple configuration based on profile names.
 
-Purpose : 
-
 If user requires different configurations between:
 
 	* Development and production environments OR
@@ -217,9 +215,9 @@ Then user can create multiple configurations within same file with unique profil
 
 * User can specify profile name via command line using parameter ``--profile="prod"``.
 * Profile name is case in-sensitive.
-* If configurations are missing from the file then default value will be used.
-* If profile name is not specified then first configuration from the top of the ``framework_configuration.xml`` file will be used.
-* If any configuration line is missing from targeted profile block then previous profile block configuration line will be used. If configuration line is missing from all profile blocks then default values will be used. 
+* If configurations blocks are missing from the file then default value will be used.
+* If profile name is not specified then first configuration block from the top of the ``framework_configuration.xml`` file will be used.
+* If any configuration line is missing from configuration block then previous configuration block line will be used. If configuration line is missing from all blocks then default values will be used. 
 
 Example
 #######

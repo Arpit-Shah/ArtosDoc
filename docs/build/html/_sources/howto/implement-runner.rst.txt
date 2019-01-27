@@ -1,10 +1,10 @@
 Implement Runner
 ****************
 
-A runner is the entry point to a test application. A project can have one or more test runners. Test cases inside runner's scan scope can be included in the test suite. A runner is a Java class which meets the following requirements:
+A runner is a Java class which meets the following requirements:
 
-* Class contains ``main`` method.
-* The ``main`` method invokes ``run`` method from the ARTOS' ``Runner()`` class object.
+* Class is ``public`` and implements ``main()`` method.
+* The ``main()`` method invokes ARTOS runner object as shown in below example.
 
 Steps
 
@@ -22,7 +22,7 @@ Steps
 	public class ArtosMain {
 		public static void main(String[] args) throws Exception {
 			Runner runner = new Runner(ArtosMain.class);
-			runner.run(args, null, 1);
+			runner.run(args);
 		}
 	}
 ..

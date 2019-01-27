@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Test Suite &amp; Scan Scope &mdash; Artos (Art of System Testing) 01.00.0000 documentation</title>
+  <title>Test Suite &amp; Test Runner &mdash; Artos (Art of System Testing) 01.00.0000 documentation</title>
   
 
   
@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Implement Project" href="../howto/implement-project-structure.html" />
+    <link rel="next" title="Test Status" href="teststatus.html" />
     <link rel="prev" title="Project Pre-Requisite" href="pre-requisite.html" /> 
 
   
@@ -90,11 +90,13 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">ARTOS (Art of System Testing)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="system-requirement.html">System Requirements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pre-requisite.html">Project Pre-Requisite</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Test Suite &amp; Scan Scope</a><ul>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Test Suite &amp; Test Runner</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#scan-scope">Scan Scope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-runner">The Runner</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#test-suite">Test Suite</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#test-runner">Test Runner</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="teststatus.html">Test Status</a></li>
 </ul>
 <p class="caption"><span class="caption-text">How To:</span></p>
 <ul>
@@ -109,7 +111,6 @@
 <p class="caption"><span class="caption-text">Information:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../features/framework_configuration.html">Framework Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../features/teststatus.html">Test Status</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../features/logging.html">Logging Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../features/logging.html#off-line-extent-report">Off-line Extent Report</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../features/logging.html#real-time-logging">Real Time Logging</a></li>
@@ -162,7 +163,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Test Suite &amp; Scan Scope</li>
+      <li>Test Suite &amp; Test Runner</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -181,40 +182,27 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="test-suite-scan-scope">
-<h1>Test Suite &amp; Scan Scope<a class="headerlink" href="#test-suite-scan-scope" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="test-suite">
-<h2>Test Suite<a class="headerlink" href="#test-suite" title="Permalink to this headline">¶</a></h2>
-<p>ARTOS project is a Java project that is made up of one or more test suites. A test suite consists of two components:</p>
-<ul class="simple">
-<li>A Runner</li>
-<li>Test cases</li>
-</ul>
-<p>A test suite can only execute test cases that are within its Runner’s scan scope <a class="footnote-reference" href="#id3" id="id1">[1]</a>. Test suites can share one or more test cases.</p>
+  <div class="section" id="test-suite-test-runner">
+<h1>Test Suite &amp; Test Runner<a class="headerlink" href="#test-suite-test-runner" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="scan-scope">
+<h2>Scan Scope<a class="headerlink" href="#scan-scope" title="Permalink to this headline">¶</a></h2>
+<p>A section of the Java project that will be scanned during the search of test cases is called a scan scope. ARTOS runner scans a section of Java project as an initial step of test suite execution. A class which initiates this scan is called the <strong>Runner</strong>. The Runner only scans withing same package or its child packages. Scanned section is considered as <strong>Scan Scope</strong> of the Runner.</p>
+<img alt="../_images/ScanScope.png" src="../_images/ScanScope.png" />
 </div>
-<div class="section" id="test-runner">
-<h2>Test Runner<a class="headerlink" href="#test-runner" title="Permalink to this headline">¶</a></h2>
-<p>The runner is the entry point to a test suite.</p>
+<div class="section" id="the-runner">
+<h2>The Runner<a class="headerlink" href="#the-runner" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>Master Runner - A Runner inside root location of the project <a class="footnote-reference" href="#id4" id="id2">[2]</a> is called <strong>Master Runner</strong> which has visibility of all test cases within a project.</li>
-<li>Feature Runner - A Runner created inside individual packages is called <strong>Feature Runner</strong>. Feature Runners have visibility of all test cases within same package or its sub-packages.</li>
+<li>A Runner is the <code class="docutils literal notranslate"><span class="pre">public</span></code> class which is an entry point to a test suite.</li>
+<li>A Runner class contains the <code class="docutils literal notranslate"><span class="pre">main()</span></code> method.</li>
+<li>A Runner performs a scan within its scan scope in search of test cases (Classes annotated with <code class="docutils literal notranslate"><span class="pre">&#64;TestCase</span></code> annotation).</li>
+<li>A Runner at project root location <a class="footnote-reference" href="#id2" id="id1">[1]</a> is called a <strong>Master Runner</strong> which has visibility of all test cases within a project.</li>
+<li>A Runner created within individual package is called a <strong>Feature Runner</strong> which has visibility inside its own package or its sub-packages.</li>
+<li>A test project can have more than one Runner.</li>
 </ul>
-<table class="docutils footnote" frame="void" id="id3" rules="none">
+<table class="docutils footnote" frame="void" id="id2" rules="none">
 <colgroup><col class="label" /><col /></colgroup>
 <tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Scan Scope</td></tr>
-</tbody>
-</table>
-<p>A section of the Java project that will be scanned during the search of test cases is called a scan scope.</p>
-<ul class="simple">
-<li>Master Runner - Entire project test cases are within a scan scope</li>
-<li>Feature Runner - Test cases within same package or its sub-packages are within a scan scope</li>
-</ul>
-<img alt="../_images/MasterRunner_ScanScope.png" src="../_images/MasterRunner_ScanScope.png" />
-<table class="docutils footnote" frame="void" id="id4" rules="none">
-<colgroup><col class="label" /><col /></colgroup>
-<tbody valign="top">
-<tr><td class="label"><a class="fn-backref" href="#id2">[2]</a></td><td>Project Root location</td></tr>
+<tr><td class="label"><a class="fn-backref" href="#id1">[1]</a></td><td>Project Root location</td></tr>
 </tbody>
 </table>
 <ul class="simple">
@@ -222,6 +210,17 @@
 <li>Maven project root location =&gt; <code class="docutils literal notranslate"><span class="pre">src/main/java</span></code>.</li>
 <li>In Eclipse IDE root location is also known as “default package”.</li>
 </ul>
+<img alt="../_images/RunnerType.png" src="../_images/RunnerType.png" />
+</div>
+<div class="section" id="test-suite">
+<h2>Test Suite<a class="headerlink" href="#test-suite" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>A Runner and test cases within Runner’s scan scope combined consists a <strong>Test Suite</strong>.</li>
+<li>A project contains as many test suites as number of test Runners.</li>
+<li>A test suite can not execute test cases outside its Runner’s scan scope</li>
+<li>Test suites may share one or more test cases.</li>
+</ul>
+<img alt="../_images/MasterRunner_ScanScope.png" src="../_images/MasterRunner_ScanScope.png" />
 </div>
 </div>
 
@@ -233,7 +232,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../howto/implement-project-structure.html" class="btn btn-neutral float-right" title="Implement Project" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="teststatus.html" class="btn btn-neutral float-right" title="Test Status" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="pre-requisite.html" class="btn btn-neutral" title="Project Pre-Requisite" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

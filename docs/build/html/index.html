@@ -89,7 +89,8 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction/introduction.html">ARTOS (Art of System Testing)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/system-requirement.html">System Requirements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/pre-requisite.html">Project Pre-Requisite</a></li>
-<li class="toctree-l1"><a class="reference internal" href="introduction/testsuite.html">Test Suite &amp; Scan Scope</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction/testsuite.html">Test Suite &amp; Test Runner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction/teststatus.html">Test Status</a></li>
 </ul>
 <p class="caption"><span class="caption-text">How To:</span></p>
 <ul>
@@ -104,7 +105,6 @@
 <p class="caption"><span class="caption-text">Information:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="features/framework_configuration.html">Framework Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="features/teststatus.html">Test Status</a></li>
 <li class="toctree-l1"><a class="reference internal" href="features/logging.html">Logging Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="features/logging.html#off-line-extent-report">Off-line Extent Report</a></li>
 <li class="toctree-l1"><a class="reference internal" href="features/logging.html#real-time-logging">Real Time Logging</a></li>
@@ -184,6 +184,7 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction/introduction.html">ARTOS (Art of System Testing)</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="introduction/introduction.html#framework-glossary">Framework Glossary</a></li>
 <li class="toctree-l2"><a class="reference internal" href="introduction/introduction.html#annotations">Annotations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/introduction.html#testcontext">TestContext</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="introduction/system-requirement.html">System Requirements</a><ul>
@@ -196,9 +197,14 @@
 <li class="toctree-l2"><a class="reference internal" href="introduction/pre-requisite.html#eclipse-sdk">Eclipse SDK</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="introduction/testsuite.html">Test Suite &amp; Scan Scope</a><ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction/testsuite.html">Test Suite &amp; Test Runner</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction/testsuite.html#scan-scope">Scan Scope</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction/testsuite.html#the-runner">The Runner</a></li>
 <li class="toctree-l2"><a class="reference internal" href="introduction/testsuite.html#test-suite">Test Suite</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction/testsuite.html#test-runner">Test Runner</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="introduction/teststatus.html">Test Status</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction/teststatus.html#testunit-vs-testcase-status">TestUnit vs TestCase Status</a></li>
 </ul>
 </li>
 </ul>
@@ -211,10 +217,7 @@
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="howto/implement-runner.html">Implement Runner</a></li>
-<li class="toctree-l1"><a class="reference internal" href="howto/implement-testcase.html">Implement TestCase</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="howto/implement-testcase.html#recommended-test-case-structures">Recommended test case structures :</a></li>
-</ul>
-</li>
+<li class="toctree-l1"><a class="reference internal" href="howto/implement-testcase.html">Implement TestCase</a></li>
 <li class="toctree-l1"><a class="reference internal" href="howto/implement-testunit.html">Implement TestUnit</a></li>
 <li class="toctree-l1"><a class="reference internal" href="howto/run-artos.html">Run Artos</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="howto/run-artos.html#command-line">Command line</a></li>
@@ -240,12 +243,6 @@
 <li class="toctree-l2"><a class="reference internal" href="features/framework_configuration.html#features">&lt;features&gt;</a></li>
 <li class="toctree-l2"><a class="reference internal" href="features/framework_configuration.html#profile-based-configuration">Profile based configuration:</a></li>
 <li class="toctree-l2"><a class="reference internal" href="features/framework_configuration.html#example">Example</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="features/teststatus.html">Test Status</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="features/teststatus.html#purpose">Purpose:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="features/teststatus.html#facilities">Facilities:</a></li>
-<li class="toctree-l2"><a class="reference internal" href="features/teststatus.html#usage">Usage:</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="features/logging.html">Logging Framework</a></li>

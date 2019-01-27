@@ -53,7 +53,7 @@ Create a Runner
 	public class ArtosMain {
 		public static void main(String[] args) throws Exception {
 			Runner runner = new Runner(ArtosMain.class);
-			runner.run(args, null, 1);
+			runner.run(args);
 		}
 	}
 
@@ -77,11 +77,11 @@ Create a TestCase
 	import com.artos.framework.infra.TestContext;
 	import com.artos.interfaces.TestExecutable;
 
-	@TestPlan(preparedBy = "ArpitS", preparationDate = "1/1/2018", bdd = "given project has no errors then hello world will be printed")
-	@TestCase(skip = false, sequence = 0)
+	@TestPlan(preparedBy = "ArpitS", preparationDate = "1/1/2018", bdd = "given project has no errors then Hello World will be printed")
+	@TestCase()
 	public class TestCase_1 implements TestExecutable {
 
-		@Unit(skip = false, sequence = 1)
+		@Unit()
 		public void unit_test1(TestContext context) throws Exception {
 			// --------------------------------------------------------------------------------------------
 			// Print on console
@@ -91,7 +91,7 @@ Create a TestCase
 			// --------------------------------------------------------------------------------------------
 		}
 
-		@Unit(skip = false, sequence = 2)
+		@Unit()
 		public void unit_test2(TestContext context) throws Exception {
 			// --------------------------------------------------------------------------------------------
 			// Print on console
@@ -104,5 +104,7 @@ Create a TestCase
 
 ..
 
-* Invoke main() method by running project as Java application.
+* Invoke ``main()`` method by running project as Java application.
 * You have successfully executed your first test case using ARTOS.
+* Notice logs generated in ``./reporting`` directory.
+* Notice configuration files generated in ``./conf`` directory.

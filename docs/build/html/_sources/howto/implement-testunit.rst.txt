@@ -3,8 +3,7 @@ Implement TestUnit
 
 The test unit is a Java method which meets the following requirements:
 
-* Method is public.
-* Method belongs to a class annotated as test case.
+* Method is ``public``and belongs to a test case.
 * Method is annotated with ``@Unit`` annotation.
 * Method signature is ``public void methodName(TestContext context)``.
 * Method is independent from other test units.
@@ -22,7 +21,7 @@ Steps
 
 .. code-block:: Java
 	:linenos:
-	:emphasize-lines: 0
+	:emphasize-lines: 13, 23
 
 	package com.tests;
 
@@ -33,10 +32,10 @@ Steps
 	import com.artos.interfaces.TestExecutable;
 
 	@TestPlan(preparedBy = "ArpitS", preparationDate = "1/1/2018", bdd = "given project has no errors then hello world will be printed")
-	@TestCase(skip = false, sequence = 0)
+	@TestCase()
 	public class TestCase_1 implements TestExecutable {
 
-		@Unit(skip = false, sequence = 1)
+		@Unit()
 		public void unit_test1(TestContext context) throws Exception {
 			// --------------------------------------------------------------------------------------------
 			// Print on console
@@ -46,7 +45,7 @@ Steps
 			// --------------------------------------------------------------------------------------------
 		}
 
-		@Unit(skip = false, sequence = 2)
+		@Unit()
 		public void unit_test2(TestContext context) throws Exception {
 			// --------------------------------------------------------------------------------------------
 			// Print on console

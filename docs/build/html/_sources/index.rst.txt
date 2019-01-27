@@ -9,6 +9,7 @@ ARTOS Tutorial
 	introduction/system-requirement
 	introduction/pre-requisite
 	introduction/testsuite
+	introduction/teststatus
 
 .. toctree::
 	:maxdepth: 2
@@ -27,7 +28,7 @@ ARTOS Tutorial
 	:caption: Information:
 
 	features/framework_configuration
-	features/teststatus
+	
 	features/logging
 	annotation/testcase
 	annotation/testplan

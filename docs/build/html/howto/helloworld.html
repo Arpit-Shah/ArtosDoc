@@ -90,7 +90,8 @@
 <li class="toctree-l1"><a class="reference internal" href="../introduction/introduction.html">ARTOS (Art of System Testing)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction/system-requirement.html">System Requirements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../introduction/pre-requisite.html">Project Pre-Requisite</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../introduction/testsuite.html">Test Suite &amp; Scan Scope</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/testsuite.html">Test Suite &amp; Test Runner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../introduction/teststatus.html">Test Status</a></li>
 </ul>
 <p class="caption"><span class="caption-text">How To:</span></p>
 <ul class="current">
@@ -110,7 +111,6 @@
 <p class="caption"><span class="caption-text">Information:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../features/framework_configuration.html">Framework Configuration</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../features/teststatus.html">Test Status</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../features/logging.html">Logging Framework</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../features/logging.html#off-line-extent-report">Off-line Extent Report</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../features/logging.html#real-time-logging">Real Time Logging</a></li>
@@ -247,7 +247,7 @@
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">ArtosMain</span> <span class="o">{</span>
         <span class="kd">public</span> <span class="kd">static</span> <span class="kt">void</span> <span class="nf">main</span><span class="o">(</span><span class="n">String</span><span class="o">[]</span> <span class="n">args</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
                 <span class="n">Runner</span> <span class="n">runner</span> <span class="o">=</span> <span class="k">new</span> <span class="n">Runner</span><span class="o">(</span><span class="n">ArtosMain</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
-                <span class="n">runner</span><span class="o">.</span><span class="na">run</span><span class="o">(</span><span class="n">args</span><span class="o">,</span> <span class="kc">null</span><span class="o">,</span> <span class="mi">1</span><span class="o">);</span>
+                <span class="n">runner</span><span class="o">.</span><span class="na">run</span><span class="o">(</span><span class="n">args</span><span class="o">);</span>
         <span class="o">}</span>
 <span class="o">}</span>
 </pre></div>
@@ -298,11 +298,11 @@
 <span class="kn">import</span> <span class="nn">com.artos.framework.infra.TestContext</span><span class="o">;</span>
 <span class="kn">import</span> <span class="nn">com.artos.interfaces.TestExecutable</span><span class="o">;</span>
 
-<span class="nd">@TestPlan</span><span class="o">(</span><span class="n">preparedBy</span> <span class="o">=</span> <span class="s">&quot;ArpitS&quot;</span><span class="o">,</span> <span class="n">preparationDate</span> <span class="o">=</span> <span class="s">&quot;1/1/2018&quot;</span><span class="o">,</span> <span class="n">bdd</span> <span class="o">=</span> <span class="s">&quot;given project has no errors then hello world will be printed&quot;</span><span class="o">)</span>
-<span class="nd">@TestCase</span><span class="o">(</span><span class="n">skip</span> <span class="o">=</span> <span class="kc">false</span><span class="o">,</span> <span class="n">sequence</span> <span class="o">=</span> <span class="mi">0</span><span class="o">)</span>
+<span class="nd">@TestPlan</span><span class="o">(</span><span class="n">preparedBy</span> <span class="o">=</span> <span class="s">&quot;ArpitS&quot;</span><span class="o">,</span> <span class="n">preparationDate</span> <span class="o">=</span> <span class="s">&quot;1/1/2018&quot;</span><span class="o">,</span> <span class="n">bdd</span> <span class="o">=</span> <span class="s">&quot;given project has no errors then Hello World will be printed&quot;</span><span class="o">)</span>
+<span class="nd">@TestCase</span><span class="o">()</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="nc">TestCase_1</span> <span class="kd">implements</span> <span class="n">TestExecutable</span> <span class="o">{</span>
 
-        <span class="nd">@Unit</span><span class="o">(</span><span class="n">skip</span> <span class="o">=</span> <span class="kc">false</span><span class="o">,</span> <span class="n">sequence</span> <span class="o">=</span> <span class="mi">1</span><span class="o">)</span>
+        <span class="nd">@Unit</span><span class="o">()</span>
         <span class="kd">public</span> <span class="kt">void</span> <span class="nf">unit_test1</span><span class="o">(</span><span class="n">TestContext</span> <span class="n">context</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
                 <span class="c1">// --------------------------------------------------------------------------------------------</span>
                 <span class="c1">// Print on console</span>
@@ -312,7 +312,7 @@
                 <span class="c1">// --------------------------------------------------------------------------------------------</span>
         <span class="o">}</span>
 
-        <span class="nd">@Unit</span><span class="o">(</span><span class="n">skip</span> <span class="o">=</span> <span class="kc">false</span><span class="o">,</span> <span class="n">sequence</span> <span class="o">=</span> <span class="mi">2</span><span class="o">)</span>
+        <span class="nd">@Unit</span><span class="o">()</span>
         <span class="kd">public</span> <span class="kt">void</span> <span class="nf">unit_test2</span><span class="o">(</span><span class="n">TestContext</span> <span class="n">context</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">Exception</span> <span class="o">{</span>
                 <span class="c1">// --------------------------------------------------------------------------------------------</span>
                 <span class="c1">// Print on console</span>
@@ -325,8 +325,10 @@
 </pre></div>
 </td></tr></table></div>
 <ul class="simple">
-<li>Invoke main() method by running project as Java application.</li>
+<li>Invoke <code class="docutils literal notranslate"><span class="pre">main()</span></code> method by running project as Java application.</li>
 <li>You have successfully executed your first test case using ARTOS.</li>
+<li>Notice logs generated in <code class="docutils literal notranslate"><span class="pre">./reporting</span></code> directory.</li>
+<li>Notice configuration files generated in <code class="docutils literal notranslate"><span class="pre">./conf</span></code> directory.</li>
 </ul>
 </div>
 </div>
