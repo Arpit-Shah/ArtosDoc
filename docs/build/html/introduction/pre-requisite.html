@@ -89,15 +89,7 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">ARTOS (Art of System Testing)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="system-requirement.html">System Requirements</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Project Pre-Requisite</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#add-artos-jar-as-a-dependency">Add Artos Jar as a dependency</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#eclipse-sdk">Eclipse SDK</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#install-ansi-plug-in-for-linux-os">Install ANSI plug-in for Linux OS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#configure-test-templates">Configure test templates</a></li>
-</ul>
-</li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Project Pre-Requisite</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testsuite.html">Test Suite &amp; Test Runner</a></li>
 <li class="toctree-l1"><a class="reference internal" href="teststatus.html">Test Status</a></li>
 </ul>
@@ -106,10 +98,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../howto/implement-project-structure.html">Implement Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howto/implement-runner.html">Implement Runner</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howto/implement-testcase.html">Implement TestCase</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../howto/implement-testunit.html">Implement TestUnit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../howto/run-artos.html">Run Artos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/run-artos.html">Run Test Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howto/helloworld.html">Hello World</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howto/generate-default-configuration.html">Generate Default Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/generate-test-script.html">Generate Test Script</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Information:</span></p>
 <ul>
@@ -180,6 +172,15 @@
   </ul>
 
   
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="testsuite.html" class="btn btn-neutral float-right" title="Test Suite &amp; Test Runner" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="system-requirement.html" class="btn btn-neutral" title="System Requirements" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -248,8 +249,8 @@
 <li><p class="first">Two templates will be added</p>
 <blockquote>
 <div><ul class="simple">
-<li>Artos_main</li>
-<li>Artos_Test</li>
+<li>Artos_Runner</li>
+<li>Artos_TestCase</li>
 </ul>
 </div></blockquote>
 </li>
@@ -258,7 +259,7 @@
 <ul class="simple">
 <li>Create new Java class.</li>
 <li>Select and delete all the content of the class.</li>
-<li>Type <strong>Art</strong> and press <strong>CTRL+SPACE</strong>.</li>
+<li>Type <strong>art</strong> and press <strong>CTRL+SPACE</strong>.</li>
 <li>Template suggestion list will appear so user can select appropriate template.</li>
 </ul>
 <img alt="../_images/TemplateSelection.png" src="../_images/TemplateSelection.png" />

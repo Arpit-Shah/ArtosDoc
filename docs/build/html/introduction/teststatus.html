@@ -91,20 +91,17 @@
 <li class="toctree-l1"><a class="reference internal" href="system-requirement.html">System Requirements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pre-requisite.html">Project Pre-Requisite</a></li>
 <li class="toctree-l1"><a class="reference internal" href="testsuite.html">Test Suite &amp; Test Runner</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Test Status</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#testunit-vs-testcase-status">TestUnit vs TestCase Status</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Test Status</a></li>
 </ul>
 <p class="caption"><span class="caption-text">How To:</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../howto/implement-project-structure.html">Implement Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howto/implement-runner.html">Implement Runner</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howto/implement-testcase.html">Implement TestCase</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../howto/implement-testunit.html">Implement TestUnit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../howto/run-artos.html">Run Artos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/run-artos.html">Run Test Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howto/helloworld.html">Hello World</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howto/generate-default-configuration.html">Generate Default Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/generate-test-script.html">Generate Test Script</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Information:</span></p>
 <ul>
@@ -175,6 +172,15 @@
   </ul>
 
   
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="../howto/implement-project-structure.html" class="btn btn-neutral float-right" title="Implement Project" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="testsuite.html" class="btn btn-neutral" title="Test Suite &amp; Test Runner" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -182,7 +188,7 @@
             
   <div class="section" id="test-status">
 <h1>Test Status<a class="headerlink" href="#test-status" title="Permalink to this headline">¶</a></h1>
-<p>ARTOS supported test status and test severity is listed below.</p>
+<p>Test status allows user to update test status during test unit execution. Test status can be updated as frequently as required. Each status update will be visible in log file. Highest severity status update is recorded as test outcome.</p>
 <table border="1" class="colwidths-given docutils">
 <colgroup>
 <col width="15%" />
@@ -214,13 +220,13 @@
 </tr>
 </tbody>
 </table>
-<p>Test status allows user to update test status during test unit execution. Test status can be updated as frequently as required. Each status update will be visible in log file. Highest severity status update is recorded as test outcome.</p>
 <p>Test status can be updated using: <code class="docutils literal notranslate"><span class="pre">TestContext().setTestStatus(TestStatus.FAIL,</span> <span class="pre">&quot;Test</span> <span class="pre">did</span> <span class="pre">bad</span> <span class="pre">thing..&quot;);</span></code></p>
-<div class="admonition note">
-<p class="first admonition-title">Note</p>
-<p class="last">It is recommended that short description/reason provided during test status update.</p>
+<div class="admonition-recommended admonition">
+<p class="first admonition-title">Recommended</p>
+<p class="last">Add short description during every status update.</p>
 </div>
-<p><strong>Example:</strong> Below sample code updates test status multiple time in single test unit. Most sever status update is <code class="docutils literal notranslate"><span class="pre">TestStatus.FAIL</span></code> thus test outcome will be <strong>FAIL</strong>.</p>
+<div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Example code with multiple status updates. Outcome will be <strong>FAIL</strong></span><a class="headerlink" href="#id1" title="Permalink to this code">¶</a></div>
 <div class="highlight-Java notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -280,13 +286,15 @@
 <span class="o">}</span>
 </pre></div>
 </td></tr></table></div>
+</div>
 <div class="section" id="testunit-vs-testcase-status">
 <h2>TestUnit vs TestCase Status<a class="headerlink" href="#testunit-vs-testcase-status" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li>Test unit outcome is most sever test status update during test unit execution.</li>
 <li>Test case outcome is most sever test outcome among all the test units execution.</li>
 </ul>
-<p><strong>Example:</strong> Below sample code has multiple test units with different outcomes. Most sever test unit outcome is set as test case outcome that is <strong>FAIL</strong>.</p>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Example code with multiple unit outcomes. TestCase outcome will be <strong>FAIL</strong></span><a class="headerlink" href="#id2" title="Permalink to this code">¶</a></div>
 <div class="highlight-Java notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -386,6 +394,7 @@
 <span class="o">}</span>
 </pre></div>
 </td></tr></table></div>
+</div>
 </div>
 </div>
 

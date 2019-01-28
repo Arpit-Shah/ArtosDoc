@@ -54,14 +54,14 @@ Import default templates:
 * Import downloaded template.xml file.
 * Two templates will be added
 
-	* Artos_main
-	* Artos_Test
+	* Artos_Runner
+	* Artos_TestCase
 
 Use template:
 
 * Create new Java class.
 * Select and delete all the content of the class.
-* Type **Art** and press **CTRL+SPACE**.
+* Type **art** and press **CTRL+SPACE**.
 * Template suggestion list will appear so user can select appropriate template.
 
 .. image:: TemplateSelection.png

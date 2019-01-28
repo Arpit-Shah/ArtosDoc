@@ -102,7 +102,19 @@ html_sidebars = {
 #
 # html_theme_options = {}
 html_theme_options = {
-    'logo_only': False
+	'canonical_url': '',
+    'analytics_id': 'UA-XXXXXXX-1',  #  Provided by Google in your dashboard
+    'logo_only': False,
+    'display_version': True,
+	# 'bootom' or 'top' or 'both' or 'none'
+    'prev_next_buttons_location': 'both',
+    'style_external_links': False,
+    # Toc options
+    'collapse_navigation': True,
+    'sticky_navigation': True,
+    'navigation_depth': 4,
+    'includehidden': True,
+    'titles_only': True
 }
 
 # The name of an image file (relative to this directory) to place at the top
@@ -165,7 +177,6 @@ latex_documents = [
     (master_doc, 'Artos.tex', u'Artos Documentation',
      u'Arpit Shah & contributors', 'manual'),
 ]
-
 
 # -- Options for manual page output ------------------------------------------
 

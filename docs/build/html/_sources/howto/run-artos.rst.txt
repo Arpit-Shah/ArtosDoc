@@ -1,7 +1,7 @@
-Run Artos
-*********
+Run Test Project
+****************
 
-Artos can be run via
+ARTOS can be run via
 
 * Command line
 * IDE (Example : Eclipse, IntelliJ etc..)
@@ -34,7 +34,10 @@ Command line
 Eclipse IDE
 ###########
 
+Using Runner Class
+==================
+
 * Right click on the test runner class.
-* Select options Run as => Java Application .
+* Select options Run as => Java Application.
 
 .. image:: RunJavaApplication.png

@@ -90,12 +90,7 @@
 <li class="toctree-l1"><a class="reference internal" href="introduction.html">ARTOS (Art of System Testing)</a></li>
 <li class="toctree-l1"><a class="reference internal" href="system-requirement.html">System Requirements</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pre-requisite.html">Project Pre-Requisite</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Test Suite &amp; Test Runner</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#scan-scope">Scan Scope</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#the-runner">The Runner</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#test-suite">Test Suite</a></li>
-</ul>
-</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Test Suite &amp; Test Runner</a></li>
 <li class="toctree-l1"><a class="reference internal" href="teststatus.html">Test Status</a></li>
 </ul>
 <p class="caption"><span class="caption-text">How To:</span></p>
@@ -103,10 +98,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../howto/implement-project-structure.html">Implement Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howto/implement-runner.html">Implement Runner</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howto/implement-testcase.html">Implement TestCase</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../howto/implement-testunit.html">Implement TestUnit</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../howto/run-artos.html">Run Artos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/run-artos.html">Run Test Project</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howto/helloworld.html">Hello World</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../howto/generate-default-configuration.html">Generate Default Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../howto/generate-test-script.html">Generate Test Script</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Information:</span></p>
 <ul>
@@ -177,6 +172,15 @@
   </ul>
 
   
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="teststatus.html" class="btn btn-neutral float-right" title="Test Status" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="pre-requisite.html" class="btn btn-neutral" title="Project Pre-Requisite" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -186,14 +190,13 @@
 <h1>Test Suite &amp; Test Runner<a class="headerlink" href="#test-suite-test-runner" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="scan-scope">
 <h2>Scan Scope<a class="headerlink" href="#scan-scope" title="Permalink to this headline">¶</a></h2>
-<p>A section of the Java project that will be scanned during the search of test cases is called a scan scope. ARTOS runner scans a section of Java project as an initial step of test suite execution. A class which initiates this scan is called the <strong>Runner</strong>. The Runner only scans withing same package or its child packages. Scanned section is considered as <strong>Scan Scope</strong> of the Runner.</p>
+<p>ARTOS runner scans a section of Java project as an initial step of test suite execution. A class which initiates this scan is called the <strong>Runner</strong>. The Runner only scans withing same package or its child packages. A section of the Java project that will be scanned during the search is called a <strong>Scan Scope</strong> of the Runner.</p>
 <img alt="../_images/ScanScope.png" src="../_images/ScanScope.png" />
 </div>
 <div class="section" id="the-runner">
 <h2>The Runner<a class="headerlink" href="#the-runner" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>A Runner is the <code class="docutils literal notranslate"><span class="pre">public</span></code> class which is an entry point to a test suite.</li>
-<li>A Runner class contains the <code class="docutils literal notranslate"><span class="pre">main()</span></code> method.</li>
+<li>A Runner is the entry point to a test suite.</li>
 <li>A Runner performs a scan within its scan scope in search of test cases (Classes annotated with <code class="docutils literal notranslate"><span class="pre">&#64;TestCase</span></code> annotation).</li>
 <li>A Runner at project root location <a class="footnote-reference" href="#id2" id="id1">[1]</a> is called a <strong>Master Runner</strong> which has visibility of all test cases within a project.</li>
 <li>A Runner created within individual package is called a <strong>Feature Runner</strong> which has visibility inside its own package or its sub-packages.</li>
@@ -208,7 +211,7 @@
 <ul class="simple">
 <li>Non-Maven project root location =&gt; <code class="docutils literal notranslate"><span class="pre">src</span></code>.</li>
 <li>Maven project root location =&gt; <code class="docutils literal notranslate"><span class="pre">src/main/java</span></code>.</li>
-<li>In Eclipse IDE root location is also known as “default package”.</li>
+<li><strong>Eclipse IDE</strong> root location is also known as “default package”.</li>
 </ul>
 <img alt="../_images/RunnerType.png" src="../_images/RunnerType.png" />
 </div>

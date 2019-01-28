@@ -11,7 +11,7 @@ Framework Glossary
 	:stub-columns: 0
 	
 	Test Suite, A collection of test cases that are designed specifically to test the system under test
-	Test Runner, A class which is the entry point to a test application. It is responsible for running and tracking test cases from the start to end
+	Test Runner, A class which is the entry point to a test application. |BR| It is responsible for running and tracking test cases from the start to end
 	Test Case, A class which contains set of instructions that will be performed on the system under test
 	Test Unit, A method within a test case that represents the smallest and independent executable unit
 	Test Script, A set of instructions to guide the test runner on how to execute test cases. The test script is represented by xml script
@@ -86,3 +86,4 @@ TestContext
 ###########
 
 Test context is a container that holds test suite related information from start to end of execution. ``TestContext`` object is created per test suite. ``TestContext`` object is passed as an argument to all annotated methods so it remains available throughout test execution cycle. Test context maintains live information about test case. 
+

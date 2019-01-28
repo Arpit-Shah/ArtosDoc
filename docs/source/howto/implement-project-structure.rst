@@ -30,7 +30,5 @@ This structure is a mixture of the above structures.
 * Project contains Runner class in parent/root position and Runner class within each feature packages.
 * The test suite executes limited or all test cases depending on the used Runner.
 
-.. note:: Feature Tree: Suitable structure for test development where only limited test cases are required to be run.
-
 .. image:: ProjectStructure_FeatureTree.png
 

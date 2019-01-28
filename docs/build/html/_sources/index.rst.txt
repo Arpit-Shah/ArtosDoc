@@ -18,10 +18,10 @@ ARTOS Tutorial
 	howto/implement-project-structure
 	howto/implement-runner
 	howto/implement-testcase
-	howto/implement-testunit
 	howto/run-artos
 	howto/helloworld
 	howto/generate-default-configuration
+	howto/generate-test-script
 
 .. toctree::
 	:maxdepth: 2

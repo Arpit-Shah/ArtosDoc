@@ -14,6 +14,7 @@ Steps
 .. code-block:: Java
 	:linenos:
 	:emphasize-lines: 0
+	:caption: Example: Test Runner code
 	
 	package com.tests;
 
