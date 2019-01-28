@@ -6,30 +6,34 @@ ARTOS Tutorial
 	:caption: Introduction:
 
 	introduction/introduction
-	introduction/system-requirement
-	introduction/pre-requisite
-	introduction/testsuite
-	introduction/teststatus
+	introduction/test-suite-test-runner
 
 .. toctree::
 	:maxdepth: 2
-	:caption: How To:
+	:caption: ARTOS Project:
 
-	howto/implement-project-structure
-	howto/implement-runner
-	howto/implement-testcase
-	howto/run-artos
-	howto/helloworld
-	howto/generate-default-configuration
-	howto/generate-test-script
+	introduction/system-setup
+	introduction/implement-project-structure
+	introduction/implement-runner
+	introduction/implement-test-case
+	introduction/run-artos
+
+.. toctree::
+	:maxdepth: 2
+	:caption: Tutorial:
+
+	introduction/helloworld
 
 .. toctree::
 	:maxdepth: 2
 	:caption: Information:
 
-	features/framework_configuration
-	
-	features/logging
-	annotation/testcase
-	annotation/testplan
-	annotation/expectedException
+	introduction/test-status
+	introduction/test-context
+	introduction/test-script
+	introduction/test-case
+	introduction/test-plan
+	introduction/default-configuration
+	introduction/framework_configuration
+	introduction/logging
+	introduction/expectedException

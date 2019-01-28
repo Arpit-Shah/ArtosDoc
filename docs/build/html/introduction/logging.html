@@ -1,0 +1,562 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Logging Framework &mdash; Artos (Art of System Testing) 01.00.0000 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="@ExpectedException" href="expectedException.html" />
+    <link rel="prev" title="Framework Configuration" href="framework_configuration.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Artos (Art of System Testing)
+          
+
+          
+            
+            <img src="../_static/ArtosFull_vectorised.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                01.00.0000
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">ARTOS (Art of System Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test-suite-test-runner.html">Test Suite &amp; Test Runner</a></li>
+</ul>
+<p class="caption"><span class="caption-text">ARTOS Project:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="system-setup.html">System Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implement-project-structure.html">Implement Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implement-runner.html">Implement Runner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implement-test-case.html">Implement TestCase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run-artos.html">Run Test Project</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="helloworld.html">Hello World</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Information:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="test-status.html">Test Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test-context.html">TestContext</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test-script.html">Parallel Suite Execution &amp; TestScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test-case.html">&#64;TestCase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test-plan.html">&#64;TestPlan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="default-configuration.html">Generate Default Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="framework_configuration.html">Framework Configuration</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Logging Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#off-line-extent-report">Off-line Extent Report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#real-time-logging">Real Time Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="#stop-on-fail">Stop on Fail</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expectedException.html">&#64;ExpectedException</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Artos (Art of System Testing)</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Logging Framework</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/introduction/logging.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="expectedException.html" class="btn btn-neutral float-right" title="@ExpectedException" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="framework_configuration.html" class="btn btn-neutral" title="Framework Configuration" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="logging-framework">
+<h1>Logging Framework<a class="headerlink" href="#logging-framework" title="Permalink to this headline">¶</a></h1>
+<ul>
+<li><p class="first">Purpose:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Logs and reports are heart of any test framework.</p>
+</li>
+<li><p class="first">Artos log framework:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Pre-configured and ready to be used.</li>
+<li>Capable of producing text and/or HTML log files.</li>
+<li>Generates real-time logs which can be used for performance measurement.</li>
+<li>Generates summary report which can be used as customer facing reports. (Separate to Extent Report)</li>
+<li>Provides features which can be very useful in test development.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Facilities:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Two log layouts are supported:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Text layout (Default enabled).</li>
+<li>HTML layout (Default disabled).</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Two log files are generated per test suite execution:</p>
+<blockquote>
+<div><ul class="simple">
+<li>General log file: All logs (Same as console log).</li>
+<li>Real Time log file: Send/receive message logs from connectable interfaces with time-stamp.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Report is generated per test suite:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Summary report: Summarized pass/fail summary with test name, execution time and bug reference number.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Log patterns (decoration):</p>
+<blockquote>
+<div><ul class="simple">
+<li>Decoration enabled pattern:</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;[%-5level][%d{yyyy-MM-dd_HH:mm:ss.SSS}][%t][%F][%M][%c{1}]</span> <span class="pre">-</span> <span class="pre">%msg%n%throwable&quot;</span></code></p>
+<ul class="simple">
+<li>Decoration disabled pattern:</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">&quot;%msg%n%throwable&quot;</span></code></p>
+<p>Refer: <a class="reference external" href="https://logging.apache.org/log4j/2.x/manual/layouts.html">Log4j_Pattern</a></p>
+</div></blockquote>
+</li>
+<li><p class="first">Log level support:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Following log levels are supported:</li>
+</ul>
+<table border="1" class="colwidths-given docutils">
+<colgroup>
+<col width="22%" />
+<col width="78%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Level</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>DEBUG</td>
+<td>Designates fine-grained informational events that are most useful to debug an application.</td>
+</tr>
+<tr class="row-odd"><td>ERROR</td>
+<td>Designates error events that might still allow the application to continue running.</td>
+</tr>
+<tr class="row-even"><td>FATAL</td>
+<td>Designates severe error events that will presumably lead the application to abort.</td>
+</tr>
+<tr class="row-odd"><td>INFO</td>
+<td>Designates informational messages that highlight the progress of the application at coarse level.</td>
+</tr>
+<tr class="row-even"><td>OFF</td>
+<td>The highest possible rank and is intended to turn off logging.</td>
+</tr>
+<tr class="row-odd"><td>TRACE</td>
+<td>Designates finer-grained informational events than the DEBUG.</td>
+</tr>
+<tr class="row-even"><td>WARN</td>
+<td>Designates potentially harmful situations.</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+</li>
+<li><p class="first">Note: Log level can be configured using <code class="docutils literal notranslate"><span class="pre">conf/framework_configuration.xml</span></code> file.</p>
+</li>
+<li><p class="first">Log can be enabled/disabled dynamically (Only applicable to general log)</p>
+<blockquote>
+<div><ul class="simple">
+<li>Disable log dynamically: <code class="docutils literal notranslate"><span class="pre">TestContext().getLogger().disableGeneralLog();</span></code></li>
+<li>Enable log dynamically: <code class="docutils literal notranslate"><span class="pre">TestContext().getLogger().enableGeneralLog();</span></code></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Parallel test suite execution will generate separate log files per test suite.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Log files will be labeled using thread number.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Log files are organized under test suite name for ease of use.</p>
+<blockquote>
+<div><ul class="simple">
+<li>Log files are created under the following hierarchy. <code class="docutils literal notranslate"><span class="pre">RootDir</span> <span class="pre">=&gt;</span> <span class="pre">SubDir</span> <span class="pre">=&gt;</span> <span class="pre">TestSuiteName</span> <span class="pre">=&gt;</span> <span class="pre">Log</span> <span class="pre">file</span></code>.</li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&gt;&gt;&gt; Example: ``./reporting/SN-123/com.test.testsuite1/..``
+</pre></div>
+</div>
+<ul class="simple">
+<li>Root directory and sub directory location can be configured using <code class="docutils literal notranslate"><span class="pre">conf/framework_configuration.xml</span></code> file.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Log framework abstraction</p>
+<blockquote>
+<div><ul class="simple">
+<li>Log framework is abstracted so that log framework can be changed in future without breaking existing test scripts.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Log file tracking</p>
+<blockquote>
+<div><ul class="simple">
+<li>All log files are tracked during runtime. If user requires to retrieve current log files (inclusive of text/HTML) they can utilize this functionality.</li>
+<li>This functionality will also be used to find current log files and attach to email client.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first"><strong>FAIL</strong> stamp injection</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>FAIL</strong> Stamp is injected to log stream straight after test status is updated to FAIL. This allows user to know at which exact line the test case failed during execution.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Log rollover policy</p>
+<blockquote>
+<div><ul class="simple">
+<li>Current log rollover policy is triggered based on a file size of 20MB.</li>
+<li>20MB was chosen to meet emailing requirement. Trigger policy can be exposed to user in future.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Parameterized logging for efficiency</p>
+<blockquote>
+<div><ul class="simple">
+<li>Parameterized logging is less efficient compare to string concatenation but it is efficient in case of log level is reduced to <strong>INFO</strong> or <strong>ERROR</strong>, because system do not have to spend time concatenating string.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Usage:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">Enable/disable text/HTML log files:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Can be configured using <code class="docutils literal notranslate"><span class="pre">conf/framework_configuration.xml</span></code> file.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Change log level and log directory:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Can be configured using <code class="docutils literal notranslate"><span class="pre">conf/framework_configuration.xml</span></code> file.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">logging simple string with level info or debug:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">TestContext().getLogger().info(&quot;This</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">test</span> <span class="pre">String&quot;</span> <span class="pre">+</span> <span class="pre">&quot;This</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">test</span> <span class="pre">String</span> <span class="pre">2&quot;);</span></code>
+<code class="docutils literal notranslate"><span class="pre">TestContext().getLogger().debug(&quot;This</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">test</span> <span class="pre">String&quot;</span> <span class="pre">+</span> <span class="pre">&quot;This</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">test</span> <span class="pre">String</span> <span class="pre">2&quot;);</span></code></p>
+</div></blockquote>
+</li>
+<li><p class="first">logging parameterized string with level info or debug:</p>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">TestContext().getLogger().info(&quot;This</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">test</span> <span class="pre">String</span> <span class="pre">{}</span> <span class="pre">{}&quot;,</span> <span class="pre">&quot;one&quot;,</span> <span class="pre">&quot;two&quot;);</span></code>
+<code class="docutils literal notranslate"><span class="pre">TestContext().getLogger().debug(&quot;This</span> <span class="pre">is</span> <span class="pre">a</span> <span class="pre">test</span> <span class="pre">String</span> <span class="pre">{}</span> <span class="pre">{}&quot;,</span> <span class="pre">&quot;one&quot;,</span> <span class="pre">&quot;two&quot;);</span></code></p>
+<ul class="simple">
+<li>Disable logging during execution time:</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">TestContext().getLogger().disableGeneralLog();</span></code></p>
+<ul class="simple">
+<li>Enable logging during execution time:</li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">TestContext().getLogger().enableGeneralLog();</span></code></p>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="off-line-extent-report">
+<h1>Off-line Extent Report<a class="headerlink" href="#off-line-extent-report" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li>Purpose:</li>
+</ul>
+<p>Professional looking Extent report which can be distributed among customer or external parties.</p>
+<ul>
+<li><p class="first">Facilities:</p>
+<blockquote>
+<div><ul class="simple">
+<li>If Extent configuration file is not present, then framework will generate default configuration file at location <code class="docutils literal notranslate"><span class="pre">conf/extent_configuration.xml</span></code>.</li>
+<li>Artos has inbuilt support for off-line Extent reporting.</li>
+<li>If enabled, Artos will produce Extent report for every test suite execution.</li>
+<li>Extent report includes test name, test writer’s name and test case duration.</li>
+<li>Every test status update and description/reason will be reported via Extent report.</li>
+<li>Final test result with bug reference number will be reported via Extent report.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Usage:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Extent reporting can be enabled/disabled via <code class="docutils literal notranslate"><span class="pre">conf/framework_configuration.xml</span></code> file.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="real-time-logging">
+<h1>Real Time Logging<a class="headerlink" href="#real-time-logging" title="Permalink to this headline">¶</a></h1>
+<ul>
+<li><p class="first">Purpose:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Performance testing requires real-time logs so time between messages can be measured accurately. Artos has inbuilt interface which can be used to provide real time logging.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Facilities:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Artos has inbuilt hooks for real time logging. All inbuilt connectors support real-time logging.</li>
+<li>User can write new connectors by implementing <code class="docutils literal notranslate"><span class="pre">Connectable</span></code> interface and use listener <code class="docutils literal notranslate"><span class="pre">RealTimeLogEventListener</span></code> to capture real-time log events.</li>
+<li>Real time logs are printed with time stamp, user is not allowed to disable time-stamp.</li>
+<li>If test suites are executed in parallel then separate real time log file will be produced per test suite.</li>
+<li>Real time log file will roll over at 20MB of file size.</li>
+<li>Real time logs cannot be disabled. If <cite>RealTimeLogEventListener</cite> is not provided then log file will remain empty.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Usage:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Collect send receive events in real time with time stamp.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="stop-on-fail">
+<h1>Stop on Fail<a class="headerlink" href="#stop-on-fail" title="Permalink to this headline">¶</a></h1>
+<ul>
+<li><dl class="first docutils">
+<dt>Purpose:</dt>
+<dd><ul class="first last simple">
+<li>Depending on the goal, some user may want to continue next test execution after a test case failure, in other case user may choose to stop after very first test case failure. Artos support both behaviors.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">Facilities:</p>
+<blockquote>
+<div><ul class="simple">
+<li>By default, Artos is setup to stop on first failure. it can be configured to continue executing rest of the test cases.</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">Usage:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Stop on Fail feature can be enabled/disabled via <code class="docutils literal notranslate"><span class="pre">conf/framework_configuration.xml</span></code> file.</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="expectedException.html" class="btn btn-neutral float-right" title="@ExpectedException" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="framework_configuration.html" class="btn btn-neutral" title="Framework Configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018-2020, Arpit Shah &amp; Contributors
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'01.00.0000',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

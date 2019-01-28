@@ -1,0 +1,315 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Implement Project &mdash; Artos (Art of System Testing) 01.00.0000 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Implement Runner" href="implement-runner.html" />
+    <link rel="prev" title="System Setup" href="system-setup.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Artos (Art of System Testing)
+          
+
+          
+            
+            <img src="../_static/ArtosFull_vectorised.svg" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                01.00.0000
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Introduction:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">ARTOS (Art of System Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test-suite-test-runner.html">Test Suite &amp; Test Runner</a></li>
+</ul>
+<p class="caption"><span class="caption-text">ARTOS Project:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="system-setup.html">System Setup</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Implement Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implement-runner.html">Implement Runner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implement-test-case.html">Implement TestCase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run-artos.html">Run Test Project</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Tutorial:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="helloworld.html">Hello World</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Information:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="test-status.html">Test Status</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test-context.html">TestContext</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test-script.html">Parallel Suite Execution &amp; TestScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test-case.html">&#64;TestCase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test-plan.html">&#64;TestPlan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="default-configuration.html">Generate Default Configurations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="framework_configuration.html">Framework Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging Framework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html#off-line-extent-report">Off-line Extent Report</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html#real-time-logging">Real Time Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html#stop-on-fail">Stop on Fail</a></li>
+<li class="toctree-l1"><a class="reference internal" href="expectedException.html">&#64;ExpectedException</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Artos (Art of System Testing)</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Implement Project</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/introduction/implement-project-structure.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
+      
+        <a href="implement-runner.html" class="btn btn-neutral float-right" title="Implement Runner" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="system-setup.html" class="btn btn-neutral" title="System Setup" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+  </div>
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="implement-project">
+<h1>Implement Project<a class="headerlink" href="#implement-project" title="Permalink to this headline">¶</a></h1>
+<p>ARTOS test project consists of two components:</p>
+<ul class="simple">
+<li>Test Runner</li>
+<li>Test Case(s)</li>
+</ul>
+<p>Project can be configured many different ways as per business requirement.</p>
+<div class="section" id="recommended-project-structures">
+<h2>Recommended Project Structures<a class="headerlink" href="#recommended-project-structures" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="feature-structure">
+<h3>Feature Structure<a class="headerlink" href="#feature-structure" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Packages and sub-packages are organized based on features.</p>
+</li>
+<li><p class="first">Each package has its own Runner class thus each package acts as a test suite.</p>
+<blockquote>
+<div><img alt="../_images/ProjectStructure_Features.png" src="../_images/ProjectStructure_Features.png" />
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="super-structure">
+<h3>Super Structure<a class="headerlink" href="#super-structure" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Packages and sub-packages are organized based on features.</p>
+</li>
+<li><p class="first">Project contains a single Runner and all test cases are within Runner’s scan scope thus entire project acts as single test suite.</p>
+</li>
+<li><p class="first">This can also be achieved by having Runner at project root location.</p>
+<blockquote>
+<div><img alt="../_images/ProjectStructure_Super.png" src="../_images/ProjectStructure_Super.png" />
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="tree-structure-feature-tree">
+<h3>Tree Structure (Feature Tree)<a class="headerlink" href="#tree-structure-feature-tree" title="Permalink to this headline">¶</a></h3>
+<p>This structure is a mixture of the above structures.</p>
+<ul>
+<li><p class="first">Packages and sub-packages are organized based on features or a test group.</p>
+</li>
+<li><p class="first">Project contains Runner class in parent/root position and Runner class within each feature packages.</p>
+</li>
+<li><p class="first">The test suite executes limited or all test cases depending on the used Runner.</p>
+<blockquote>
+<div><img alt="../_images/ProjectStructure_FeatureTree.png" src="../_images/ProjectStructure_FeatureTree.png" />
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="implement-runner.html" class="btn btn-neutral float-right" title="Implement Runner" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="system-setup.html" class="btn btn-neutral" title="System Setup" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018-2020, Arpit Shah &amp; Contributors
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'01.00.0000',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
