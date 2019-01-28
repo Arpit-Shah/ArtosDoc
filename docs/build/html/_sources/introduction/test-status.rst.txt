@@ -15,7 +15,7 @@ Test status allows user to update test status during test unit execution. Test s
 
 ..
 
-Test status can be updated using: ``TestContext().setTestStatus(TestStatus.FAIL, "Test did bad thing..");``
+Test status can be updated using method ``TestContext().setTestStatus(TestStatus.FAIL, "Test did bad thing..");``
 
 .. admonition:: Recommended
 

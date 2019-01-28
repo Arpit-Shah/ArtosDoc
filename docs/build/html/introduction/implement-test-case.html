@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Implement TestCase &mdash; Artos (Art of System Testing) 01.00.0000 documentation</title>
+  <title>4. Implement TestCase &mdash; Artos (Art of System Testing) 01.00.0000 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Run Test Project" href="run-artos.html" />
-    <link rel="prev" title="Implement Runner" href="implement-runner.html" /> 
+    <link rel="next" title="5. Run Test Project" href="run-artos.html" />
+    <link rel="prev" title="3. Implement Runner" href="implement-runner.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -87,20 +87,20 @@
             
               <p class="caption"><span class="caption-text">Introduction:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">ARTOS (Art of System Testing)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="test-suite-test-runner.html">Test Suite &amp; Test Runner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. ARTOS (Art of System Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test-suite-test-runner.html">2. Test Suite &amp; Test Runner</a></li>
 </ul>
 <p class="caption"><span class="caption-text">ARTOS Project:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="system-setup.html">System Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="implement-project-structure.html">Implement Project</a></li>
-<li class="toctree-l1"><a class="reference internal" href="implement-runner.html">Implement Runner</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Implement TestCase</a></li>
-<li class="toctree-l1"><a class="reference internal" href="run-artos.html">Run Test Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="system-setup.html">1. System Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implement-project-structure.html">2. Implement Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implement-runner.html">3. Implement Runner</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">4. Implement TestCase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run-artos.html">5. Run Test Project</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Tutorial:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="helloworld.html">Hello World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="helloworld.html">1. Hello World</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Information:</span></p>
 <ul>
@@ -161,7 +161,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>Implement TestCase</li>
+      <li>4. Implement TestCase</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -177,10 +177,10 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="run-artos.html" class="btn btn-neutral float-right" title="Run Test Project" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="run-artos.html" class="btn btn-neutral float-right" title="5. Run Test Project" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="implement-runner.html" class="btn btn-neutral" title="Implement Runner" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="implement-runner.html" class="btn btn-neutral" title="3. Implement Runner" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -190,7 +190,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="implement-testcase">
-<h1>Implement TestCase<a class="headerlink" href="#implement-testcase" title="Permalink to this headline">¶</a></h1>
+<h1>4. Implement TestCase<a class="headerlink" href="#implement-testcase" title="Permalink to this headline">¶</a></h1>
 <p>Test case is the Java class which meets the following requirements:</p>
 <ul class="simple">
 <li>Class is <code class="docutils literal notranslate"><span class="pre">public</span></code></li>
@@ -213,7 +213,7 @@
 <ul class="last simple">
 <li>Test units must be independent of each other.</li>
 <li>All test units are executed using new class instance so variables/objects can not be shared between two test units unless stored in context.</li>
-<li>Use <code class="docutils literal notranslate"><span class="pre">context.setGlobalObject(key,</span> <span class="pre">obj);</span></code> or <code class="docutils literal notranslate"><span class="pre">context.setGlobalString(key,</span> <span class="pre">str);</span></code> to share objects between test cases.</li>
+<li>Use method <code class="docutils literal notranslate"><span class="pre">context.setGlobalObject(key,</span> <span class="pre">obj);</span></code> or <code class="docutils literal notranslate"><span class="pre">context.setGlobalString(key,</span> <span class="pre">str);</span></code> to share objects between test cases.</li>
 </ul>
 </div>
 <p>Steps</p>
@@ -309,10 +309,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="run-artos.html" class="btn btn-neutral float-right" title="Run Test Project" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="run-artos.html" class="btn btn-neutral float-right" title="5. Run Test Project" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="implement-runner.html" class="btn btn-neutral" title="Implement Runner" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="implement-runner.html" class="btn btn-neutral" title="3. Implement Runner" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

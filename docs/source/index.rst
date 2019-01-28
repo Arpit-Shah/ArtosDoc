@@ -2,6 +2,7 @@ ARTOS Tutorial
 **************
 
 .. toctree::
+	:numbered:
 	:maxdepth: 2
 	:caption: Introduction:
 
@@ -9,6 +10,7 @@ ARTOS Tutorial
 	introduction/test-suite-test-runner
 
 .. toctree::
+	:numbered:
 	:maxdepth: 2
 	:caption: ARTOS Project:
 
@@ -19,6 +21,7 @@ ARTOS Tutorial
 	introduction/run-artos
 
 .. toctree::
+	:numbered:
 	:maxdepth: 2
 	:caption: Tutorial:
 

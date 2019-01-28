@@ -24,7 +24,7 @@ The test unit is a Java method which meets the following requirements:
 
 	* Test units must be independent of each other.
 	* All test units are executed using new class instance so variables/objects can not be shared between two test units unless stored in context.
-	* Use ``context.setGlobalObject(key, obj);`` or ``context.setGlobalString(key, str);`` to share objects between test cases.
+	* Use method ``context.setGlobalObject(key, obj);`` or ``context.setGlobalString(key, str);`` to share objects between test cases.
 
 ..
 

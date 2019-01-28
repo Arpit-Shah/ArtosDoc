@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>System Setup &mdash; Artos (Art of System Testing) 01.00.0000 documentation</title>
+  <title>1. System Setup &mdash; Artos (Art of System Testing) 01.00.0000 documentation</title>
   
 
   
@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Implement Project" href="implement-project-structure.html" />
-    <link rel="prev" title="Test Suite &amp; Test Runner" href="test-suite-test-runner.html" /> 
+    <link rel="next" title="2. Implement Project" href="implement-project-structure.html" />
+    <link rel="prev" title="2. Test Suite &amp; Test Runner" href="test-suite-test-runner.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -87,20 +87,20 @@
             
               <p class="caption"><span class="caption-text">Introduction:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">ARTOS (Art of System Testing)</a></li>
-<li class="toctree-l1"><a class="reference internal" href="test-suite-test-runner.html">Test Suite &amp; Test Runner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">1. ARTOS (Art of System Testing)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="test-suite-test-runner.html">2. Test Suite &amp; Test Runner</a></li>
 </ul>
 <p class="caption"><span class="caption-text">ARTOS Project:</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">System Setup</a></li>
-<li class="toctree-l1"><a class="reference internal" href="implement-project-structure.html">Implement Project</a></li>
-<li class="toctree-l1"><a class="reference internal" href="implement-runner.html">Implement Runner</a></li>
-<li class="toctree-l1"><a class="reference internal" href="implement-test-case.html">Implement TestCase</a></li>
-<li class="toctree-l1"><a class="reference internal" href="run-artos.html">Run Test Project</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">1. System Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implement-project-structure.html">2. Implement Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implement-runner.html">3. Implement Runner</a></li>
+<li class="toctree-l1"><a class="reference internal" href="implement-test-case.html">4. Implement TestCase</a></li>
+<li class="toctree-l1"><a class="reference internal" href="run-artos.html">5. Run Test Project</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Tutorial:</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="helloworld.html">Hello World</a></li>
+<li class="toctree-l1"><a class="reference internal" href="helloworld.html">1. Hello World</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Information:</span></p>
 <ul>
@@ -161,7 +161,7 @@
     
       <li><a href="../index.html">Docs</a> &raquo;</li>
         
-      <li>System Setup</li>
+      <li>1. System Setup</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -177,10 +177,10 @@
   
   <div class="rst-breadcrumbs-buttons" role="navigation" aria-label="breadcrumb navigation">
       
-        <a href="implement-project-structure.html" class="btn btn-neutral float-right" title="Implement Project" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="implement-project-structure.html" class="btn btn-neutral float-right" title="2. Implement Project" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="test-suite-test-runner.html" class="btn btn-neutral" title="Test Suite &amp; Test Runner" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="test-suite-test-runner.html" class="btn btn-neutral" title="2. Test Suite &amp; Test Runner" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
   </div>
   
@@ -190,9 +190,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="system-setup">
-<h1>System Setup<a class="headerlink" href="#system-setup" title="Permalink to this headline">¶</a></h1>
+<h1>1. System Setup<a class="headerlink" href="#system-setup" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="system-requirements">
-<h2>System Requirements<a class="headerlink" href="#system-requirements" title="Permalink to this headline">¶</a></h2>
+<h2>1.1. System Requirements<a class="headerlink" href="#system-requirements" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p class="first">Platform</p>
 <blockquote>
@@ -211,7 +211,7 @@
 </ul>
 </div>
 <div class="section" id="add-artos-jar-as-a-dependency">
-<h2>Add Artos Jar as a dependency<a class="headerlink" href="#add-artos-jar-as-a-dependency" title="Permalink to this headline">¶</a></h2>
+<h2>1.2. Add Artos Jar as a dependency<a class="headerlink" href="#add-artos-jar-as-a-dependency" title="Permalink to this headline">¶</a></h2>
 <ul>
 <li><p class="first">Non-Maven Projects</p>
 <blockquote>
@@ -245,9 +245,9 @@
 </ul>
 </div>
 <div class="section" id="eclipse-sdk">
-<h2>Eclipse SDK<a class="headerlink" href="#eclipse-sdk" title="Permalink to this headline">¶</a></h2>
+<h2>1.3. Eclipse SDK<a class="headerlink" href="#eclipse-sdk" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="install-ansi-plug-in-for-linux-os">
-<h3>Install ANSI plug-in for Linux OS<a class="headerlink" href="#install-ansi-plug-in-for-linux-os" title="Permalink to this headline">¶</a></h3>
+<h3>1.3.1. Install ANSI plug-in for Linux OS<a class="headerlink" href="#install-ansi-plug-in-for-linux-os" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Go to Eclipse SDK =&gt; Help =&gt; Eclipse Marketplace.</li>
 <li>Find “ANSI escape in console” plug-in.</li>
@@ -256,7 +256,7 @@
 </ul>
 </div>
 <div class="section" id="configure-test-templates">
-<h3>Configure test templates<a class="headerlink" href="#configure-test-templates" title="Permalink to this headline">¶</a></h3>
+<h3>1.3.2. Configure test templates<a class="headerlink" href="#configure-test-templates" title="Permalink to this headline">¶</a></h3>
 <p>The use of a Java template increases consistency and test development speed. Templates can be modified to suite business requirements.</p>
 <p>Import default templates:</p>
 <ul>
@@ -278,13 +278,19 @@
 </li>
 </ul>
 <p>Use template:</p>
-<ul class="simple">
-<li>Create new Java class.</li>
-<li>Select and delete all the content of the class.</li>
-<li>Type <strong>art</strong> and press <strong>CTRL+SPACE</strong>.</li>
-<li>Template suggestion list will appear so user can select appropriate template.</li>
+<ul>
+<li><p class="first">Create new Java class.</p>
+</li>
+<li><p class="first">Select and delete all the content of the class.</p>
+</li>
+<li><p class="first">Type <strong>art</strong> and press <strong>CTRL+SPACE</strong>.</p>
+</li>
+<li><p class="first">Template suggestion list will appear so user can select appropriate template.</p>
+<blockquote>
+<div><img alt="../_images/TemplateSelection.png" src="../_images/TemplateSelection.png" />
+</div></blockquote>
+</li>
 </ul>
-<img alt="../_images/TemplateSelection.png" src="../_images/TemplateSelection.png" />
 </div>
 </div>
 </div>
@@ -297,10 +303,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="implement-project-structure.html" class="btn btn-neutral float-right" title="Implement Project" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="implement-project-structure.html" class="btn btn-neutral float-right" title="2. Implement Project" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="test-suite-test-runner.html" class="btn btn-neutral" title="Test Suite &amp; Test Runner" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="test-suite-test-runner.html" class="btn btn-neutral" title="2. Test Suite &amp; Test Runner" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

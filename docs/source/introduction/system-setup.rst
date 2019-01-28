@@ -75,4 +75,4 @@ Use template:
 * Type **art** and press **CTRL+SPACE**.
 * Template suggestion list will appear so user can select appropriate template.
 
-.. image:: TemplateSelection.png
+	.. image:: TemplateSelection.png
