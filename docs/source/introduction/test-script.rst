@@ -54,7 +54,7 @@ Test script is XML file used to instruct test Runner on how to execute test suit
 	**name**
 
 		* Test suite name is a string which will be used to construct log and report file name. 
-		* String should not be more than 10 char long
+		* String should not be more than 10 characters long
 		* String can only contain one of the following characters. [A-Z][a-z][0-9][-]
 
 .. code-block:: xml

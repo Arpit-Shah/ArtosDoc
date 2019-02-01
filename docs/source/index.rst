@@ -31,12 +31,15 @@ ARTOS Tutorial
 	:maxdepth: 2
 	:caption: Information:
 
+	introduction/commandline
 	introduction/test-status
 	introduction/test-context
 	introduction/test-script
-	introduction/test-case
-	introduction/test-plan
 	introduction/default-configuration
 	introduction/framework_configuration
 	introduction/logging
+	
+	introduction/before-after-testunit
+	introduction/test-case
+	introduction/test-plan
 	introduction/expectedException
