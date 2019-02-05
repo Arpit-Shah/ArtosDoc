@@ -1,5 +1,5 @@
-Test Status
-***********
+Use Test Status
+***************
 
 Test status allows user to update test status during test unit execution. Test status can be updated as frequently as required. Each status update will be visible in log file. Highest severity status update is recorded as test outcome.
 
@@ -8,14 +8,14 @@ Test status allows user to update test status during test unit execution. Test s
     :widths: 15, 20, 65
     :stub-columns: 0
     
-    PASS, 0, Test case executed without any errors
-    SKIP, 1, Test case execution is skipped
-    KTF, 2, Test case is known to fail
-    FAIL, 3, Test case failed
+    PASS, 0, Test case/unit executed without any errors
+    SKIP, 1, Test case/unit execution is skipped
+    KTF, 2, Test case/unit is known to fail
+    FAIL, 3, Test case/unit failed
 
 ..
 
-Test status can be updated using method ``TestContext().setTestStatus(TestStatus.FAIL, "Test did bad thing..");``
+Test status can be updated using a method ``TestContext().setTestStatus(TestStatus.FAIL, "Test did bad thing..");``
 
 .. admonition:: Recommended
 

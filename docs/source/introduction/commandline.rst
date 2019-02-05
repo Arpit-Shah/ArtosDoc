@@ -1,7 +1,7 @@
-Command line Parameters
-***********************
+Use Command line Parameters
+***************************
 
-ARTOS support short and long convention of command line parameters. Supported commands are listed below.
+ARTOS support short and long convention of command line parameters. Supported commands are listed below:
 
 .. csv-table:: 
 	:header: Short, Long, Description
@@ -11,23 +11,53 @@ ARTOS support short and long convention of command line parameters. Supported co
 	-c,--contributors, Prints ARTOS contributors name
 	-h,--help, Command line help
 	-p <arg>,--profile <arg>, Framework configuration profile name
-	-ts <arg>,--testscript <arg>, Test script file path
+	-t <arg>,--testscript <arg>, Test script file path
 	-v,--version, ARTOS' version
 
 ..
 
-* Test script and profile can be specified via command line using following example:
+Example 1: Run from compiled classes
+####################################
 
->>> Short convention 
-java -cp .\lib\artos-0.0.1.jar .\lib\testproject.jar TestRunner -ts=".\script\testscript.xml" --p="dev"
->>> Long convention
-java -cp .\lib\artos-0.0.1.jar .\lib\testproject.jar TestRunner --testscript=".\script\testscript.xml" --profile="dev"
-         
-                 
-                          
+::
 
-        
-    
-                          
+	// long convention
+	java -cp ".\lib\*;.\bin\" MasterRunner --testscript="testscript.xml" --profile="dev"
 
-              
+	// short convention
+	java -cp ".\lib\*;.\bin\" MasterRunner -t="testscript.xml" -p="dev"
+
+..
+
+Example 2: Run from Jar
+#######################
+
+::
+
+	// long convention
+	java -jar .\lib\testproject.jar --testscript="testscript.xml" --profile="dev"
+
+	// short convention
+	java -jar .\lib\testproject.jar -t="testscript.xml" -p="dev"
+
+..
+
+Above examples are created using below project structure:
+#########################################################
+
+.. image:: SampleProject_Commandline.png
+
+* Project compiled classes are located inside ``bin`` directory.
+* Project dependency Jars are located inside ``lib`` directory.
+* Project test script is located inside ``script`` directory.
+* Project exported as JAR inside directory ``release``.
+* Project jar name = ``testproject.jar``
+* Project Master Runner class name = ``MasterRunner``.
+* Project Test Script name = ``testscript.xml``.
+* Project framework_config.xml profile = ``dev``.
+
+>>> Project Jar manifest was created using following information:
+Manifest-version: 1.0
+Created-By: 1.0 (ARTOS Team)
+Main-Class: MasterRunner
+Class-Path: ../lib/artos-0.0.5-beta-2.jar

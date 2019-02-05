@@ -1,5 +1,5 @@
-TestContext
-***********
+Test Context
+************
 
 * Test context is a container that holds live information about test suite, test cases and related information.
 * Test context provides many useful methods to make test case development easy.

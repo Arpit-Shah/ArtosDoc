@@ -19,23 +19,27 @@ ARTOS Tutorial
 	introduction/implement-runner
 	introduction/implement-test-case
 	introduction/run-artos
+	introduction/helloworld
 
 .. toctree::
-	:numbered:
 	:maxdepth: 2
-	:caption: Tutorial:
+	:caption: How To:
 
-	introduction/helloworld
+	introduction/default-configuration
+	introduction/commandline
+	introduction/test-status
+	introduction/test-script
+	introduction/parallel-suite-execution
 
 .. toctree::
 	:maxdepth: 2
 	:caption: Information:
 
-	introduction/commandline
-	introduction/test-status
+	
+	
 	introduction/test-context
-	introduction/test-script
-	introduction/default-configuration
+	
+	
 	introduction/framework_configuration
 	introduction/logging
 	

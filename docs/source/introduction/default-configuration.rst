@@ -1,7 +1,7 @@
 Generate Default Configurations
 *******************************
 
-The ARTOS' first launch generates required configurations and directories in ``conf`` directory under project root. If configuration file is already present then it will not be overwritten but all missing files are re-created with default values.
+The ARTOS' generates required configuration files and directories upon launch if not present. Configuration files are generated in ``conf`` directory. If configuration files are already present then it will not be overwritten.
 
 .. image:: Default_Configuration.png
 
