@@ -41,12 +41,13 @@ A ``TestContext`` is the Java object which holds all required information about 
 
 ..
 
-TestUnits have access to context
-################################
+Context example
+###############
 
 .. code-block:: Java
 	:linenos:
 	:emphasize-lines: 14, 21
+	:caption: : Example highlights that each test unit is passed with TestContext argument, so each test unit has access to relevant context object in run time
 
 	package com.tests;
 

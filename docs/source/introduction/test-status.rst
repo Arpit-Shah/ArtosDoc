@@ -26,7 +26,7 @@ Test status can be updated using a method ``context.setTestStatus(TestStatus.FAI
 .. code-block:: Java
     :linenos:
     :emphasize-lines: 23
-    :caption: Example code with multiple status updates. Outcome will be **FAIL**
+    :caption: : In this example test status is updated multiple time in single test unit. The most sever update out of all status updates will be considered as test unit outcome. In this example sever status update is **TestStatus.FAIL** so test unit outcome will be **FAIL**. Because there is only one test unit in the test case, the test case outcome is also **FAIL**.
 
     package com.tests;
 
@@ -60,6 +60,8 @@ Test status can be updated using a method ``context.setTestStatus(TestStatus.FAI
 
 ..
 
+
+
 TestUnit vs TestCase Status
 ###########################
 
@@ -69,7 +71,7 @@ TestUnit vs TestCase Status
 .. code-block:: Java
     :linenos:
     :emphasize-lines: 19, 28, 37, 46
-    :caption: Example code with multiple unit outcomes. TestCase outcome will be **FAIL**
+    :caption: : In this example test outcome for each test unit is different. The most sever outcome among all test units will be considered as a test case outcome. In this example sever outcome is **TestStatus.FAIL** so test case outcome will be **FAIL**.
 
     package com.tests;
 
