@@ -2,12 +2,19 @@ ARTOS Tutorial
 **************
 
 .. toctree::
-	:numbered:
-	:maxdepth: 2
-	:caption: Introduction:
 
 	introduction/introduction
+
+.. toctree::
+	:maxdepth: 2
+	:caption: Concept & Feature:
+
 	introduction/test-suite-test-runner
+	introduction/test-status
+	introduction/test-context	
+	introduction/framework_configuration
+	introduction/logging
+	introduction/extent-report
 
 .. toctree::
 	:numbered:
@@ -27,21 +34,12 @@ ARTOS Tutorial
 
 	introduction/default-configuration
 	introduction/commandline
-	introduction/test-status
 	introduction/test-script
 	introduction/parallel-suite-execution
 
 .. toctree::
 	:maxdepth: 2
 	:caption: Information:
-
-	
-	
-	introduction/test-context
-	
-	
-	introduction/framework_configuration
-	introduction/logging
 	
 	introduction/before-after-testunit
 	introduction/test-case

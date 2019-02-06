@@ -15,7 +15,7 @@ Test status allows user to update test status during test unit execution. Test s
 
 ..
 
-Test status can be updated using a method ``TestContext().setTestStatus(TestStatus.FAIL, "Test did bad thing..");``
+Test status can be updated using a method ``context.setTestStatus(TestStatus.FAIL, "Test did bad thing..");``
 
 .. admonition:: Recommended
 
@@ -44,16 +44,16 @@ Test status can be updated using a method ``TestContext().setTestStatus(TestStat
         public void unit_test1(TestContext context) throws Exception {
             // --------------------------------------------------------------------------------------------
             // TODO : logic goes here..
-            TestContext().setTestStatus(TestStatus.PASS, "Test flow is as expected");
+            context.setTestStatus(TestStatus.PASS, "Test flow is as expected");
 
             // TODO : logic goes here..
-            TestContext().setTestStatus(TestStatus.PASS, "Test flow is as expected");
+            context.setTestStatus(TestStatus.PASS, "Test flow is as expected");
 
             // TODO : logic goes here..
-            TestContext().setTestStatus(TestStatus.FAIL, "Test flow is not as expected");
+            context.setTestStatus(TestStatus.FAIL, "Test flow is not as expected");
 
             // TODO : logic goes here..
-            TestContext().setTestStatus(TestStatus.PASS, "Test flow is as expected");
+            context.setTestStatus(TestStatus.PASS, "Test flow is as expected");
             // --------------------------------------------------------------------------------------------
         }
     }
@@ -89,7 +89,7 @@ TestUnit vs TestCase Status
         public void unit_test1(TestContext context) throws Exception {
             // --------------------------------------------------------------------------------------------
             // TODO : logic goes here..
-            TestContext().setTestStatus(TestStatus.FAIL, "Test fails");
+            context.setTestStatus(TestStatus.FAIL, "Test fails");
             // --------------------------------------------------------------------------------------------
         }
 
@@ -98,7 +98,7 @@ TestUnit vs TestCase Status
         public void unit_test1(TestContext context) throws Exception {
             // --------------------------------------------------------------------------------------------
             // TODO : logic goes here..
-            TestContext().setTestStatus(TestStatus.PASS, "Test passes");
+            context.setTestStatus(TestStatus.PASS, "Test passes");
             // --------------------------------------------------------------------------------------------
         }
 
@@ -107,7 +107,7 @@ TestUnit vs TestCase Status
         public void unit_test1(TestContext context) throws Exception {
             // --------------------------------------------------------------------------------------------
             // TODO : logic goes here..
-            TestContext().setTestStatus(TestStatus.KTF, "Test is known to fail");
+            context.setTestStatus(TestStatus.KTF, "Test is known to fail");
             // --------------------------------------------------------------------------------------------
         }
 
@@ -116,7 +116,7 @@ TestUnit vs TestCase Status
         public void unit_test1(TestContext context) throws Exception {
             // --------------------------------------------------------------------------------------------
             // TODO : logic goes here..
-            TestContext().setTestStatus(TestStatus.SKIP, "Test is skipped");
+            context.setTestStatus(TestStatus.SKIP, "Test is skipped");
             // --------------------------------------------------------------------------------------------
         }
     }

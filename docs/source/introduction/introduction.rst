@@ -48,37 +48,25 @@ ARTOS makes use of Java annotations for most of its features. A list of supporte
 
 ..
 
-Test Status
-###########
-
-ARTOS support four test status as shown below. Status in detail will be covered in later sections.
-
-.. csv-table:: 
-    :header: Status, Usage
-    :widths: 15, 65
-    :stub-columns: 0
-    
-    PASS, Test case/unit executed without any errors
-    SKIP, Test case/unit execution is skipped
-    KTF, Test case/unit is known to fail
-    FAIL, Test case/unit failed
-
-..
-
 GUI test selector
 #################
 
 ARTOS provides inbuilt GUI test selector that is designed to help test developers run selective test cases during development and debugging. GUI test selector feature can be enabled or disabled by changing framework configuration. GUI test selector details will be covered in later sections.
 
-Test logs and reports
-#####################
+Test logs
+#########
 
-ARTOS provides inbuilt log utilities based on log4j. ARTOS logger is available to use out of the box. ARTOS log level, log decoration, log format can be configured using framework configuration. 
+ARTOS provides inbuilt log utilities based on log4j. ARTOS logger is available to use out of the box. ARTOS log level, log decoration, log format can be configured using framework configuration. FAIL stamp is injected in log file when test status is updated to FAIL, so user can pin point exact line where failure has occurred.
 
-ARTOS additionally supports live log file which logs sent/received events from inbuilt connectors along with time stamp. Live log file provides following benifits:
+ARTOS additionally supports live log file which logs sent/received events from inbuilt connectors along with time stamp. Live log file provides following benefits:
 
-* It can be used to measure system performance by measuring time between two events.
-* Having this file with all needed information allows user to keep standard log file clean from time stamp, thread name, calling method name etc.. which makes standard log more readable
-* Log parsing is easy with fixed format live log file which eventually makes debugging easy.  
+	* It can be used to measure system performance by measuring time between two events.
+	* Having this file with all needed information allows user to keep standard log file clean from time stamp, thread name, calling method name etc.. which makes standard log more readable.
+	* Log parsing is easy with fixed format live log file which eventually makes debugging easy.  
 
-ARTOS auto generates text and/or HTML based test report. This report only contains PASS/FAIL information so it can be shared with external parties keeping business critical information contained in log files. ARTOS additionally generates professional looking Extent report if enabled.
+Test report
+###########
+
+ARTOS auto generates text and/or HTML based test report. This report only contains PASS/FAIL information so it can be shared with external parties keeping business critical information contained in log files.
+
+ARTOS additionally generates professional looking Extent report if enabled.

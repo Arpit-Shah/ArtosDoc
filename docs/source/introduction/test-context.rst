@@ -1,53 +1,78 @@
 Test Context
 ************
 
-* Test context is a container that holds live information about test suite, test cases and related information.
-* Test context provides many useful methods to make test case development easy.
-* Each test suite maintains its own ``TestContext`` object instance that allows parallel test suite execution without any conflict.
-* All annotated methods are injected with relevant ``TestContext`` object so test suite related information is available to each test case/unit all the time.
+A ``TestContext`` is the Java object which holds all required information about test suite and it is globally available. TestContext is unique per test suite. All test cases have access to TestContext object. A test case can get, set, update or store required object using TestContext. Some of the useful methods are listed below: 
 
-Logger
-######
+.. csv-table:: 
+	:header: Command, Usage
+	:widths: 30, 60
+	:stub-columns: 0
 
-User can get relevant logger object and log to appropriate log files using one of the following methods. 
+	"context.setTestStatus(testStatus, description);", Update test status with description
+	"context.getLogger();", Get logger object
+	"context.getLogger().info();", To log information level string
+	"context.getLogger().debug();", To log debug level string
+	"context.getLogger().warn();", To log warning level string
+	"context.getLogger().error();", To log error level string
+	"context.getLogger().fatal();", To log fatal level string
+	"context.getLogger().trace();", To log trace level string
+	"context.getLogger().disableGeneralLog();", Temporary disable logging
+	"context.getLogger().enableGeneralLog();", Enable logging
+	"context.getLogger().getCurrentGeneralLogFiles();", Get list of test suite relevant log files
+	"context.getLogger().getCurrentRealTimeLogFiles();", Get list of test suite relevant real time log files
+	"context.getLogger().getCurrentSummaryLogFiles();", Get list of test suite relevant summary report
+	"context.getParameterisedObject1();", Get 2D DataProvider object 1
+	"context.getParameterisedObject2();", Get 2D DataProvider object 2
+	"context.getDataProviderMap();", Get Map containing all available DataProviders
+	"context.printMethodName();", "Prints executing method name"
+	"context.setGlobalObject(String key, Object obj);", Store any object with key
+	"context.setGlobalString(String key, String obj);", Store string object with key
+	"context.setGlobalObject(String key);", Get any object using key
+	"context.getGlobalString(String key);", Get string object using key
+	"context.getCurrentFailCount();", Get total fail count at point of time
+	"context.getCurrentKTFCount();", Get total fail count at point of time
+	"context.getCurrentPassCount();",  Get total fail count at point of time
+	"context.getCurrentSkipCount();", Get total fail count at point of time
+	"context.registerListener(listener);", Register new listener to provide test live update
+	"context.deRegisterListener(listener);", Remove registered listener
+	"context.isKnownToFail();", Returns test case known to fail flag
+	"context.getCurrentTestStatus();", Returns current test status
+	"context.getCurrentTestUnitStatus();", Returns current test unit status 
 
->>> Logs to log file with set log level
-context.getLogger().info();
-context.getLogger().debug();
-context.getLogger().warn();
-context.getLogger().error();
-context.getLogger().fatal();
-context.getLogger().trace();
+..
 
-DataProvider Parameters
-#######################
+TestUnits have access to context
+################################
 
-DataProvider method returns 2D array. ARTOS repeats test case execution as many time as the length of 2D array. ARTOS updates relevant TestContext variables with next values each execution. Test units can access those values using following methods. 
+.. code-block:: Java
+	:linenos:
+	:emphasize-lines: 14, 21
 
->>> Gets DataProvider parameter value
-context.getParameterisedObject1();
-context.getParameterisedObject2();
+	package com.tests;
 
-Global object storage
-#####################
+	import com.artos.annotation.TestCase;
+	import com.artos.annotation.TestPlan;
+	import com.artos.annotation.Unit;
+	import com.artos.framework.infra.TestContext;
+	import com.artos.interfaces.TestExecutable;
 
-ARTOS TestContext can store key value pairs. Any method with an access of TestContext can retrieve, update or remove set value pairs. User can use one of the following methods to achieve that.
+	@TestPlan(preparedBy = "ArpitS", preparationDate = "1/1/2018", bdd = "GIVEN..WHEN..AND..THEN..")
+	@TestCase()
+	public class TestCase_1 implements TestExecutable {
 
->>> Sets key value pair
-context.setGlobalObject(String key, Object obj); 
-context.setGlobalString(String key, String obj); 
+		@Unit()
+		public void unit_test1(TestContext context) throws Exception {
+			// --------------------------------------------------------------------------------------------
+			// TODO write logic here
+			// --------------------------------------------------------------------------------------------
+		}
 
->>> Gets key value
-context.setGlobalObject(String key); 
-context.getGlobalString(String key);
+		@Unit()
+		public void unit_test2(TestContext context) throws Exception {
+			// --------------------------------------------------------------------------------------------
+			// TODO write logic here
+			// --------------------------------------------------------------------------------------------
+		}
+	}
 
-Live TestCase Count
-###################
-
-User can query number of test cases by their outcome using following methods.
-
->>> Gets TestCase count at that point of time
-context.getCurrentFailCount();
-context.getCurrentKTFCount();
-context.getCurrentPassCount();
-context.getCurrentSkipCount();
+..
