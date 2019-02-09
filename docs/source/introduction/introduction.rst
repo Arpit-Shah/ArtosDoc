@@ -2,6 +2,47 @@ ARTOS (Art of System Testing)
 *****************************
 ARTOS is developed by a team of experienced test engineers for test developers/engineers. It was designed and developed with the aim to provide a test framework which is easy to use, reliable and works out of the box. ARTOS is written in Java which makes it suitable for Windows, Linux, MAC or any other platform that runs Java. It can be used for functional, system, end to end and/or unit testing. Most test frameworks only provide the test runner while the rest is left on engineers to develop, whereas ARTOS comes with many inbuilt and well tested utilities saving time for users to focus on what they do best!
 
+ARTOS feature highlight
+#######################
+
+* Designed to work out of the box.
+* Inbuilt and well tested connector classes (TCP, UDP etc..) and other utilities.
+* Inbuilt and pre-configured Log4j based logging framework.
+
+	* Organized logging for ease of use
+	* Real-time log files for performance measurement in addition to general log file.
+	* Simple report generation.
+	* Runtime log enable-disable support
+	* Log file tracking and run time log file list request.
+	* Various log level support.
+	* HTML formatted log support. 
+	* Test time tracking with millisecond accuracy.
+	* Separate log file and reports per test suite.
+
+* Automated professional looking Extent report generation.
+* Automated test script generation.
+* Automated test plan generation.
+* Automated test plan formatting for BDD based test plan.
+* GUI test selector for debugging, selective testing and avoids user error. 
+* TestCase and TestUnit filters based on groups.
+* Exception checking.
+* Known to fail test case support.
+* DataProvider support.
+* Parallel testing support.
+
+	* Execute multiple test suites at the same time.
+
+* Sequentialize or skip test cases using test script, test list or test annotation.
+* Global parameter support.
+* Stop on fail support.
+* Properties based test framework configuration.
+* Failure highlight for easy debugging. 
+
+	* Failed test cases are highlighted on console logs
+	* Failed test cases are reported with bug reference number for easy tracking.
+
+* Listeners for application development. 
+
 Framework Glossary
 ##################
 
@@ -76,3 +117,4 @@ Test report
 ARTOS auto generates text and/or HTML based test report. This report only contains PASS/FAIL information so it can be shared with external parties keeping business critical information contained in log files.
 
 ARTOS additionally generates professional looking Extent report if enabled.
+

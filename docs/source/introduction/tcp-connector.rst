@@ -1,0 +1,241 @@
+TCP Server (Single Client)
+**************************
+
+TCPServer class is designed to talk to a single client. If client connection is established, server will launch separate thread that is responsible for listening to incoming messages from client. All received messages are added to a queue that can be polled by driving application. TCPServer implements ``Connectable`` interface so same connector object can be used for ``HeartBeat`` class. 
+
+TCPServer have following facilities:
+
+	* Message Filter
+	* Message Parser
+	* Real-Time log
+
+Simple server
+#############
+
+Below code will start a server and will listen for incoming client.
+
+.. code-block:: Java
+	:linenos:
+	:emphasize-lines: 0
+	:caption: : Simple server example
+
+	// launch server
+	int port = 1200;
+	TCPServer server = new TCPServer(port);
+	server.connect();
+
+..
+
+Simple server with timeout
+##########################
+
+Below code will start a server and will listen for client connection until timeout is reached (5000 milliseconds in this case).
+
+.. code-block:: Java
+	:linenos:
+	:emphasize-lines: 0
+	:caption: : Simple server with timeout example
+
+	// connect server with soTimeout
+	int port = 1200;
+	int soTimeout = 5000;
+	TCPServer server = new TCPServer(port);
+	server.connect(soTimeout);
+
+..
+
+Server with message filter
+##########################
+
+User may require filtering some messages out during server/client communication (Heartbeat, status messages etc..). Message filter interface allows user to define how to filter messages. ARTOS real time log file will log filtered and non-filtered messages so user can go through all received events/data. Message filter is applied after message parse object de-serialises incoming messages, so user should assume non-fused messages while writing message filter code. User can apply more than one filter object in same TCPServer object.
+
+.. note:: Implementation inside meetCriteria() method may impact performance of receiver thread so user should keep implementation simple and light.
+
+Below code creates filter object using ``ConnectableFilter`` interface. User must provide implementation of the method ``meetCriteria(byte[] data)`` so receiver thread can filter messages which meets those criteria(s). In current example any received byte array matches ``"00 00 00 04 01 02 03 04"`` will be filtered out and will not be added to message queue.
+
+.. code-block:: Java
+	:linenos:
+	:emphasize-lines: 0
+	:caption: : Filter object creation example
+
+	Transform _transform = new Transform();
+
+	// Create filter object
+	ConnectableFilter filter = new ConnectableFilter() {
+		@Override
+		public boolean meetCriteria(byte[] data) {
+			if (Arrays.equals(data, _transform.strHexToByteArray("00 00 00 04 01 02 03 04"))) {
+				return true;
+			}
+			return false;
+		}
+	};
+
+..
+
+Below code will launch server which is listening on port 1200 with supplied filter list. Messages which meets criteria specified in supplied filter(s) will be dropped from the message queue.
+
+.. code-block:: Java
+	:linenos:
+	:emphasize-lines: 0
+	:caption: : TCP Server with filter example
+
+	// add filter to filterList
+	List<ConnectableFilter> filterList = new ArrayList<>();
+	filterList.add(filter);
+
+	// launch server with filter
+	int port = 1200;
+	TCPServer server = new TCPServer(port, null, filterList);
+	server.connect();
+	// receive msg with 2 seconds timeout
+	byte[] msg = server.getNextMsg(2000, TimeUnit.MILLISECONDS);
+	// server disconnect
+	server.disconnect();
+
+..
+
+Server with message parser (fused message parser)
+#################################################
+
+TCP does not have concept of fixed size packets like UDP. If two or more byte-arrays are sent at the same time, TCP protocol can concatenate(fuse) them (TCP guarantees to maintain order) and send it to make transfer efficient. Due to this behavior, at receiver end user may have to implement logic which can de-serialise message according to their specification.
+
+TCPServer allows user to supply de-serialising logic so prior to populating messages to queue, messages can be separated from fused byte arrays. If filter object is supplied then filtering will be processed after message de-serialising. ARTOS will record messages to realtime log file prior to de-serialisation so performance measurement does not have any impact on time stamp.
+
+.. note:: Implementation of de-serialisation method may impact performance of receiver thread so user should keep implementation simple and light.
+
+Below Example de-serialises concatenated messages with following specification:
+
+>>> First four bytes (Big Endian) as payload length excluding length bytes + data
+Example Message: "00 00 00 04 11 22 33 44"
+Length: "00 00 00 04"
+Data: "11 22 33 44"
+
+User can construct similar class which implements ``ConnectableMessageParser`` to de-serialise concatenated messages. Below example de-serialise concatenated messages and construct list of messages according to specification. If any bytes are left over then those bytes are handed back to receiver thread.
+
+.. code-block:: Java
+	:linenos:
+	:emphasize-lines: 0
+	:caption: : Message parser example
+
+	public class MsgParser4ByteLength implements ConnectableMessageParser {
+		Transform _transform = new Transform();
+		byte[] leftOverBytes = null;
+		List<byte[]> msgList = null;
+
+		@Override
+		public byte[] getLeftOverBytes() {
+			return leftOverBytes;
+		}
+
+		@Override
+		public List<byte[]> parse(byte[] data) {
+			// reset variable before use
+			msgList = new ArrayList<>();
+			leftOverBytes = null;
+
+			deserializeMsg(data);
+
+			return msgList;
+		}
+
+		private void deserializeMsg(byte[] data) {
+			// Check if at least length can be worked out
+			if (!sufficientDataForLengthCalc(data)) {
+				leftOverBytes = data;
+				return;
+			}
+
+			// Check if message can be constructed
+			if (!sufficientDataForMsg(data)) {
+				leftOverBytes = data;
+				return;
+			}
+
+			// Extract one complete message
+			byte[] leftOvers = extractMsg(data);
+
+	        // process leftOver bytes to see if anymore messages can be extracted
+			if (null != leftOvers) {
+				deserializeMsg(leftOvers);
+			}
+		}
+
+		// Extract complete message inclusive of 4 bytes of length
+		private byte[] extractMsg(byte[] data) {
+			int length = _transform.bytesToInteger(Arrays.copyOfRange(data, 0, 4), ByteOrder.BIG_ENDIAN);
+
+	        // if complete message is found then add to message list.
+			msgList.add(Arrays.copyOfRange(data, 0, 4 + length));
+
+	        // Return leftover bytes after extracting one complete message
+			if (data.length > 4 + length) {
+				return Arrays.copyOfRange(data, 4 + length, data.length);
+			}
+			return null;
+		}
+
+		// Returns true if atleast 4 bytes are present to calculate length of the data
+		private boolean sufficientDataForLengthCalc(byte[] data) {
+			if (data.length < 4) {
+				return false;
+			}
+			return true;
+		}
+
+		// Returns true if enough bytes are present to construct one complete message
+		private boolean sufficientDataForMsg(byte[] data) {
+			int length = _transform.bytesToInteger(Arrays.copyOfRange(data, 0, 4), ByteOrder.BIG_ENDIAN);
+			if (data.length < 4 + length) {
+				return false;
+			}
+			return true;
+		}
+
+	}
+
+..
+
+Below example will launch server with message parser designed to de-serialise concatenated messages for provided specification.
+
+.. code-block:: Java
+	:linenos:
+	:emphasize-lines: 0
+	:caption: : TCPServer with message parser example
+
+	// create msg parser object
+	MsgParser4ByteLength msgParser = new MsgParser4ByteLength();
+
+	// launch server with message parser
+	int port = 1200;
+	TCPServer server = new TCPServer(port, msgParser, null);
+	server.connect();
+	// receive msg with 2 seconds timeout
+	byte[] msg = server.getNextMsg(2000, TimeUnit.MILLISECONDS);
+	// server disconnect
+	server.disconnect();
+
+..
+
+Server real-time log
+####################
+
+* This interface allows user to listen server send/receive events and can log sent/received byte arrays real-time.
+* User can create their own listener by implementing ``RealTimeLoggable`` interface and can process events differently.
+* User is allowed register more than one listener at a time.
+
+.. note:: Implementation of event listener may impact performance of sender and receiver thread so user should keep implementation simple and light.
+
+Below code explains how to enable real time log using inbuilt listener. Once enabled, user will see all send receive log bytes are added to real-time log file with time stamp.
+
+.. code-block:: Java
+	:linenos:
+	:emphasize-lines: 0
+	:caption: : RealTime Event Listener example
+
+	TCPServer server = new TCPServer(1300);
+	RealTimeLogEventListener realTimeListener = new RealTimeLogEventListener(context);
+	server.setRealTimeListener(realTimeListener);
+	server.connect();
+
+..
