@@ -4,7 +4,7 @@ Annotation @TestCase is used to mark java class as a test case.
 
 .. csv-table:: 
 	:header: Attribute, Description, Mandatory/Optional, Default Value
-	:widths: 15, 45, 20, 20
+	:widths: 15, 40, 25, 20
 	:stub-columns: 0
 	
 	skip(), Skip or Keep, Optional, false

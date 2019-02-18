@@ -3,46 +3,48 @@ ARTOS Tutorial
 
 .. toctree::
 
-	introduction/introduction
+	Introduction/introduction
 
 .. toctree::
 	:numbered:
 	:maxdepth: 2
 	:caption: ARTOS Project:
 
-	introduction/system-setup
-	introduction/implement-project-structure
-	introduction/implement-runner
-	introduction/implement-test-case
-	introduction/run-artos
-	introduction/helloworld
+	StepByStepGuide/system-setup
+	StepByStepGuide/implement-project-structure
+	StepByStepGuide/implement-runner
+	StepByStepGuide/implement-test-case
+	StepByStepGuide/run-artos
+	StepByStepGuide/helloworld
 
 .. toctree::
 	:maxdepth: 2
 	:caption: Concept & Feature:
 
-	introduction/test-suite-test-runner
-	introduction/test-status
-	introduction/test-context	
-	introduction/framework_configuration
-	introduction/logging
-	introduction/extent-report
+	ConceptAndFeature/test-suite-test-runner
+	ConceptAndFeature/test-status
+	ConceptAndFeature/test-context	
+	ConceptAndFeature/framework_configuration
+	ConceptAndFeature/failure-highlight
+	ConceptAndFeature/importance-indicator
+	ConceptAndFeature/logging
+	ConceptAndFeature/extent-report
 
 .. toctree::
 	:maxdepth: 2
 	:caption: How To:
 
-	introduction/default-configuration
-	introduction/commandline
-	introduction/test-script
-	introduction/parallel-suite-execution
-	introduction/tcp-connector
+	HowTo/default-configuration
+	HowTo/commandline
+	HowTo/test-script
+	HowTo/parallel-suite-execution
+	HowTo/tcp-connector
 
 .. toctree::
 	:maxdepth: 2
 	:caption: Information:
 	
-	introduction/before-after-testunit
-	introduction/test-case
-	introduction/test-plan
-	introduction/expectedException
+	Information/before-after-testunit
+	Information/test-case
+	Information/test-plan
+	Information/expectedException

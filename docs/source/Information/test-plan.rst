@@ -4,7 +4,7 @@ Annotation @TestPlan is used to describe short BDD (Behavior Driven Development)
 
 .. csv-table:: 
 	:header: Attribute, Description, Mandatory/Optional, Default Value
-	:widths: 15, 45, 20, 20
+	:widths: 20, 35, 25, 20
 	:stub-columns: 0
 	
 	description(), Short description, Optional, Empty String
@@ -46,9 +46,9 @@ Example test case
 
 		@Unit
 		public void unit_test(TestContext context) throws Exception {
-			// --------------------------------------------------------------------------------------------
-			context.getLogger().debug("Observe formatted test plan in the log file");
-			// --------------------------------------------------------------------------------------------
+			// -------------------------------------------------------
+			context.getLogger().debug("Observe formatted test plan in logs");
+			// -------------------------------------------------------
 		}
 	}
 

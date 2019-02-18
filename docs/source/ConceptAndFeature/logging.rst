@@ -8,22 +8,32 @@ Logs and reports are heart of any test framework. ARTOS includes Log4j based pre
 Log files
 #########
 
-ARTOS by default generates two log files and a summary report per test suite. Each test suite execution generates new log files so previously generated log files will not be deleted or overwritten. 
+ARTOS by default generates two types of log files per test suite execution. 
 
-    * General logs := All test application logs will be recorded in a log file as shown on console output. 
+* **General logs** : Test application logs will be recorded in a general log file. 
 
-        * By default general log lines do not include time-stamp or any other decoration, which makes it easy to read. 
-        * Time-stamp and other relevant decoration can be enabled using ``framework_configuration.xml`` file when required. 
+    * By default general logs do not include time-stamp or other log decoration, which makes it easy to read. 
+    * Time-stamp and log decoration can be enabled using ``framework_configuration.xml`` file. 
 
-    * Real-time logs := Separate log file is generated to record sent and received events/data from classes that implements ``Connectable`` interface.
+* **Real-time logs** : In addition to general log file, ARTOS generates real time log file. Real time logs are produced by ARTOS' built in connectors or any class which implements ``Connectable`` interface. Real time logs includes time stamp and log decoration which may be useful in debugging. All data sent and received from built in connectors are logged in real time log file which provides following benefits:
 
-    .. image:: Realtime_log.png
+   * Real time logs can be used to measure system performance by measuring time between the sent/receive events. Log parsing is easy with fixed format of the log file.
+   * Real time logs are always recorded with time stamp, thread name, calling method name and other required information so test developers may choose to omit those information from general log and keep general logs noise free and human readable.Separate log file is generated to record sent and received events/data from classes that implements ``Connectable`` interface.
 
-    * Summary Report := Summary report log file generated to record PASS/FAIL summary of a test suite. 
+.. image:: Realtime_log.png
 
-        * Summary report may only contain test-case name, test-unit name, test-status and/or bug reference number, so it can be shared with management and/or external parties without disclosing too much details or business critical information.
+Test report
+###########
 
-    .. image:: Summary_Report.png
+ARTOS by default generates live text based report per test suite execution. Test report includes following information. Test report does not contain any business critical information so it can be shared to external parties.
+
+* Test case fully qualified name and PASS/FAIL/SKIP/KTF summary
+* PASS/FAIL/SKIP/KTF count
+* Bug reference for failed test cases
+* Test time duration with Millisecond accuracy
+*
+
+.. image:: Summary_Report.png
 
 .. note:: 
 
@@ -38,10 +48,11 @@ Log File Path and Naming Convention
 * RealTime log filename := ``package name + "_" + suitename (optional) + "_" + threadnumber + "_" +  timestamp + "-realtime.log"``
 * Summary report filename := ``package name + "_" + suitename (optional) + "_" + threadnumber + "_" +  timestamp + "-summary.log"``
 
->>> Example:
-General log file : ``./reporting/com.test.feature1/com.test.feature1_suite1_0_1549353269885-all.log``
-Real time log file : ``./reporting/com.test.feature1/com.test.feature1_suite1_0_1549353269885-realtime.log``
-Summary report file : ``./reporting/com.test.feature1/com.test.feature1_suite1_0_1549353269885-summary.log``
+Example:
+
+| General log file : ``./reporting/com.test.feature1/com.test.feature1_suite1_0_1549353269885-all.log``
+| Real time log file : ``./reporting/com.test.feature1/com.test.feature1_suite1_0_1549353269885-realtime.log``
+| Summary report file : ``./reporting/com.test.feature1/com.test.feature1_suite1_0_1549353269885-summary.log``
 
 Log Format
 ##########
@@ -74,7 +85,7 @@ Log level can be configured using ``conf/framework_configuration.xml`` file.
 
     .. csv-table:: 
         :header: Level, Description
-        :widths: 20, 70
+        :widths: 12, 78
         :stub-columns: 0
             
         DEBUG, Designates fine-grained informational events that are most useful to debug an application.

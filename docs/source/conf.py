@@ -151,7 +151,7 @@ html_theme_options = {
     # Toc options
     'collapse_navigation': True,
     'sticky_navigation': True,
-    'navigation_depth': 4,
+    'navigation_depth': 2,
     'includehidden': True,
     'titles_only': True
 }
@@ -256,7 +256,7 @@ custom_latex_preamble_2 = r'''
     % Set headers and footers for {empty} pages (the first page of a chapter) 
     \fancypagestyle{empty}{
         \fancyhf{}
-        \fancyhead[R]{\sphinxincludegraphics[scale=0.75]{Artos_vectorised.pdf}}
+%        \fancyhead[R]{\sphinxincludegraphics[scale=0.75]{Artos_vectorised.pdf}}
         \fancyfoot[L]{\version}
         \fancyfoot[R]{\@date}
         \renewcommand{\headrulewidth}{0.4pt}

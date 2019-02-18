@@ -53,22 +53,22 @@ Steps
 
 		@Unit()
 		public void unit_test1(TestContext context) throws Exception {
-			// --------------------------------------------------------------------------------------------
+			// --------------------------------------------------------
 			// Print on console
 			System.out.println("Hello World 1");
 			// Print inside a log file
 			context.getLogger().debug("Hello World 1");
-			// --------------------------------------------------------------------------------------------
+			// --------------------------------------------------------
 		}
 
 		@Unit()
 		public void unit_test2(TestContext context) throws Exception {
-			// --------------------------------------------------------------------------------------------
+			// --------------------------------------------------------
 			// Print on console
 			System.out.println("Hello World 2");
 			// Print inside a log file
 			context.getLogger().debug(doSomething());
-			// --------------------------------------------------------------------------------------------
+			// --------------------------------------------------------
 		}
 
 		// This method is not a test unit

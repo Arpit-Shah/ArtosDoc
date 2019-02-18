@@ -5,7 +5,7 @@ A ``TestContext`` is the Java object which holds all required information about 
 
 .. csv-table:: 
 	:header: Command, Usage
-	:widths: 30, 60
+	:widths: 55, 45
 	:stub-columns: 0
 
 	"context.setTestStatus(testStatus, description);", Update test status with description
@@ -63,16 +63,16 @@ Context example
 
 		@Unit()
 		public void unit_test1(TestContext context) throws Exception {
-			// --------------------------------------------------------------------------------------------
+			// --------------------------------------------------------
 			// TODO write logic here
-			// --------------------------------------------------------------------------------------------
+			// --------------------------------------------------------
 		}
 
 		@Unit()
 		public void unit_test2(TestContext context) throws Exception {
-			// --------------------------------------------------------------------------------------------
+			// --------------------------------------------------------
 			// TODO write logic here
-			// --------------------------------------------------------------------------------------------
+			// --------------------------------------------------------
 		}
 	}
 

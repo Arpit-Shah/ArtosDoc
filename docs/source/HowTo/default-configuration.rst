@@ -7,7 +7,7 @@ The ARTOS' generates required configuration files and directories upon launch if
 
 .. csv-table:: 
 	:header: Configuration Name, Description
-	:widths: 30, 70
+	:widths: 35, 65
 	:stub-columns: 0
 	
 	"conf/extent_configuration.xml", "configuration for extend reports"

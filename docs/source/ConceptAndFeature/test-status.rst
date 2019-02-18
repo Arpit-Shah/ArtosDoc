@@ -42,7 +42,7 @@ Test status can be updated using a method ``context.setTestStatus(TestStatus.FAI
 
         @Unit()
         public void unit_test1(TestContext context) throws Exception {
-            // --------------------------------------------------------------------------------------------
+            // --------------------------------------------------------
             // TODO : logic goes here..
             context.setTestStatus(TestStatus.PASS, "Test flow is as expected");
 
@@ -54,7 +54,7 @@ Test status can be updated using a method ``context.setTestStatus(TestStatus.FAI
 
             // TODO : logic goes here..
             context.setTestStatus(TestStatus.PASS, "Test flow is as expected");
-            // --------------------------------------------------------------------------------------------
+            // ---------------------------------------------------------
         }
     }
 
@@ -89,37 +89,37 @@ TestUnit vs TestCase Status
         // TestUnit outcome  is FAIL
         @Unit()
         public void unit_test1(TestContext context) throws Exception {
-            // --------------------------------------------------------------------------------------------
+            // --------------------------------------------------------
             // TODO : logic goes here..
             context.setTestStatus(TestStatus.FAIL, "Test fails");
-            // --------------------------------------------------------------------------------------------
+            // --------------------------------------------------------
         }
 
         // TestUnit outcome  is PASS
         @Unit()
         public void unit_test1(TestContext context) throws Exception {
-            // --------------------------------------------------------------------------------------------
+            // --------------------------------------------------------
             // TODO : logic goes here..
             context.setTestStatus(TestStatus.PASS, "Test passes");
-            // --------------------------------------------------------------------------------------------
+            // --------------------------------------------------------
         }
 
         // TestUnit outcome  is KTF
         @Unit()
         public void unit_test1(TestContext context) throws Exception {
-            // --------------------------------------------------------------------------------------------
+            // --------------------------------------------------------
             // TODO : logic goes here..
             context.setTestStatus(TestStatus.KTF, "Test is known to fail");
-            // --------------------------------------------------------------------------------------------
+            // --------------------------------------------------------
         }
 
         // TestUnit outcome  is SKIP
         @Unit()
         public void unit_test1(TestContext context) throws Exception {
-            // --------------------------------------------------------------------------------------------
+            // --------------------------------------------------------
             // TODO : logic goes here..
             context.setTestStatus(TestStatus.SKIP, "Test is skipped");
-            // --------------------------------------------------------------------------------------------
+            // --------------------------------------------------------
         }
     }
 
