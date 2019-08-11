@@ -8,18 +8,19 @@ Test status allows user to update test status during test unit execution. Test s
     :widths: 15, 20, 65
     :stub-columns: 0
     
-    PASS, 0, Test case/unit executed without any errors
-    SKIP, 1, Test case/unit execution is skipped
-    KTF, 2, Test case/unit is known to fail
-    FAIL, 3, Test case/unit failed
+    PASS    , 0, "Test case/unit executed without any errors"
+    SKIP    , 1, "Test case/unit execution is skipped"
+    KTF     , 2, "Test case/unit is known to fail"
+    FAIL    , 3, "Test case/unit failed"
 
 ..
 
-Test status can be updated using a method ``context.setTestStatus(TestStatus.FAIL, "Test did bad thing..");``
+.. code-block:: Java
+    :linenos:
+    :emphasize-lines: 0
+    :caption: : Test status can be updated using following method. It is recommended to add helpful description during each status update.
 
-.. admonition:: Recommended
-
-    Add short description during every status update.
+    context.setTestStatus(TestStatus.FAIL, "Test did bad thing..");
 
 ..
 

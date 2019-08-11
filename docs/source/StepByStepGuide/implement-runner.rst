@@ -4,12 +4,12 @@ Implement Runner
 A runner is a Java class which meets the following requirements:
 
 * Class is ``public`` and implements ``main()`` method.
-* The ``main()`` method invokes ARTOS runner object as shown in below example.
+* The ``main()`` method invokes Artos' runner object as shown in below example.
 
 Steps
 
-* Create a Java class under required package structure (In this example : com.tests.ArtosMain.java).
-* Implement ``main`` method and Runner code as shown in the example below.
+* Create a Java class under required package structure 
+* Implement ``main()`` method and Runner code as shown in the example below.
 
 .. code-block:: Java
 	:linenos:

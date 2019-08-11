@@ -24,6 +24,7 @@ import subprocess
 import shutil
 import webbrowser
 import sphinx
+import sphinx_rtd_theme
 
 sphinx_toolchain_rel_path = ""
 sys.path.insert(0, os.path.abspath(sphinx_toolchain_rel_path))
@@ -63,9 +64,9 @@ copyright = u'2018-2020, Arpit Shah and Contributors'
 author = u'Arpit Shah and Contributors'
 
 # The short X.Y version
-version = u'01.00.0000'
+version = u'01.00.0002'
 # The full version, including alpha/beta/rc tags
-release = u'01.00.0000'
+release = u'01.00.0002'
 
 
 # -- General configuration ---------------------------------------------------

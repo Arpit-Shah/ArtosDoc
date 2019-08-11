@@ -8,14 +8,17 @@ ARTOS Tutorial
 .. toctree::
 	:numbered:
 	:maxdepth: 2
-	:caption: ARTOS Project:
+	:caption: Project Step-by-Step Guide:
 
 	StepByStepGuide/system-setup
 	StepByStepGuide/implement-project-structure
 	StepByStepGuide/implement-runner
 	StepByStepGuide/implement-test-case
-	StepByStepGuide/run-artos
-	StepByStepGuide/helloworld
+	StepByStepGuide/test-sequence
+	StepByStepGuide/launch-test-project
+	StepByStepGuide/launch-test-project-without-test-script
+	StepByStepGuide/execute-test-cases
+	StepByStepGuide/test-result
 
 .. toctree::
 	:maxdepth: 2
@@ -25,8 +28,8 @@ ARTOS Tutorial
 	ConceptAndFeature/test-status
 	ConceptAndFeature/test-context	
 	ConceptAndFeature/framework_configuration
-	ConceptAndFeature/failure-highlight
 	ConceptAndFeature/importance-indicator
+	ConceptAndFeature/failure-highlight
 	ConceptAndFeature/logging
 	ConceptAndFeature/extent-report
 
