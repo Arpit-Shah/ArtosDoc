@@ -1,7 +1,7 @@
-Use Test Status
-***************
+Test Status and Outcome
+***********************
 
-Test status allows user to update test status during test unit execution. Test status can be updated as frequently as required. Each status update will be visible in log file. Highest severity status update is recorded as test outcome.
+Test status is used to provide a periodic update about status of the test at runtime. Test status can be updated/changed multiple time during test case/unit execution. Each status updates will be visible in log file and Extent report. At the end of unit execution, status update with highest severity ranking will be considered as a test unit result/outcome. If test case has multiple units then highest severity ranking unit result will be considered as a test case result/outcome.
 
 .. csv-table:: 
     :header: Status, Severity, Usage
@@ -9,7 +9,7 @@ Test status allows user to update test status during test unit execution. Test s
     :stub-columns: 0
     
     PASS    , 0, "Test case/unit executed without any errors"
-    SKIP    , 1, "Test case/unit execution is skipped"
+    SKIP    , 1, "Test case/unit is skipped during run time"
     KTF     , 2, "Test case/unit is known to fail"
     FAIL    , 3, "Test case/unit failed"
 
@@ -27,7 +27,7 @@ Test status allows user to update test status during test unit execution. Test s
 .. code-block:: Java
     :linenos:
     :emphasize-lines: 23
-    :caption: : In this example test status is updated multiple time in single test unit. The most sever update out of all status updates will be considered as test unit outcome. In this example sever status update is **TestStatus.FAIL** so test unit outcome will be **FAIL**. Because there is only one test unit in the test case, the test case outcome is also **FAIL**.
+    :caption: : In this example test status is updated multiple time in single test unit. The most sever update is **TestStatus.FAIL**, thus test unit outcome will be **FAIL**. Most sever outcome of all test units (in this case only one) is considered as the test case outcome, thus test case outcome is also **FAIL**.
 
     package com.tests;
 
@@ -37,7 +37,7 @@ Test status allows user to update test status during test unit execution. Test s
     import com.artos.framework.infra.TestContext;
     import com.artos.interfaces.TestExecutable;
 
-    @TestPlan(preparedBy = "ArpitS", preparationDate = "1/1/2018", bdd = "GIVEN..WHEN..AND..THEN..")
+    @TestPlan(preparedBy = "UserName", preparationDate = "1/1/2018", bdd = "GIVEN..WHEN..AND..THEN..")
     @TestCase()
     public class TestCase_1 implements TestExecutable {
 
@@ -72,7 +72,7 @@ TestUnit vs TestCase Status
 .. code-block:: Java
     :linenos:
     :emphasize-lines: 19, 28, 37, 46
-    :caption: : In this example test outcome for each test unit is different. The most sever outcome among all test units will be considered as a test case outcome. In this example sever outcome is **TestStatus.FAIL** so test case outcome will be **FAIL**.
+    :caption: : In this example test outcome for each test unit is different. The most sever outcome among all test units is **TestStatus.FAIL** so test case outcome is **FAIL**.
 
     package com.tests;
 
@@ -83,7 +83,7 @@ TestUnit vs TestCase Status
     import com.artos.interfaces.TestExecutable;
 
     // TestCase outcome is FAIL
-    @TestPlan(preparedBy = "ArpitS", preparationDate = "1/1/2018", bdd = "GIVEN..WHEN..AND..THEN..")
+    @TestPlan(preparedBy = "UserName", preparationDate = "1/1/2018", bdd = "GIVEN..WHEN..AND..THEN..")
     @TestCase()
     public class TestCase_1 implements TestExecutable {
 

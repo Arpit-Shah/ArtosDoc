@@ -8,7 +8,14 @@ ARTOS Tutorial
 .. toctree::
 	:numbered:
 	:maxdepth: 2
-	:caption: Project Step-by-Step Guide:
+	:caption: Get Started with Sample Project:
+
+	SampleProject/get-started
+
+.. toctree::
+	:numbered:
+	:maxdepth: 2
+	:caption: Step-by-Step Guide:
 
 	StepByStepGuide/system-setup
 	StepByStepGuide/implement-project-structure
