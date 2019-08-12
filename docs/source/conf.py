@@ -64,9 +64,9 @@ copyright = u'2018-2020, Arpit Shah and Contributors'
 author = u'Arpit Shah and Contributors'
 
 # The short X.Y version
-version = u'01.00.0002'
+version = u'01.00.0003'
 # The full version, including alpha/beta/rc tags
-release = u'01.00.0002'
+release = u'01.00.0003'
 
 
 # -- General configuration ---------------------------------------------------
