@@ -56,5 +56,6 @@ ARTOS Tutorial
 	
 	Information/before-after-testunit
 	Information/test-case
+	Information/test-unit
 	Information/test-plan
 	Information/expectedException

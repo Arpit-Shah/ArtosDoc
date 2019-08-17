@@ -131,6 +131,7 @@ ARTOS uses Java annotations for most of the feature sets. A list of supported an
    @AfterTest        , Method        , "Denotes that the annotated method should be executed after each test case execution"
    @BeforeTestUnit   , Method        , "Denotes that the annotated method should be executed before each test unit execution"
    @AfterTestUnit    , Method        , "Denotes that the annotated method should be executed after each test unit execution"
+   @AfterFailedUnit	 , Method 		 , "Denotes that the annotated method should be executed after each failed test unit execution"
    @DataProvider     , Method        , "Denotes that the annotated method is the supplier of a test data and declares a unique name for the method"
    @ExpectedException, Method        , "Declares rules of managing exception of the annotated method"
    @Group            , Class/Method  , "Declares group name(s) that the annotated test case/unit belongs to" 
