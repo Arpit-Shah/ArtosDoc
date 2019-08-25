@@ -1,5 +1,9 @@
+Introduction
+************
+
 ARTOS (Art of System Testing)
-*****************************
+#############################
+
 Welcome to Artos Docs! Here, you can find Artos documentation, guidelines, as well as tips and tricks to help you start a successful test automation journey.
 
 Artos is designed and developed by a team of experienced test engineers as a **free to use** and **open-source** project to help test community throughout the world. It is aimed at providing a test framework that is easy to use, reliable and works out of the box. Artos is written in Java which makes it suitable for Windows, Linux, MAC or any platform that runs Java. It can be used for functional, system, end to end and/or unit testing. Artos includes simple but powerful runner as well as many inbuilt and well-tested utilities that will save time for users to let them focus on what they do best!
