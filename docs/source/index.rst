@@ -4,6 +4,8 @@ ARTOS Tutorial
 .. toctree::
 
 	Introduction/introduction
+	Introduction/feature_highlight
+	Introduction/contriution_guideline
 
 .. toctree::
 	:numbered:
@@ -49,6 +51,7 @@ ARTOS Tutorial
 	HowTo/test-script
 	HowTo/parallel-suite-execution
 	HowTo/tcp-connector
+	HowTo/visual-regression
 
 .. toctree::
 	:maxdepth: 2

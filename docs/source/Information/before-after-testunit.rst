@@ -1,13 +1,15 @@
 @BeforeTestUnit @AfterTestUnit
 ******************************
 
+.. image:: BeforeAfterIllustration.png
+
 @BeforeTestUnit
 ###############
 
 Method marked with annotation ``@BeforeTestUnit`` is executed in different order depending on where it is implemented. All possible combinations are listed below:
 
 .. csv-table:: 
-	:header: Location, Execution sequence
+	:header: Implementation, Execution sequence
 	:widths: 40, 70
 	:stub-columns: 0
 
@@ -23,7 +25,7 @@ Method marked with annotation ``@BeforeTestUnit`` is executed in different order
 Method marked with annotation ``@AfterTestUnit`` is executed in different order depending on where it is implemented. All possible combinations are listed below:
 
 .. csv-table:: 
-	:header: Location, Execution sequence
+	:header: Implementation, Execution sequence
 	:widths: 40, 70
 	:stub-columns: 0
 

@@ -18,10 +18,14 @@ Test status is used to provide a periodic update about status of the test at run
 .. code-block:: Java
     :linenos:
     :emphasize-lines: 0
-    :caption: : Test status can be updated using following method. It is recommended to add helpful description during each status update.
+    :caption: : Test status can be updated using following method.
 
+    // Status update with simple description
     context.setTestStatus(TestStatus.FAIL, "Test did bad thing..");
 
+    // Status update with snapshot image
+    context.setTestStatus(TestStatus.FAIL, new File("./reporting/test.png"), "Test failed with error shown in png");
+    
 ..
 
 .. code-block:: Java

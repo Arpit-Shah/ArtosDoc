@@ -1,79 +1,8 @@
 ARTOS (Art of System Testing)
 *****************************
-ARTOS is developed by a team of experienced test engineers for test developers/engineers. It was designed and developed to provide a test framework which is easy to use, reliable and works out of the box. ARTOS is written in Java which makes it suitable for Windows, Linux, MAC or any other platform that runs Java. It can be used for functional, system, end to end and/or unit testing. Most test frameworks only provide the test runner while the rest is left on engineers to develop, whereas ARTOS comes with many inbuilt and well-tested utilities saving time for users to focus on what they do best!
+Welcome to Artos Docs! Here, you can find Artos documentation, guidelines, as well as tips and tricks to help you start a successful test automation journey.
 
-Artos feature highlight
-#######################
-
-* Built-in and pre-configured log framework
-
-   * Organized logging for ease of use
-   * Text or HTML formatted logs 
-   * Log levels support
-   * Real-time log files in addition to a general log file (for performance measurement)
-   * Runtime log enable/disable
-   * Tracking of generated log files
-   * Separate log files per test suite during parallel testing
-
-* Built-in report generation
-
-   * Professional looking Extent report
-   * Text or HTML formatted report
-   * Separate test reports per test suite during parallel testing
-
-* Test time measurement
-
-    * Test-suite, test-case and test-units execution duration measurement with millisecond accuracy
-
-* Test importance
-    
-    * Test importance is highlighted to focus on important test cases
-
-* Easy debugging
-   
-   * GUI test selector for selective testing and avoids user error
-   * FAIL stamp injection in the log file to pinpoint the exact line of failure
-   * Failure highlight at the end of test suite execution
-   * Bug reference reporting against the failed test case
-   * Test time tracking with millisecond accuracy
-   * BDD formatted test plan injection in the log file to avoid a disconnect between test plan and test case
-
-* TestCase development
-
-   * Auto-generated test templates to speed up development
-   * Group based test case and test unit filtering
-   * Exception checking
-   * Known to fail test case support
-   * Data Provider support
-   * Sequentialize test cases to maintain dependency and repeatability
-   * Disable/Skip test cases
-   * Global parameter support
-   * Built-in utilities for test development (Data Transformation, CountDownTimer, Live display, Guardian, etc..)
-   * Built-in connectors (TCP, UDP, etc..)
-
-* Parallel testing
-
-   * Run test suites in parallel using test script
-   * Separate logs per test suite execution
-   * Separate extent reports per test suite execution
-
-* BDD (Behavior driven development)
-   
-   * Accepts Cucumber generated feature file for BDD testing
-   * Auto generated BDD test templates to speed up development
-   * BDD skeleton generation in case of missing methods
-
-* Additional features
-
-   * Stop on fail support
-   * Multiple framework configurations supported using a test profile
-   * Automated test script generation
-   * Automated script generation for failed test cases
-   * Failed test case marker
-
-* Listeners
-
-   * Listeners are supported for future plug-in or application development. 
+Artos is designed and developed by a team of experienced test engineers as a **free to use** and **open-source** project to help test community throughout the world. It is aimed at providing a test framework that is easy to use, reliable and works out of the box. Artos is written in Java which makes it suitable for Windows, Linux, MAC or any platform that runs Java. It can be used for functional, system, end to end and/or unit testing. Artos includes simple but powerful runner as well as many inbuilt and well-tested utilities that will save time for users to let them focus on what they do best!
 
 Framework glossary
 ##################
