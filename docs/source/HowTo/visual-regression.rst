@@ -12,15 +12,10 @@ Understanding the above requirements, Artos has taken a generic approach to cate
 * Request result/diff image after image compare.
 * Record images/snapshots to the Extent report.
 
-Simple server
-#############
-
-Below code will start a server and will listen for incoming client.
-
 .. code-block:: Java
 	:linenos:
 	:emphasize-lines: 0
-	:caption: : Simple server example
+	:caption: : Sample code to demonstrate visual regression functionality
 
 	package com.tests.selenium;
 
