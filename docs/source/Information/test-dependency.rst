@@ -17,7 +17,7 @@ Warning will be printed when test case execution is skipped due to dependency re
 
 	=========================================================================
 	================ DEPENDENCY REQUIREMENTS ARE NOT MET ====================
-	===================== TESTCASE WILL BE DROPPED ==========================
+	===================== TEST CASE WILL BE SKIPPED =========================
 	=========================================================================
 
 .. 
@@ -47,13 +47,7 @@ Example test case
 
 .. code-block:: Java
 	:linenos:
-	:emphasize-lines: 7
-
-	import com.artos.annotation.TestCase;
-	import com.artos.annotation.TestPlan;
-	import com.artos.framework.infra.TestContext;
-	import com.artos.interfaces.TestExecutable;
-	import com.artos.annotation.TestDependency;
+	:emphasize-lines: 1
 
 	@TestDependency(dependency = { TestCase_1.class, TestCase_2.class })
 	@TestCase(skip = false, sequence = 1, bugref = "JIRA-1234, JIRA-234", dropRemainingTestsUponFailure = true)
