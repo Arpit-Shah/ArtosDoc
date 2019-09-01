@@ -62,3 +62,4 @@ ARTOS Tutorial
 	Information/test-unit
 	Information/test-plan
 	Information/expectedException
+	Information/test-dependency

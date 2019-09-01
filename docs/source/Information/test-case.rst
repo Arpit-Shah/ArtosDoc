@@ -23,6 +23,9 @@ Annotation @TestCase is used to mark java class as a test case.
 	* Sequence number is ignored in case of test sequence is provided by the user (via test script or test list).
 	* In absence of user provided test sequence (empty test list in the test-script or empty/null test list), test case execution sequence will be decided by first sorting packages by name in ascending order and secondly bubble sorting test cases using sequence number within their respective packages.
 	* Test cases are sorted using bubble sort mechanism so any test case(s) (within same package) with same sequence number will be arranged as per their scan order, thus between them order of execution cannot be guaranteed.
+
+	.. image:: Sort_Order.png
+	
 * bugref()
 	* User can define bug reference (up to 20 bytes long)
 * dropRemainingTestsUponFailure()
