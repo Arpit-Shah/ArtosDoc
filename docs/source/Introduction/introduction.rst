@@ -70,6 +70,8 @@ ARTOS uses Java annotations for most of the feature sets. A list of supported an
    @Group            , Class/Method  , "Declares group name(s) that the annotated test case/unit belongs to" 
    @KnownToFail      , Method        , "Declares that the annotated test unit is known to fail"
    @TestImportance   , Class/method  , "Declares importance of the annotated test case/unit"
+   @TestDepenendcy   , Class         , "Declares test case dependency on other test case(s)"
+   @UnitDepenendcy   , Method        , "Declares unit dependency on other unit(s) implemented within single test case"
    @StepDefinition   , method        , "Declares step definition that binds test unit to feature file"
 
 ..
