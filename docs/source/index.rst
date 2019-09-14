@@ -64,3 +64,4 @@ ARTOS Tutorial
 	Information/expectedException
 	Information/test-dependency
 	Information/unit-dependency
+	Information/dataprovider

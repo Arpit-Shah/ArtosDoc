@@ -1,5 +1,5 @@
 @Unit
-*********
+*****
 Annotation @Unit is used to mark Java methods as a test case. 
 
 .. csv-table:: 
