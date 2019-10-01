@@ -30,6 +30,16 @@ ARTOS Tutorial
 	StepByStepGuide/test-result
 
 .. toctree::
+	:numbered:
+	:maxdepth: 2
+	:caption: Step-by-Step BDD:
+
+	StepByStepBDD/system-setup
+	StepByStepBDD/implement-project-structure
+	StepByStepBDD/implement-feature-file
+	StepByStepBDD/implement-runner
+
+.. toctree::
 	:maxdepth: 2
 	:caption: Concept & Feature:
 
