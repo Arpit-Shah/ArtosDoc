@@ -1,7 +1,7 @@
 Implement Feature File
 **********************
 
-Artos can execute test steps based on feature file.
+Feature file is used to describe test scenario(s) in human readable language using Gherkin syntax. Artos accepts feature file(s) as an input and  binds scenario steps to relevant method within the test project. 
 
 * Feature file is a text file with an extension ```.feature```. 
 * Script file should be placed inside ``script`` directory of the project.
@@ -31,7 +31,7 @@ Sample Feature File
 	    Examples: 
 	      | FunctionButtons | ExpectedAction			|
 	      | ON              | television is already ON 	|
-	      | MUTE 			| television audio is muted	|
+	      | MUTE            | television audio is muted	|
 	      | OFF             | NA 						|
 	      | ON            	| television is turned ON 	|
 
@@ -45,7 +45,7 @@ Sample Feature File
 	    Then User validates "<ExpectedAction>"
 
 	    Examples: 
-	      | FunctionButtons 	| ExpectedAction           | resolution |
+	      | FunctionButtons     | ExpectedAction           | resolution |
 	      | VolumeIncrease      | Is volume higher by one? | HD         |
 	      | VolumeDecrease      | Is volume lower by one?  | FULL_HD    |
 
@@ -57,7 +57,7 @@ Feature File Components
 Feature
 =======
 
-* Declared using ``Feature:`` followed by description of the the Feature
+* Declared using ``Feature:`` followed by description of the the feature
 * Only one ``Feature:`` can be available in one feature file
 
 .. code-block:: Text
@@ -72,7 +72,8 @@ Feature
 Scenario 
 ========
 
-* Scenario is declared using ``Scenario Outline:`` followed by description of the scenario
+* Scenario is declared using ``Scenario Outline:`` followed by description of the scenario.
+* One feature file can have one or more scenarios.
 * Scenario is defined using **Gherkin Syntax** which utilizes keywords "Given", "When", "And", "Then"
 * Scenario lines declared with Gherkin keywords are called **Steps**.
 * Scenario can be attached to one or more groups by adding group name above ``Scenario Outline:`` as shown in below example.
@@ -97,10 +98,10 @@ Scenario
 	  Then television displays "<ExpectedAction>"
 
 	Examples: 
-	    | FunctionButtons | ExpectedAction     		  |
+	    | FunctionButtons | ExpectedAction            |
 	    | ON              | television is already ON  |
-	    | MUTE			  | television audio is muted |
-	    | OFF             | NA				 		  |
+	    | MUTE            | television audio is muted |
+	    | OFF             | NA                        |
 	    | ON              | television is turned ON   |
 
 ..
@@ -109,7 +110,7 @@ Background
 ==========
 
 * Declared using ``Background:`` followed by description of the background scenario
-* Each feature file can have only one ``Background:`` scenario.
+* feature file can have only one ``Background:`` scenario.
 * Scenario declared under ``Background:`` is executed prior to each scenarios declared under ``Scenario Outline:``
 * ``Background:`` is declared as very first scenario in feature file.
 

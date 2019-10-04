@@ -1,10 +1,11 @@
 Implement Project
 *****************
 
-ARTOS BDD test project consists of two components:
+ARTOS BDD test project consists of three components:
 
 * Test Runner
-* Test Class(es) that contains test steps
+* Class(s) containing test steps
+* Feature File(s)
 
 The project can be configured in many different ways as per the business requirement.
 
