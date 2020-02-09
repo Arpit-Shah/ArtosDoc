@@ -6,6 +6,13 @@ ARTOS Tutorial
 	Introduction/introduction
 	Introduction/feature_highlight
 	Introduction/contriution_guideline
+	
+.. toctree::
+	:numbered:
+	:maxdepth: 2
+	:caption: System Setup:
+
+	SystemSetup/system-setup
 
 .. toctree::
 	:numbered:
@@ -19,7 +26,6 @@ ARTOS Tutorial
 	:maxdepth: 2
 	:caption: Step-by-Step Guide:
 
-	StepByStepGuide/system-setup
 	StepByStepGuide/implement-project-structure
 	StepByStepGuide/implement-runner
 	StepByStepGuide/implement-test-case
@@ -75,3 +81,9 @@ ARTOS Tutorial
 	Information/test-dependency
 	Information/unit-dependency
 	Information/dataprovider
+	
+.. toctree::
+	:maxdepth: 2
+	:caption: Publication:
+	
+	Publication/publication

@@ -181,6 +181,7 @@ html_sidebars = {
         'about.html',
         'navigation.html',
         'searchbox.html',
+#        'overflow:auto',
     ]
 }
 
