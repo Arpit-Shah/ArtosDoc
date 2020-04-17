@@ -16,7 +16,7 @@ Report Portal Integration with Artos
 ..
 
 Preparation
-***********
+###########
 
 * Go to reportportal-client_
 * Download latest jar or copy Maven dependency signature for Maven project.
@@ -62,7 +62,7 @@ Preparation
 * Save and close the file. 
 
 Create Listener for Artos
-*************************
+#########################
 
 * Create **ReportPortalListener.java** class inside test project.
 * Copy and paste below code to your local project
@@ -560,7 +560,7 @@ Create Listener for Artos
 ..
 
 Register listener to the Artos runner
-*************************************
+#####################################
 
 * Change Artos runner launch code as shown below to register listener.
 
