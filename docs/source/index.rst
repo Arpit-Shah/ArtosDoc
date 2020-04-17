@@ -84,6 +84,12 @@ ARTOS Tutorial
 	
 .. toctree::
 	:maxdepth: 2
+	:caption: Third Party Integration:
+	
+	Integration/report-portal
+	
+.. toctree::
+	:maxdepth: 2
 	:caption: Publication:
 	
 	Publication/publication
