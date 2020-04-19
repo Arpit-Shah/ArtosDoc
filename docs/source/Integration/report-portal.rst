@@ -11,7 +11,7 @@ Report Portal Integration with Artos
 
 .. admonition:: Recommended
     
-    * This example is recommended to be used with Artos build 0.0.13 or above
+    * This example is recommended to be used with Artos build 0.0.14 or above
 
 ..
 
@@ -72,10 +72,35 @@ Create Listener for Artos
    :linenos: 
    :emphasize-lines: 0
 
+	/*******************************************************************************
+	 * Copyright (C) 2018-2020 Arpit Shah and Artos Contributors
+	 * 
+	 * Permission is hereby granted, free of charge, to any person obtaining a copy
+	 * of this software and associated documentation files (the "Software"), to deal
+	 * in the Software without restriction, including without limitation the rights
+	 * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+	 * copies of the Software, and to permit persons to whom the Software is
+	 * furnished to do so, subject to the following conditions:
+	 * 
+	 * The above copyright notice and this permission notice shall be included in
+	 * all copies or substantial portions of the Software.
+	 * 
+	 * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+	 * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+	 * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+	 * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+	 * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+	 * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+	 * SOFTWARE.
+	******************************************************************************/
 	package listener;
 
 	import java.io.File;
+	import java.util.ArrayList;
 	import java.util.HashSet;
+	import java.util.LinkedHashMap;
+	import java.util.List;
+	import java.util.Map;
 	import java.util.Set;
 
 	import com.artos.framework.Enums.TestStatus;
@@ -94,13 +119,19 @@ Create Listener for Artos
 		ReportPortalLauncher rpl;
 		boolean activeTest = false;
 		boolean activeChildUnit = false;
+		boolean debug = false;
 
-		public ReportPortalListener() {
-
-		}
+		// **************************************************************
+		// Common functionality between BDD or Non-BDD testcase/testunits
+		// **************************************************************
 
 		@Override
 		public void testSuiteExecutionStarted(String description) {
+
+			if (debug) {
+				System.err.println("testSuiteExecutionStarted(String description)");
+			}
+
 			rpl = new ReportPortalLauncher();
 			rpl.StartLaunch();
 
@@ -117,7 +148,7 @@ Create Listener for Artos
 				}
 			}
 
-			rpl.StartSuite(TestSuiteName, description);
+			rpl.StartSuite("TestSuite: " + TestSuiteName, description);
 			try {
 				Thread.sleep(500);
 			} catch (InterruptedException e) {
@@ -127,6 +158,11 @@ Create Listener for Artos
 
 		@Override
 		public void testSuiteExecutionFinished(String description) {
+
+			if (debug) {
+				System.err.println("testSuiteExecutionFinished(String description)");
+			}
+
 			rpl.endSuite();
 			rpl.endLaunch();
 
@@ -135,75 +171,6 @@ Create Listener for Artos
 				Thread.sleep(3000);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
-			}
-		}
-
-		@Override
-		public void testCaseExecutionStarted(TestObjectWrapper t) {
-			Set<String> tags = new HashSet<String>();
-			for (String s : t.getGroupList()) {
-				tags.add(s);
-			}
-			// Start next test
-			rpl.StartTest(t.getTestClassObject().getName(),
-					"".equals(t.getTestPlanDescription().trim()) ? t.getTestPlanBDD() : t.getTestPlanDescription(), tags);
-			activeTest = true;
-		}
-
-		@Override
-		public void testResult(TestObjectWrapper t, TestStatus testStatus, File snapshot, String description) {
-			if (testStatus == TestStatus.PASS || testStatus == TestStatus.KTF) {
-				rpl.endTest(Status.PASSED);
-			} else if (testStatus == TestStatus.SKIP) {
-				rpl.endTest(Status.SKIPPED);
-			} else if (testStatus == TestStatus.FAIL) {
-				rpl.endTest(Status.FAILED);
-			}
-		}
-
-		@Override
-		public void childTestUnitExecutionStarted(TestObjectWrapper t, TestUnitObjectWrapper unit, String paramInfo) {
-			Set<String> tags = new HashSet<String>();
-			for (String s : unit.getGroupList()) {
-				tags.add(s);
-			}
-			rpl.StartStep(unit.getTestUnitMethod().getName() + " " + paramInfo,
-					"".equals(unit.getTestPlanDescription()) ? unit.getTestPlanBDD() : unit.getTestPlanDescription(), tags);
-			activeChildUnit = true;
-		}
-
-		@Override
-		public void testUnitExecutionStarted(TestUnitObjectWrapper unit) {
-			if (!activeChildUnit) {
-				Set<String> tags = new HashSet<String>();
-				for (String s : unit.getGroupList()) {
-					tags.add(s);
-				}
-				rpl.StartStep(unit.getTestUnitMethod().getName(),
-						"".equals(unit.getTestPlanDescription().trim()) ? unit.getTestPlanBDD()
-								: unit.getTestPlanDescription(),
-						tags);
-			}
-		}
-
-		@Override
-		public void testUnitResult(TestUnitObjectWrapper unit, TestStatus testStatus, File snapshot, String description) {
-			if (testStatus == TestStatus.PASS || testStatus == TestStatus.KTF) {
-				rpl.endStep(Status.PASSED);
-			} else if (testStatus == TestStatus.SKIP) {
-				rpl.endStep(Status.SKIPPED);
-			} else if (testStatus == TestStatus.FAIL) {
-				rpl.endStep(Status.FAILED);
-			}
-			activeChildUnit = false;
-		}
-
-		@Override
-		public void testCaseStatusUpdate(TestStatus testStatus, File snapshot, String msg) {
-			if (snapshot == null) {
-				rpl.log(LogStatus.Info, msg);
-			} else {
-				rpl.log(LogStatus.Info, msg, snapshot);
 			}
 		}
 
@@ -218,41 +185,24 @@ Create Listener for Artos
 		}
 
 		@Override
-		public void childTestUnitExecutionFinished(TestUnitObjectWrapper unit) {
-
-		}
-
-		@Override
-		public void testUnitExecutionFinished(TestUnitObjectWrapper unit) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void childTestCaseExecutionStarted(TestObjectWrapper t, String paramInfo) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void childTestCaseExecutionFinished(TestObjectWrapper t) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
 		public void testCaseSummaryPrinting(String FQCN, String description) {
-
+			if (debug) {
+				System.err.println("testCaseSummaryPrinting(String FQCN, String description)");
+			}
 		}
 
 		@Override
 		public void testUnitSummaryPrinting(String FQCN, String description) {
-
+			if (debug) {
+				System.err.println("testUnitSummaryPrinting(String FQCN, String description)");
+			}
 		}
 
 		@Override
 		public void testSuiteSummaryPrinting(String description) {
-
+			if (debug) {
+				System.err.println("testSuiteSummaryPrinting(String description)");
+			}
 		}
 
 		@Override
@@ -260,6 +210,395 @@ Create Listener for Artos
 			// TODO Auto-generated method stub
 
 		}
+
+		@Override
+		public void testCaseExecutionSkipped(TestObjectWrapper t) {
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public void testCaseExecutionFinished(TestObjectWrapper t) {
+
+		}
+
+		@Override
+		public void testSuiteFailureHighlight(String description) {
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public void testSuiteException(Throwable e) {
+			// TODO Auto-generated method stub
+
+		}
+
+		// ********************************************************
+		// Non-BDD Test Cases
+		// ********************************************************
+		@Override
+		public void testCaseExecutionStarted(TestObjectWrapper t) {
+
+			if (debug) {
+				System.err.println("testCaseExecutionStarted(TestObjectWrapper t)");
+			}
+
+			Set<String> tags = new HashSet<String>();
+			for (String s : t.getGroupList()) {
+				tags.add(s);
+			}
+			// Start next test
+			rpl.StartTest(t.getTestClassObject().getName(),
+					"".equals(t.getTestPlanDescription().trim()) ? t.getTestPlanBDD() : t.getTestPlanDescription(), tags);
+			activeTest = true;
+		}
+
+		@Override
+		public void testResult(TestObjectWrapper t, TestStatus testStatus, File snapshot, String description) {
+
+			if (debug) {
+				System.err.println(
+						"testResult(TestObjectWrapper t, TestStatus testStatus, File snapshot, String description)");
+			}
+
+			if (testStatus == TestStatus.PASS || testStatus == TestStatus.KTF) {
+				rpl.endTest(Status.PASSED);
+			} else if (testStatus == TestStatus.SKIP) {
+				rpl.endTest(Status.SKIPPED);
+			} else if (testStatus == TestStatus.FAIL) {
+				rpl.endTest(Status.FAILED);
+			}
+		}
+
+		@Override
+		public void childTestUnitExecutionStarted(TestObjectWrapper t, TestUnitObjectWrapper unit, String paramInfo) {
+
+			if (debug) {
+				System.err.println(
+						"childTestUnitExecutionStarted(TestObjectWrapper t, TestUnitObjectWrapper unit, String paramInfo)");
+			}
+
+			Set<String> tags = new HashSet<String>();
+			for (String s : unit.getGroupList()) {
+				tags.add(s);
+			}
+			rpl.StartStep(unit.getTestUnitMethod().getName() + " " + paramInfo,
+					"".equals(unit.getTestPlanDescription()) ? unit.getTestPlanBDD() : unit.getTestPlanDescription(), tags);
+			activeChildUnit = true;
+		}
+
+		@Override
+		public void testUnitExecutionStarted(TestUnitObjectWrapper unit) {
+
+			if (debug) {
+				System.err.println("testUnitExecutionStarted(TestUnitObjectWrapper unit)");
+			}
+
+			if (!activeChildUnit) {
+				Set<String> tags = new HashSet<String>();
+				for (String s : unit.getGroupList()) {
+					tags.add(s);
+				}
+				rpl.StartStep(unit.getTestUnitMethod().getName(),
+						"".equals(unit.getTestPlanDescription().trim()) ? unit.getTestPlanBDD()
+								: unit.getTestPlanDescription(),
+						tags);
+			}
+		}
+
+		@Override
+		public void testUnitResult(TestUnitObjectWrapper unit, TestStatus testStatus, File snapshot, String description) {
+
+			if (debug) {
+				System.err.println(
+						"testUnitResult(TestUnitObjectWrapper unit, TestStatus testStatus, File snapshot, String description)");
+			}
+
+			if (testStatus == TestStatus.PASS || testStatus == TestStatus.KTF) {
+				rpl.endStep(Status.PASSED);
+			} else if (testStatus == TestStatus.SKIP) {
+				rpl.endStep(Status.SKIPPED);
+			} else if (testStatus == TestStatus.FAIL) {
+				rpl.endStep(Status.FAILED);
+			}
+			activeChildUnit = false;
+		}
+
+		@Override
+		public void testCaseStatusUpdate(TestStatus testStatus, File snapshot, String msg) {
+
+			if (debug) {
+				System.err.println("testCaseStatusUpdate(TestStatus testStatus, File snapshot, String msg)");
+			}
+
+			if (snapshot == null) {
+				rpl.log(LogStatus.Info, msg);
+			} else {
+				rpl.log(LogStatus.Info, msg, snapshot);
+			}
+		}
+
+		@Override
+		public void childTestUnitExecutionFinished(TestUnitObjectWrapper unit) {
+			if (debug) {
+				System.err.println("childTestUnitExecutionFinished(TestUnitObjectWrapper unit)");
+			}
+		}
+
+		@Override
+		public void testUnitExecutionFinished(TestUnitObjectWrapper unit) {
+			if (debug) {
+				System.err.println("testUnitExecutionFinished(TestUnitObjectWrapper unit)");
+			}
+		}
+
+		@Override
+		public void childTestCaseExecutionStarted(TestObjectWrapper t, String paramInfo) {
+			if (debug) {
+				System.err.println("childTestCaseExecutionStarted(TestObjectWrapper t, String paramInfo)");
+			}
+		}
+
+		@Override
+		public void childTestCaseExecutionFinished(TestObjectWrapper t) {
+			if (debug) {
+				System.err.println("childTestCaseExecutionFinished(TestObjectWrapper t)");
+			}
+
+		}
+
+		@Override
+		public void printTestPlan(TestObjectWrapper t) {
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public void printTestUnitPlan(TestUnitObjectWrapper unit) {
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public void testUnitOutcome(TestUnitObjectWrapper unit, TestStatus testStatus) {
+			// TODO Auto-generated method stub
+
+		}
+
+		// ********************************************************
+		// BDD Test Cases
+		// ********************************************************
+
+		@Override
+		public void testCaseExecutionStarted(BDDScenario scenario) {
+
+			if (debug) {
+				System.err.println("testCaseExecutionStarted(BDDScenario scenario)");
+			}
+
+			Set<String> tags = new HashSet<String>();
+			for (String s : scenario.getGroupList()) {
+				tags.add(s);
+			}
+
+			StringBuilder sb = new StringBuilder();
+			LinkedHashMap<String, List<String>> globalDatatable = scenario.getGlobalDataTable();
+			List<String> keyList = new ArrayList<String>();
+			int numberOfDataRaw = 0;
+			for (Map.Entry<String, List<String>> entry : globalDatatable.entrySet()) {
+				keyList.add(entry.getKey());
+				numberOfDataRaw = entry.getValue().size();
+			}
+
+			for (int j = 0; j < keyList.size(); j++) {
+				sb.append("|");
+				sb.append(keyList.get(j));
+			}
+			sb.append("|\n");
+
+			for (int i = 0; i < numberOfDataRaw; i++) {
+				for (int j = 0; j < keyList.size(); j++) {
+					sb.append("|");
+					sb.append(globalDatatable.get(keyList.get(j)).get(i));
+				}
+				sb.append("|\n");
+			}
+
+			// Start next test
+			rpl.StartTest("Scenario: " + scenario.getScenarioDescription(), sb.toString().equals("|") ? "" : sb.toString(),
+					tags);
+			activeTest = true;
+		}
+
+		@Override
+		public void testResult(BDDScenario scenario, TestStatus testStatus, File snapshot, String description) {
+
+			if (debug) {
+				System.err.println(
+						"testResult(BDDScenario scenario, TestStatus testStatus, File snapshot, String description)");
+			}
+
+			if (!activeChildUnit) {
+				if (testStatus == TestStatus.PASS || testStatus == TestStatus.KTF) {
+					rpl.endTest(Status.PASSED);
+				} else if (testStatus == TestStatus.SKIP) {
+					rpl.endTest(Status.SKIPPED);
+				} else if (testStatus == TestStatus.FAIL) {
+					rpl.endTest(Status.FAILED);
+				}
+
+				activeTest = false;
+			} else {
+
+				// First close child test
+				if (testStatus == TestStatus.PASS || testStatus == TestStatus.KTF) {
+					rpl.endStep(Status.PASSED);
+				} else if (testStatus == TestStatus.SKIP) {
+					rpl.endStep(Status.SKIPPED);
+				} else if (testStatus == TestStatus.FAIL) {
+					rpl.endStep(Status.FAILED);
+				}
+
+				activeChildUnit = false;
+			}
+		}
+
+		@Override
+		public void childTestUnitExecutionStarted(BDDScenario scenario, BDDStep step, String paramInfo) {
+
+			if (debug) {
+				System.err.println("childTestUnitExecutionStarted(BDDScenario scenario, BDDStep step, String paramInfo)");
+			}
+		}
+
+		@Override
+		public void testUnitExecutionStarted(BDDStep step) {
+
+			if (debug) {
+				System.err.println("testUnitExecutionStarted(BDDStep step)");
+			}
+
+			if (!activeChildUnit) {
+				rpl.StartStep("Step: " + step.getStepDescription(), step.getStepDescription(), null);
+			} else {
+				rpl.StartChildStep("Parameterized Step: " + step.getStepDescription(), step.getStepDescription(), null);
+			}
+		}
+
+		@Override
+		public void childTestCaseExecutionStarted(BDDScenario scenario, String paramInfo) {
+			if (debug) {
+				System.err.println("childTestCaseExecutionStarted(BDDScenario scenario, String paramInfo)");
+			}
+
+			Set<String> tags = new HashSet<String>();
+			for (String s : scenario.getGroupList()) {
+				tags.add(s);
+			}
+
+			StringBuilder sb = new StringBuilder();
+			LinkedHashMap<String, List<String>> globalDatatable = scenario.getGlobalDataTable();
+			List<String> keyList = new ArrayList<String>();
+
+			for (Map.Entry<String, List<String>> entry : globalDatatable.entrySet()) {
+				keyList.add(entry.getKey());
+			}
+
+			for (int j = 0; j < keyList.size(); j++) {
+				sb.append("|");
+				sb.append(keyList.get(j));
+			}
+			sb.append("|\n");
+
+			int indexNumber = Integer.parseInt(paramInfo.substring(paramInfo.indexOf("(") + 1, paramInfo.indexOf(")")));
+			for (int j = 0; j < keyList.size(); j++) {
+				sb.append("|");
+				sb.append(globalDatatable.get(keyList.get(j)).get(indexNumber));
+			}
+			sb.append("|\n");
+
+			rpl.StartStep("Step: " + scenario.getScenarioDescription() + " " + paramInfo, sb.toString(), tags);
+			activeChildUnit = true;
+		}
+
+		@Override
+		public void childTestCaseExecutionFinished(BDDScenario scenario) {
+			if (debug) {
+				System.err.println("childTestCaseExecutionFinished(BDDScenario scenario)");
+			}
+
+		}
+
+		@Override
+		public void childTestUnitExecutionFinished(BDDStep step) {
+			if (debug) {
+				System.err.println("childTestUnitExecutionFinished(BDDStep step)");
+			}
+
+		}
+
+		@Override
+		public void testCaseExecutionFinished(BDDScenario scenario) {
+			if (debug) {
+				System.err.println("testCaseExecutionFinished(BDDScenario scenario)");
+			}
+
+			if (activeTest) {
+				// Then close the testcase
+				rpl.endTest(Status.PASSED);
+				activeTest = false;
+			}
+
+		}
+
+		@Override
+		public void testUnitOutcome(BDDStep step, TestStatus testStatus) {
+			if (debug) {
+				System.err.println("testUnitExecutionFinished(BDDStep step)");
+			}
+
+			if (!activeChildUnit) {
+				// First close child test
+				if (testStatus == TestStatus.PASS || testStatus == TestStatus.KTF) {
+					rpl.endStep(Status.PASSED);
+				} else if (testStatus == TestStatus.SKIP) {
+					rpl.endStep(Status.SKIPPED);
+				} else if (testStatus == TestStatus.FAIL) {
+					rpl.endStep(Status.FAILED);
+				}
+			} else {
+				// First close child test
+				if (testStatus == TestStatus.PASS || testStatus == TestStatus.KTF) {
+					rpl.endChildStep(Status.PASSED);
+				} else if (testStatus == TestStatus.SKIP) {
+					rpl.endChildStep(Status.SKIPPED);
+				} else if (testStatus == TestStatus.FAIL) {
+					rpl.endChildStep(Status.FAILED);
+				}
+			}
+		}
+
+		@Override
+		public void testUnitExecutionFinished(BDDStep step) {
+			// TODO Auto-generated method stub
+		}
+
+		@Override
+		public void printTestPlan(BDDScenario sc) {
+			// TODO Auto-generated method stub
+
+		}
+
+		@Override
+		public void printTestUnitPlan(BDDStep step) {
+			// TODO Auto-generated method stub
+
+		}
+
+		// ********************************************************
+		// Before After
+		// ********************************************************
 
 		@Override
 		public void beforeTestSuiteMethodExecutionStarted(String methodName, String description) {
@@ -281,30 +620,6 @@ Create Listener for Artos
 
 		@Override
 		public void afterTestSuiteMethodExecutionFinished(String description) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void printTestPlan(TestObjectWrapper t) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void printTestPlan(BDDScenario sc) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void printTestUnitPlan(TestUnitObjectWrapper unit) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void printTestUnitPlan(BDDStep step) {
 			// TODO Auto-generated method stub
 
 		}
@@ -473,83 +788,6 @@ Create Listener for Artos
 
 		@Override
 		public void localAfterTestCaseMethodExecutionFinished(TestObjectWrapper t) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void testCaseExecutionStarted(BDDScenario scenario) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void testCaseExecutionFinished(BDDScenario scenario) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void testUnitExecutionStarted(BDDStep step) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void testUnitExecutionFinished(BDDStep step) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void testCaseExecutionSkipped(TestObjectWrapper t) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void childTestCaseExecutionStarted(BDDScenario scenario, String paramInfo) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void childTestCaseExecutionFinished(BDDScenario scenario) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void childTestUnitExecutionStarted(BDDScenario scenario, BDDStep step, String paramInfo) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void childTestUnitExecutionFinished(BDDStep step) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void testResult(BDDScenario scenario, TestStatus testStatus, File snapshot, String description) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void testCaseExecutionFinished(TestObjectWrapper t) {
-
-		}
-
-		@Override
-		public void testSuiteFailureHighlight(String description) {
-			// TODO Auto-generated method stub
-
-		}
-
-		@Override
-		public void testSuiteException(Throwable e) {
 			// TODO Auto-generated method stub
 
 		}
