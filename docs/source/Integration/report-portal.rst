@@ -380,12 +380,6 @@ Create Listener for Artos
 
 		}
 
-		@Override
-		public void testUnitOutcome(TestUnitObjectWrapper unit, TestStatus testStatus) {
-			// TODO Auto-generated method stub
-
-		}
-
 		// ********************************************************
 		// BDD Test Cases
 		// ********************************************************
@@ -553,7 +547,7 @@ Create Listener for Artos
 		}
 
 		@Override
-		public void testUnitOutcome(BDDStep step, TestStatus testStatus) {
+		public void testUnitResult(BDDStep step, TestStatus testStatus, File snapshot, String description) {
 			if (debug) {
 				System.err.println("testUnitExecutionFinished(BDDStep step)");
 			}
